@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalManageViewController" customModule="LoosenUP" customModuleProvider="target">
+            <connections>
+                <outlet property="btn_fatigue_period" destination="BvA-jV-dTA" id="EPC-Jh-KzI"/>
+                <outlet property="btn_history" destination="e2k-Xo-oNe" id="tvF-sa-ve7"/>
+                <outlet property="btn_personal_ranking" destination="471-t2-IFa" id="xTl-dc-RC1"/>
+                <outlet property="btn_personal_relaxList" destination="6tw-hS-cTF" id="sLg-k7-e1B"/>
+                <outlet property="btn_situation_analysis" destination="18W-Dd-UZJ" id="Z3u-gt-Cwy"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18W-Dd-UZJ">
+                    <rect key="frame" x="0.0" y="166" width="375" height="66.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="最適工作情境分析"/>
+                    <connections>
+                        <action selector="to_situation_analysis:" destination="-1" eventType="touchUpInside" id="s0a-N6-GgD"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WwJ-nw-SyC" userLabel="View_right_bottom">
+                    <rect key="frame" x="188" y="334" width="187" height="333"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvA-jV-dTA">
+                            <rect key="frame" x="4.5" y="0.0" width="131" height="200"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="fatiguePeriod"/>
+                            <connections>
+                                <action selector="to_fatigue_period:" destination="-1" eventType="touchUpInside" id="8cH-e9-LzM"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="BvA-jV-dTA" firstAttribute="top" secondItem="WwJ-nw-SyC" secondAttribute="top" id="9UI-57-bQI"/>
+                        <constraint firstItem="BvA-jV-dTA" firstAttribute="width" secondItem="WwJ-nw-SyC" secondAttribute="width" multiplier="0.7" id="Zha-6N-hhx"/>
+                        <constraint firstItem="BvA-jV-dTA" firstAttribute="leading" secondItem="WwJ-nw-SyC" secondAttribute="trailing" multiplier="0.025" id="qTX-87-gBx"/>
+                        <constraint firstItem="BvA-jV-dTA" firstAttribute="height" secondItem="WwJ-nw-SyC" secondAttribute="height" multiplier="0.6" id="zvf-T5-mBZ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXH-Q6-Qd4" userLabel="View_left_bottom">
+                    <rect key="frame" x="0.0" y="334" width="188" height="333"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tw-hS-cTF">
+                            <rect key="frame" x="52.5" y="0.0" width="131" height="200"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="effectList"/>
+                            <connections>
+                                <action selector="to_personal_relaxList:" destination="-1" eventType="touchUpInside" id="fLl-Yh-ck4"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="6tw-hS-cTF" firstAttribute="width" secondItem="gXH-Q6-Qd4" secondAttribute="width" multiplier="0.7" id="IsW-f5-B9K"/>
+                        <constraint firstAttribute="trailing" secondItem="6tw-hS-cTF" secondAttribute="trailing" multiplier="1.025" id="ktg-gn-WOZ"/>
+                        <constraint firstItem="6tw-hS-cTF" firstAttribute="height" secondItem="gXH-Q6-Qd4" secondAttribute="height" multiplier="0.6" id="nuc-Ru-8ec"/>
+                        <constraint firstItem="6tw-hS-cTF" firstAttribute="top" secondItem="gXH-Q6-Qd4" secondAttribute="top" id="rYO-wD-8Zq"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uls-NW-RPu" userLabel="View_right_top">
+                    <rect key="frame" x="188" y="0.0" width="187" height="334"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="471-t2-IFa">
+                            <rect key="frame" x="4.5" y="125.5" width="131" height="200.5"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="personalRanking"/>
+                            <connections>
+                                <action selector="to_personal_ranking:" destination="-1" eventType="touchUpInside" id="Zyk-Ms-msw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="471-t2-IFa" firstAttribute="width" secondItem="uls-NW-RPu" secondAttribute="width" multiplier="0.7" id="0fx-pZ-fEc"/>
+                        <constraint firstAttribute="bottom" secondItem="471-t2-IFa" secondAttribute="bottom" multiplier="1.025" id="6nS-Zp-CcC"/>
+                        <constraint firstItem="471-t2-IFa" firstAttribute="leading" secondItem="uls-NW-RPu" secondAttribute="trailing" multiplier="0.025" id="bWV-uW-1oy"/>
+                        <constraint firstItem="471-t2-IFa" firstAttribute="height" secondItem="uls-NW-RPu" secondAttribute="height" multiplier="0.6" id="v1h-FB-UWz"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-Ul-esm" userLabel="View_left_top">
+                    <rect key="frame" x="0.0" y="0.0" width="188" height="334"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2k-Xo-oNe">
+                            <rect key="frame" x="52" y="125.5" width="131.5" height="200.5"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="history"/>
+                            <connections>
+                                <action selector="to_history:" destination="-1" eventType="touchUpInside" id="Wgi-RN-Gp3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="e2k-Xo-oNe" secondAttribute="trailing" multiplier="1.025" id="QKF-ro-tTM"/>
+                        <constraint firstAttribute="bottom" secondItem="e2k-Xo-oNe" secondAttribute="bottom" multiplier="1.025" id="Ruu-UB-Tp0"/>
+                        <constraint firstItem="e2k-Xo-oNe" firstAttribute="width" secondItem="4gy-Ul-esm" secondAttribute="width" multiplier="0.7" id="Zhr-Cj-xC3"/>
+                        <constraint firstItem="e2k-Xo-oNe" firstAttribute="height" secondItem="4gy-Ul-esm" secondAttribute="height" multiplier="0.6" id="yjf-RX-SSb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="gXH-Q6-Qd4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Wk-j4-Kri"/>
+                <constraint firstItem="4gy-Ul-esm" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="BPa-AZ-47r"/>
+                <constraint firstItem="4gy-Ul-esm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Byw-da-hKK"/>
+                <constraint firstItem="gXH-Q6-Qd4" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="DR5-zn-NUV"/>
+                <constraint firstItem="uls-NW-RPu" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="I8j-LL-TCd"/>
+                <constraint firstItem="WwJ-nw-SyC" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="KQw-2c-uXh"/>
+                <constraint firstAttribute="trailing" secondItem="uls-NW-RPu" secondAttribute="trailing" id="Kkz-6w-uFc"/>
+                <constraint firstItem="4gy-Ul-esm" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="Non-0a-4DK"/>
+                <constraint firstItem="uls-NW-RPu" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="QTZ-Fj-aTL"/>
+                <constraint firstItem="uls-NW-RPu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Y1S-YH-262"/>
+                <constraint firstItem="gXH-Q6-Qd4" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="btJ-st-o0w"/>
+                <constraint firstAttribute="bottom" secondItem="WwJ-nw-SyC" secondAttribute="bottom" id="f7v-uq-2Lt"/>
+                <constraint firstItem="WwJ-nw-SyC" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="fpk-Eq-PYQ"/>
+                <constraint firstAttribute="trailing" secondItem="WwJ-nw-SyC" secondAttribute="trailing" id="m2d-DS-JlN"/>
+                <constraint firstItem="4gy-Ul-esm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="m8P-xE-pxk"/>
+                <constraint firstAttribute="bottom" secondItem="gXH-Q6-Qd4" secondAttribute="bottom" id="qQa-ua-lSz"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="effectList" width="76" height="76"/>
+        <image name="fatiguePeriod" width="76" height="76"/>
+        <image name="history" width="76" height="76"/>
+        <image name="personalRanking" width="76" height="76"/>
+    </resources>
+</document>

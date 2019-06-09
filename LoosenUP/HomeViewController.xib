@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="LoosenUP" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="HomeView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52n-YJ-zlc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6J-Nh-625" userLabel="CarouselView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
+                            <color key="backgroundColor" red="0.796016583" green="0.83080808080000002" blue="0.79391811999999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoF-JH-Voc" userLabel="SecondView">
+                            <rect key="frame" x="0.0" y="279.5" width="375" height="201"/>
+                            <color key="backgroundColor" red="0.84738580480000003" green="0.996685606" blue="0.73616777089999996" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4i-6q-ySA" userLabel="ThirdView">
+                            <rect key="frame" x="0.0" y="507" width="375" height="200"/>
+                            <color key="backgroundColor" red="0.62607527570631316" green="0.7843137255" blue="0.38153407450133942" alpha="0.79603040540000003" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.63484814403214018" blue="0.54958278066550781" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="q6J-Nh-625" firstAttribute="leading" secondItem="52n-YJ-zlc" secondAttribute="leading" id="8J0-uo-Xfn"/>
+                        <constraint firstAttribute="bottom" secondItem="PoF-JH-Voc" secondAttribute="bottom" multiplier="2.5" id="Ee3-WO-sOo"/>
+                        <constraint firstItem="PoF-JH-Voc" firstAttribute="height" secondItem="52n-YJ-zlc" secondAttribute="height" multiplier="0.3" id="FmN-fY-PQm"/>
+                        <constraint firstItem="l4i-6q-ySA" firstAttribute="height" secondItem="52n-YJ-zlc" secondAttribute="height" multiplier="0.3" id="IwS-7N-87F"/>
+                        <constraint firstAttribute="bottom" secondItem="l4i-6q-ySA" secondAttribute="bottom" multiplier="1.7" id="Mnd-sy-lKt"/>
+                        <constraint firstAttribute="trailing" secondItem="l4i-6q-ySA" secondAttribute="trailing" id="NwU-XQ-dZp"/>
+                        <constraint firstItem="q6J-Nh-625" firstAttribute="width" secondItem="52n-YJ-zlc" secondAttribute="width" id="RDq-TY-u7y"/>
+                        <constraint firstAttribute="trailing" secondItem="PoF-JH-Voc" secondAttribute="trailing" id="Xvp-RJ-iPk"/>
+                        <constraint firstItem="q6J-Nh-625" firstAttribute="height" secondItem="52n-YJ-zlc" secondAttribute="height" multiplier="0.4" id="Yno-Ru-gWL"/>
+                        <constraint firstAttribute="bottom" secondItem="q6J-Nh-625" secondAttribute="bottom" multiplier="4.5" id="aQO-Ie-Izw"/>
+                        <constraint firstItem="PoF-JH-Voc" firstAttribute="width" secondItem="52n-YJ-zlc" secondAttribute="width" id="adL-AA-sqF"/>
+                        <constraint firstAttribute="trailing" secondItem="q6J-Nh-625" secondAttribute="trailing" id="suD-hG-wjM"/>
+                        <constraint firstItem="q6J-Nh-625" firstAttribute="top" secondItem="52n-YJ-zlc" secondAttribute="top" id="vN5-mD-GqB"/>
+                        <constraint firstItem="l4i-6q-ySA" firstAttribute="width" secondItem="52n-YJ-zlc" secondAttribute="width" id="vy9-c0-YPT"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.60566643990090174" green="0.89484508477314517" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="52n-YJ-zlc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2vr-wr-22a"/>
+                <constraint firstAttribute="bottom" secondItem="52n-YJ-zlc" secondAttribute="bottom" id="WCf-Yu-9OA"/>
+                <constraint firstItem="52n-YJ-zlc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fWd-6E-QcR"/>
+                <constraint firstAttribute="trailing" secondItem="52n-YJ-zlc" secondAttribute="trailing" id="riX-z8-MB8"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

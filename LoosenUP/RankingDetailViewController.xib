@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RankingDetailViewController" customModule="LoosenUP" customModuleProvider="target">
+            <connections>
+                <outlet property="barChartView" destination="gT2-8v-oYO" id="o4l-Nw-iAz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gT2-8v-oYO" customClass="BarChartView" customModule="Charts">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOt-00-iTO">
+                    <rect key="frame" x="0.0" y="400" width="375" height="267"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gT2-8v-oYO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BZN-Q9-Ytd"/>
+                <constraint firstItem="GOt-00-iTO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cmv-a6-TMC"/>
+                <constraint firstItem="GOt-00-iTO" firstAttribute="top" secondItem="gT2-8v-oYO" secondAttribute="bottom" id="IRC-od-YnK"/>
+                <constraint firstItem="gT2-8v-oYO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Lxk-ao-YVl"/>
+                <constraint firstAttribute="bottom" secondItem="GOt-00-iTO" secondAttribute="bottom" id="jS3-OZ-rsS"/>
+                <constraint firstItem="gT2-8v-oYO" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.6" id="oEy-fp-Ra4"/>
+                <constraint firstAttribute="trailing" secondItem="GOt-00-iTO" secondAttribute="trailing" id="sgK-AN-riw"/>
+                <constraint firstAttribute="trailing" secondItem="gT2-8v-oYO" secondAttribute="trailing" id="tbi-nJ-TV8"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

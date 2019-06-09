@@ -1,0 +1,6 @@
+framework module Pods_LoosenUP {
+  umbrella header "Pods-LoosenUP-umbrella.h"
+
+  export *
+  module * { export * }
+}
