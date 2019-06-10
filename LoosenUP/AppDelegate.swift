@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         animateditem1.animation = animation1
         subviewcontroller1.tabBarItem = animateditem1
 
-        
+
         let subviewcontroller2 = ForumViewController()
         subviewcontroller2.title = "討論區"
         let animation2 = RAMBounceAnimation.init()
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         animateditem2.animation = animation2
         subviewcontroller2.tabBarItem = animateditem2
 
-        
+
         let subviewcontroller3 = ManageViewController()
         subviewcontroller3.title = "個人專區"
         let animation3 = RAMBounceAnimation.init()
@@ -59,23 +59,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        animateditem3.image = UIImage(named: "TabbarIcon3")
         animateditem3.animation = animation3
         subviewcontroller3.tabBarItem = animateditem3
-        
-        
+
+
         let navigationcontroller1 = UINavigationController()
         navigationcontroller1.pushViewController(subviewcontroller1, animated: true)
         UINavigationService.setNavBarColor(navigationController: navigationcontroller1,color: Const.Main_Color)
-        
+
         let navigationcontroller2 = UINavigationController()
         navigationcontroller2.pushViewController(subviewcontroller2, animated: true)
         UINavigationService.setNavBarColor(navigationController: navigationcontroller2,color: Const.Main_Color)
-        
-        
+
         let navigationcontroller3 = UINavigationController()
         navigationcontroller3.pushViewController(subviewcontroller3, animated: true)
         UINavigationService.setNavBarColor(navigationController: navigationcontroller3,color: Const.Main_Color)
-        
-        
-        let viewcontroller = HomeTabBarController(viewControllers: [navigationcontroller2,navigationcontroller1,navigationcontroller3])
+
+        let viewcontroller = HomeTabBarController()
+        viewcontroller.setViewControllers([navigationcontroller2,navigationcontroller1,navigationcontroller3], animated: true)
         viewcontroller.tabBar.isTranslucent = false
         viewcontroller.setSelectIndex(from: 0, to: 1)
         
