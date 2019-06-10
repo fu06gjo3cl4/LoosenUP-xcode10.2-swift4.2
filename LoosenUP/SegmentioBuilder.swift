@@ -40,7 +40,7 @@ struct SegmentioBuilder {
     }
     
     private static func segmentioOptions(segmentioStyle: SegmentioStyle) -> SegmentioOptions {
-        var imageContentMode = UIViewContentMode.center
+        var imageContentMode = UIView.ContentMode.center
         switch segmentioStyle {
         case .imageBeforeLabel, .imageAfterLabel:
             imageContentMode = .scaleAspectFit
@@ -48,19 +48,22 @@ struct SegmentioBuilder {
             break
         }
         
-        return SegmentioOptions(
-            backgroundColor: Const.white,
-            maxVisibleItems: 3,
-            scrollEnabled: true,
-            indicatorOptions: segmentioIndicatorOptions(),
-            horizontalSeparatorOptions: segmentioHorizontalSeparatorOptions(),
-            verticalSeparatorOptions: segmentioVerticalSeparatorOptions(),
-            imageContentMode: imageContentMode,
-            labelTextAlignment: .center,
-            labelTextNumberOfLines: 1,
-            segmentStates: segmentioStates(),
-            animationDuration: 0.3
-        )
+        return SegmentioOptions(backgroundColor: Const.white, segmentPosition: SegmentioPosition.dynamic, scrollEnabled: true, indicatorOptions: segmentioIndicatorOptions(), horizontalSeparatorOptions: segmentioHorizontalSeparatorOptions(), verticalSeparatorOptions: segmentioVerticalSeparatorOptions(), imageContentMode: imageContentMode, labelTextAlignment: .center, labelTextNumberOfLines: 1, segmentStates: segmentioStates(), animationDuration: 0.3)
+            
+//            SegmentioOptions(
+//            backgroundColor: Const.white,
+//            maxVisibleItems: 3,
+//            scrollEnabled: true,
+//            indicatorOptions: segmentioIndicatorOptions(),
+//            horizontalSeparatorOptions: segmentioHorizontalSeparatorOptions(),
+//            verticalSeparatorOptions: segmentioVerticalSeparatorOptions(),
+//            imageContentMode: imageContentMode,
+//            labelTextAlignment: .center,
+//            labelTextNumberOfLines: 1,
+//            segmentStates: segmentioStates(),
+//            animationDuration: 0.3
+//        )
+        
     }
     
     private static func segmentioStates() -> SegmentioStates {

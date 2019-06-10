@@ -6,13 +6,13 @@ target 'LoosenUP' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'Alamofire', '~> 4.4'
-  pod 'SwiftyJSON’, '~> 3.1.4'
+  pod 'Alamofire', '~> 4.8.1'
+  pod 'SwiftyJSON’, '~> 4.2.0'
   pod 'RAMAnimatedTabBarController', "~> 2.0.13"
-  pod ‘FSPagerView’, '~> 0.3.0'
-  pod 'SnapKit', '~> 3.2.0'
-  pod 'Charts’, ‘~> 3.1.1’
-  pod 'Segmentio', '~> 2.1'
+  pod ‘FSPagerView’, '~> 0.8.2'
+  pod 'SnapKit', '~> 4.2.0'
+  pod 'Charts’, ‘~> 3.2.0’
+  pod 'Segmentio', '~> 3.3'
   pod 'SwiftGifOrigin', '~> 1.7.0'
 
   # Pods for LoosenUP

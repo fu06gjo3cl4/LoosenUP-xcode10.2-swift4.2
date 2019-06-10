@@ -11,7 +11,7 @@ import UIKit
 class SegmentioCell: UICollectionViewCell {
     
     let padding: CGFloat = 8
-    let segmentTitleLabelHeight: CGFloat = 22
+    static let segmentTitleLabelHeight: CGFloat = 22
     
     var verticalSeparatorView: UIView?
     var segmentTitleLabel: UILabel?
@@ -23,10 +23,9 @@ class SegmentioCell: UICollectionViewCell {
     var bottomConstraint: NSLayoutConstraint?
     var cellSelected = false
     
-    fileprivate var options = SegmentioOptions()
-    fileprivate var style = SegmentioStyle.imageOverLabel
-    fileprivate let verticalSeparatorLayer = CAShapeLayer()
-    fileprivate let badgePresenter = BadgeViewPresenter()
+    private var options = SegmentioOptions()
+    private var style = SegmentioStyle.imageOverLabel
+    private let verticalSeparatorLayer = CAShapeLayer()
     
     override var isHighlighted: Bool {
         get {
@@ -42,14 +41,16 @@ class SegmentioCell: UICollectionViewCell {
                 let selectedState = options.states.selectedState
                 
                 if style.isWithText() {
-                    let highlightedTitleTextColor = cellSelected ? selectedState.titleTextColor : defaultState.titleTextColor
+                    let highlightedTitleTextColor = cellSelected ? selectedState.titleTextColor
+                        : defaultState.titleTextColor
                     let highlightedTitleFont = cellSelected ? selectedState.titleFont : defaultState.titleFont
                     
-                    segmentTitleLabel?.textColor = isHighlighted ? highlightedState.titleTextColor : highlightedTitleTextColor
+                    segmentTitleLabel?.textColor = isHighlighted ? highlightedState.titleTextColor
+                        : highlightedTitleTextColor
                     segmentTitleLabel?.font = isHighlighted ? highlightedState.titleFont : highlightedTitleFont
                 }
                 
-                backgroundColor = isHighlighted ? highlightedState.backgroundColor : defaultState.backgroundColor
+                backgroundColor = isHighlighted ? highlightedState.backgroundColor : .clear
             }
         }
     }
@@ -98,6 +99,7 @@ class SegmentioCell: UICollectionViewCell {
         verticalSeparatorLayer.removeFromSuperlayer()
         super.prepareForReuse()
         
+        let badgePresenter = BadgeViewPresenter()
         switch style {
         case .onlyLabel:
             badgePresenter.removeBadgeFromContainerView(containerView!)
@@ -130,7 +132,7 @@ class SegmentioCell: UICollectionViewCell {
         configurateBadgeWithCount(content.badgeCount, color: content.badgeColor)
     }
     
-    func configure(selected: Bool) {
+    func configure(selected: Bool, selectedImage: UIImage? = nil, image: UIImage? = nil) {
         cellSelected = selected
         
         let selectedState = options.states.selectedState
@@ -139,6 +141,12 @@ class SegmentioCell: UICollectionViewCell {
         if style.isWithText() {
             segmentTitleLabel?.textColor = selected ? selectedState.titleTextColor : defaultState.titleTextColor
             segmentTitleLabel?.font = selected ? selectedState.titleFont : defaultState.titleFont
+            segmentTitleLabel?.minimumScaleFactor = 0.5
+            segmentTitleLabel?.adjustsFontSizeToFitWidth = true
+        }
+                
+        if (style != .onlyLabel) {
+            segmentImageView?.image = selected ? selectedImage : image
         }
     }
     
@@ -147,6 +155,7 @@ class SegmentioCell: UICollectionViewCell {
             return
         }
         
+        let badgePresenter = BadgeViewPresenter()
         if style == .onlyImage {
             badgePresenter.addBadgeForContainerView(
                 imageContainerView!,
@@ -172,7 +181,7 @@ class SegmentioCell: UICollectionViewCell {
 
     // MARK: - Private functions
     
-    fileprivate func setupContainerConstraints() {
+    private func setupContainerConstraints() {
         guard let segmentTitleLabel = segmentTitleLabel, let containerView = containerView else {
             return
         }
@@ -212,7 +221,7 @@ class SegmentioCell: UICollectionViewCell {
         ])
     }
     
-    fileprivate func setupImageContainerConstraints() {
+    private func setupImageContainerConstraints() {
         guard let segmentImageView = segmentImageView else {
             return
         }
@@ -272,7 +281,7 @@ class SegmentioCell: UICollectionViewCell {
     }
 
     
-    fileprivate func setupContent(content: SegmentioItem) {
+    private func setupContent(content: SegmentioItem) {
         if style.isWithImage() {
             segmentImageView?.contentMode = options.imageContentMode
             segmentImageView?.image = content.image
@@ -285,10 +294,12 @@ class SegmentioCell: UICollectionViewCell {
             segmentTitleLabel?.textColor = defaultState.titleTextColor
             segmentTitleLabel?.font = defaultState.titleFont
             segmentTitleLabel?.text = content.title
+            segmentTitleLabel?.minimumScaleFactor = 0.5
+            segmentTitleLabel?.adjustsFontSizeToFitWidth = true
         }
     }
     
-    fileprivate func setupConstraint(indicatorOptions: SegmentioIndicatorOptions) {
+    private func setupConstraint(indicatorOptions: SegmentioIndicatorOptions) {
         switch indicatorOptions.type {
         case .top:
             topConstraint?.constant = padding + indicatorOptions.height
@@ -299,7 +310,7 @@ class SegmentioCell: UICollectionViewCell {
 
     // MARK: - Vertical separator
     
-    fileprivate func addVerticalSeparator() {
+    private func addVerticalSeparator() {
         let contentViewWidth = contentView.bounds.width
         let rect = CGRect(
             x: contentView.bounds.width - 1,
@@ -368,7 +379,7 @@ class SegmentioCell: UICollectionViewCell {
         bottomConstraint.isActive = true
     }
     
-    fileprivate func setupVerticalSeparators() {
+    private func setupVerticalSeparators() {
         guard let verticalSeparatorOptions = options.verticalSeparatorOptions else {
             return
         }

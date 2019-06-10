@@ -38,7 +38,7 @@ class SelectSituationViewController: UIViewController {
         super.viewDidLoad()
         
         //新建按鈕並設定在導航槓右方
-        let rightbarbtn = UIBarButtonItem(title: "NEXT",style: UIBarButtonItemStyle.plain,target: self,action: #selector(SelectSituationViewController.toDetect))
+        let rightbarbtn = UIBarButtonItem(title: "NEXT",style: UIBarButtonItem.Style.plain,target: self,action: #selector(SelectSituationViewController.toDetect))
         self.navigationItem.rightBarButtonItem = rightbarbtn
         
         UINavigationService.setedgefor_navigationbar(viewcontroller: self)

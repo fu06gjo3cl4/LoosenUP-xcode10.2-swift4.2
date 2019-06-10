@@ -141,7 +141,7 @@ open class Ripple {
         
         let opacity = CABasicAnimation(keyPath: "opacity")
         opacity.autoreverses = false
-        opacity.fillMode = kCAFillModeForwards
+        opacity.fillMode = CAMediaTimingFillMode.forwards
         opacity.isRemovedOnCompletion = false
         opacity.duration = option.duration
         opacity.fromValue = 1.0
@@ -149,7 +149,7 @@ open class Ripple {
         
         let transform = CABasicAnimation(keyPath: "transform")
         transform.autoreverses = false
-        transform.fillMode = kCAFillModeForwards
+        transform.fillMode = CAMediaTimingFillMode.forwards
         transform.isRemovedOnCompletion = false
         transform.duration = option.duration
         transform.fromValue = NSValue(caTransform3D: CATransform3DMakeScale(1.0 / option.scale, 1.0 / option.scale, 1.0))

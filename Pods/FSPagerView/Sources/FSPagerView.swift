@@ -78,16 +78,21 @@ public protocol FSPagerViewDelegate: NSObjectProtocol {
 open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
     
     // MARK: - Public properties
-    
-    #if TARGET_INTERFACE_BUILDER
-    // Yes you need to lie to the Interface Builder, otherwise "@IBOutlet" cannot be connected.
-    @IBOutlet open weak var dataSource: AnyObject?
-    @IBOutlet open weak var delegate: AnyObject?
-    #else
-    open weak var dataSource: FSPagerViewDataSource?
-    open weak var delegate: FSPagerViewDelegate?
-    #endif
 
+    /// The object that acts as the data source of the pager view.
+    @IBOutlet open weak var dataSource: FSPagerViewDataSource?
+    
+    /// The object that acts as the delegate of the pager view.
+    @IBOutlet open weak var delegate: FSPagerViewDelegate?
+    
+    /// The scroll direction of the pager view. Default is horizontal.
+    @objc
+    open var scrollDirection: FSPagerView.ScrollDirection = .horizontal {
+        didSet {
+            self.collectionViewLayout.forceInvalidate()
+        }
+    }
+    
     /// The time interval of automatic sliding. 0 means disabling automatic sliding. Default is 0.
     @IBInspectable
     open var automaticSlidingInterval: CGFloat = 0.0 {
@@ -107,9 +112,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    /// The item size of the pager view. .zero means always fill the bounds of the pager view. Default is .zero.
+    /// The item size of the pager view. When the value of this property is FSPagerView.automaticSize, the items fill the entire visible area of the pager view. Default is FSPagerView.automaticSize.
     @IBInspectable
-    open var itemSize: CGSize = .zero {
+    open var itemSize: CGSize = automaticSize {
         didSet {
             self.collectionViewLayout.forceInvalidate()
         }
@@ -119,11 +124,50 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     @IBInspectable
     open var isInfinite: Bool = false {
         didSet {
+            self.collectionViewLayout.needsReprepare = true
             self.collectionView.reloadData()
-            self.collectionViewLayout.forceInvalidate()
         }
     }
     
+    /// An unsigned integer value that determines the deceleration distance of the pager view, which indicates the number of passing items during the deceleration. When the value of this property is FSPagerView.automaticDistance, the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
+    @IBInspectable
+    open var decelerationDistance: UInt = 1
+    
+    /// A Boolean value that determines whether scrolling is enabled.
+    @IBInspectable
+    open var isScrollEnabled: Bool {
+        set { self.collectionView.isScrollEnabled = newValue }
+        get { return self.collectionView.isScrollEnabled }
+    }
+    
+    /// A Boolean value that controls whether the pager view bounces past the edge of content and back again.
+    @IBInspectable
+    open var bounces: Bool {
+        set { self.collectionView.bounces = newValue }
+        get { return self.collectionView.bounces }
+    }
+    
+    /// A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
+    @IBInspectable
+    open var alwaysBounceHorizontal: Bool {
+        set { self.collectionView.alwaysBounceHorizontal = newValue }
+        get { return self.collectionView.alwaysBounceHorizontal }
+    }
+    
+    /// A Boolean value that determines whether bouncing always occurs when vertical scrolling reaches the end of the content view.
+    @IBInspectable
+    open var alwaysBounceVertical: Bool {
+        set { self.collectionView.alwaysBounceVertical = newValue }
+        get { return self.collectionView.alwaysBounceVertical }
+    }
+    
+    /// A Boolean value that controls whether the infinite loop is removed if there is only one item. Default is false.
+    @IBInspectable
+    open var removesInfiniteLoopForSingleItem: Bool = false {
+        didSet {
+            self.reloadData()
+        }
+    }
     
     /// The background view of the pager view.
     @IBInspectable
@@ -140,6 +184,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     /// The transformer of the pager view.
+    @objc
     open var transformer: FSPagerViewTransformer? {
         didSet {
             self.transformer?.pagerView = self
@@ -150,42 +195,55 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     // MARK: - Public readonly-properties
     
     /// Returns whether the user has touched the content to initiate scrolling.
+    @objc
     open var isTracking: Bool {
         return self.collectionView.isTracking
     }
     
     /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
+    @objc
     open var scrollOffset: CGFloat {
-        let scrollOffset = Double(self.collectionView.contentOffset.x.divided(by: self.collectionViewLayout.itemSpacing))
-        return fmod(CGFloat(scrollOffset), CGFloat(Double(self.numberOfItems)))
+        let contentOffset = max(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y)
+        let scrollOffset = Double(contentOffset/self.collectionViewLayout.itemSpacing)
+        return fmod(CGFloat(scrollOffset), CGFloat(self.numberOfItems))
     }
     
     /// The underlying gesture recognizer for pan gestures.
+    @objc
     open var panGestureRecognizer: UIPanGestureRecognizer {
         return self.collectionView.panGestureRecognizer
     }
     
-    open fileprivate(set) dynamic var currentIndex: Int = 0
+    @objc open fileprivate(set) dynamic var currentIndex: Int = 0
     
     // MARK: - Private properties
     
     internal weak var collectionViewLayout: FSPagerViewLayout!
-    internal weak var collectionView: FSPagerViewCollectionView!
+    internal weak var collectionView: FSPagerCollectionView!
     internal weak var contentView: UIView!
-    
     internal var timer: Timer?
     internal var numberOfItems: Int = 0
     internal var numberOfSections: Int = 0
     
     fileprivate var dequeingSection = 0
     fileprivate var centermostIndexPath: IndexPath {
-        guard self.numberOfItems > 0, self.collectionView.contentSize.width > 0 else {
+        guard self.numberOfItems > 0, self.collectionView.contentSize != .zero else {
             return IndexPath(item: 0, section: 0)
         }
         let sortedIndexPaths = self.collectionView.indexPathsForVisibleItems.sorted { (l, r) -> Bool in
-            let leftCenter = self.collectionViewLayout.frame(for: l).midX
-            let rightCenter = self.collectionViewLayout.frame(for: r).midX
-            let ruler = self.collectionView.bounds.midX
+            let leftFrame = self.collectionViewLayout.frame(for: l)
+            let rightFrame = self.collectionViewLayout.frame(for: r)
+            var leftCenter: CGFloat,rightCenter: CGFloat,ruler: CGFloat
+            switch self.scrollDirection {
+            case .horizontal:
+                leftCenter = leftFrame.midX
+                rightCenter = rightFrame.midX
+                ruler = self.collectionView.bounds.midX
+            case .vertical:
+                leftCenter = leftFrame.midY
+                rightCenter = rightFrame.midY
+                ruler = self.collectionView.bounds.midY
+            }
             return abs(ruler-leftCenter) < abs(ruler-rightCenter)
         }
         let indexPath = sortedIndexPaths.first
@@ -194,9 +252,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
         return IndexPath(item: 0, section: 0)
     }
-    
+    fileprivate var isPossiblyRotating: Bool {
+        guard let animationKeys = self.contentView.layer.animationKeys() else {
+            return false
+        }
+        let rotationAnimationKeys = ["position", "bounds.origin", "bounds.size"]
+        return animationKeys.contains(where: { rotationAnimationKeys.contains($0) })
+    }
     fileprivate var possibleTargetingIndexPath: IndexPath?
-
     
     // MARK: - Overriden functions
     
@@ -226,11 +289,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    #if TARGET_INTERFACE_BUILDER
+    
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         self.contentView.layer.borderWidth = 1
         self.contentView.layer.cornerRadius = 5
         self.contentView.layer.masksToBounds = true
+        self.contentView.frame = self.bounds
         let label = UILabel(frame: self.contentView.bounds)
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 25)
@@ -238,11 +304,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.contentView.addSubview(label)
     }
     
+    #endif
+
     deinit {
         self.collectionView.dataSource = nil
         self.collectionView.delegate = nil
     }
-    
+
     // MARK: - UICollectionViewDataSource
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -250,7 +318,10 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             return 1
         }
         self.numberOfItems = dataSource.numberOfItems(in: self)
-        self.numberOfSections = self.isInfinite ? Int(Int16.max)/self.numberOfItems : 1
+        guard self.numberOfItems > 0 else {
+            return 0;
+        }
+        self.numberOfSections = self.isInfinite && (self.numberOfItems > 1 || !self.removesInfiniteLoopForSingleItem) ? Int(Int16.max)/self.numberOfItems : 1
         return self.numberOfSections
     }
     
@@ -320,7 +391,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if self.numberOfItems > 0 {
+        if !self.isPossiblyRotating && self.numberOfItems > 0 {
             // In case someone is using KVO
             let currentIndex = lround(Double(self.scrollOffset)) % self.numberOfItems
             if (currentIndex != self.currentIndex) {
@@ -344,7 +415,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if let function = self.delegate?.pagerViewWillEndDragging(_:targetIndex:) {
-            let targetItem = lround(Double(targetContentOffset.pointee.x/self.collectionViewLayout.itemSpacing))
+            let contentOffset = self.scrollDirection == .horizontal ? targetContentOffset.pointee.x : targetContentOffset.pointee.y
+            let targetItem = lround(Double(contentOffset/self.collectionViewLayout.itemSpacing))
             function(self, targetItem % self.numberOfItems)
         }
         if self.automaticSlidingInterval > 0 {
@@ -417,7 +489,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     @objc(selectItemAtIndex:animated:)
     open func selectItem(at index: Int, animated: Bool) {
         let indexPath = self.nearbyIndexPath(for: index)
-        self.collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: .centeredHorizontally)
+        let scrollPosition: UICollectionView.ScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
+        self.collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: scrollPosition)
     }
     
     /// Deselects the item at the specified index.
@@ -448,10 +521,32 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
                 }
                 return indexPath
             }
-            return self.isInfinite ? self.nearbyIndexPath(for: index) : IndexPath(item: index, section: 0)
+            return self.numberOfSections > 1 ? self.nearbyIndexPath(for: index) : IndexPath(item: index, section: 0)
         }()
         let contentOffset = self.collectionViewLayout.contentOffset(for: indexPath)
         self.collectionView.setContentOffset(contentOffset, animated: animated)
+    }
+    
+    /// Returns the index of the specified cell.
+    ///
+    /// - Parameter cell: The cell object whose index you want.
+    /// - Returns: The index of the cell or NSNotFound if the specified cell is not in the pager view.
+    @objc(indexForCell:)
+    open func index(for cell: FSPagerViewCell) -> Int {
+        guard let indexPath = self.collectionView.indexPath(for: cell) else {
+            return NSNotFound
+        }
+        return indexPath.item
+    }
+    
+    /// Returns the visible cell at the specified index.
+    ///
+    /// - Parameter index: The index that specifies the position of the cell.
+    /// - Returns: The cell object at the corresponding position or nil if the cell is not visible or index is out of range.
+    @objc(cellForItemAtIndex:)
+    open func cellForItem(at index: Int) -> FSPagerViewCell? {
+        let indexPath = self.nearbyIndexPath(for: index)
+        return self.collectionView.cellForItem(at: indexPath) as? FSPagerViewCell
     }
     
     // MARK: - Private functions
@@ -466,7 +561,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         
         // UICollectionView
         let collectionViewLayout = FSPagerViewLayout()
-        let collectionView = FSPagerViewCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
+        let collectionView = FSPagerCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
@@ -481,6 +576,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             return
         }
         self.timer = Timer.scheduledTimer(timeInterval: TimeInterval(self.automaticSlidingInterval), target: self, selector: #selector(self.flipNext(sender:)), userInfo: nil, repeats: true)
+        RunLoop.current.add(self.timer!, forMode: .common)
     }
     
     @objc
@@ -488,7 +584,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         guard let _ = self.superview, let _ = self.window, self.numberOfItems > 0, !self.isTracking else {
             return
         }
-        self.scrollToItem(at: (self.currentIndex+1)%self.numberOfItems, animated: true)
+        let contentOffset: CGPoint = {
+            let indexPath = self.centermostIndexPath
+            let section = self.numberOfSections > 1 ? (indexPath.section+(indexPath.item+1)/self.numberOfItems) : 0
+            let item = (indexPath.item+1) % self.numberOfItems
+            return self.collectionViewLayout.contentOffset(for: IndexPath(item: item, section: section))
+        }()
+        self.collectionView.setContentOffset(contentOffset, animated: true)
     }
     
     fileprivate func cancelTimer() {
@@ -514,4 +616,21 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
 }
 
-
+extension FSPagerView {
+    
+    /// Constants indicating the direction of scrolling for the pager view.
+    @objc
+    public enum ScrollDirection: Int {
+        /// The pager view scrolls content horizontally
+        case horizontal
+        /// The pager view scrolls content vertically
+        case vertical
+    }
+    
+    /// Requests that FSPagerView use the default value for a given distance.
+    public static let automaticDistance: UInt = 0
+    
+    /// Requests that FSPagerView use the default value for a given size.
+    public static let automaticSize: CGSize = .zero
+    
+}

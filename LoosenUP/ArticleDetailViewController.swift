@@ -25,20 +25,20 @@ class ArticleDetailViewController: UIViewController {
     @IBAction func btn_like(_ sender: Any) {
         
         if(like_count == 0){
-            self.btn_like.setBackgroundImage(UIImage(named: "Like"), for: UIControlState.normal)
+            self.btn_like.setBackgroundImage(UIImage(named: "Like"), for: UIControl.State.normal)
             like_count = like_count + 1
         }else{
-            self.btn_like.setBackgroundImage(UIImage(named: "UnLike"), for: UIControlState.normal)
+            self.btn_like.setBackgroundImage(UIImage(named: "UnLike"), for: UIControl.State.normal)
             like_count = like_count - 1
         }
     }
     @IBAction func btn_collect(_ sender: Any) {
         
         if(collect_count == 0){
-            self.btn_collect.setBackgroundImage(UIImage(named: "Collect"), for: UIControlState.normal)
+            self.btn_collect.setBackgroundImage(UIImage(named: "Collect"), for: UIControl.State.normal)
             collect_count = collect_count + 1
         }else{
-            self.btn_collect.setBackgroundImage(UIImage(named: "UnCollect"), for: UIControlState.normal)
+            self.btn_collect.setBackgroundImage(UIImage(named: "UnCollect"), for: UIControl.State.normal)
             collect_count = collect_count - 1
         }
     }

@@ -59,7 +59,7 @@ extension HistoryViewController : UITableViewDelegate,UITableViewDataSource{
         whiteRoundedView.layer.shadowOpacity = 0.2
         
         cell.contentView.addSubview(whiteRoundedView)
-        cell.contentView.sendSubview(toBack: whiteRoundedView)
+        cell.contentView.sendSubviewToBack(whiteRoundedView)
         
         
         return cell

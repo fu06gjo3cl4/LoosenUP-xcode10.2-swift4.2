@@ -351,7 +351,7 @@ class DetectViewController: UIViewController , CBCentralManagerDelegate ,CBPerip
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         if TargetPeripheral!.state == CBPeripheralState.connected {
 //            label.text = "Connected"
-            btn_connect.setBackgroundImage(UIImage(named:"Connected"), for: UIControlState.normal)
+            btn_connect.setBackgroundImage(UIImage(named:"Connected"), for: UIControl.State.normal)
             lb_statue.text = "已連接"
             TargetPeripheral.discoverServices(nil)
         }
