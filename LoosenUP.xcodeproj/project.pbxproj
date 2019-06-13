@@ -80,6 +80,7 @@
 		4C7810841E7E661B0021ED86 /* WorkSpaceCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7810831E7E661B0021ED86 /* WorkSpaceCollectionView.swift */; };
 		4C7810861E7E7E470021ED86 /* BTServiceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7810851E7E7E470021ED86 /* BTServiceInfo.swift */; };
 		4C78108C1E7FDDC90021ED86 /* UINavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C78108B1E7FDDC90021ED86 /* UINavigationService.swift */; };
+		4C84C02722B2537200CDF76D /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C84C02622B2537200CDF76D /* UIApplicationExtension.swift */; };
 		4CE981021E82817E00549400 /* ForumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE981001E82817E00549400 /* ForumTableCell.swift */; };
 		4CE981031E82817E00549400 /* ForumTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE981011E82817E00549400 /* ForumTableCell.xib */; };
 		4CE981051E839BE200549400 /* PopularityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE981041E839BE200549400 /* PopularityCollectionView.swift */; };
@@ -198,6 +199,7 @@
 		4C7810831E7E661B0021ED86 /* WorkSpaceCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkSpaceCollectionView.swift; sourceTree = "<group>"; };
 		4C7810851E7E7E470021ED86 /* BTServiceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTServiceInfo.swift; sourceTree = "<group>"; };
 		4C78108B1E7FDDC90021ED86 /* UINavigationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationService.swift; sourceTree = "<group>"; };
+		4C84C02622B2537200CDF76D /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		4CE981001E82817E00549400 /* ForumTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTableCell.swift; sourceTree = "<group>"; };
 		4CE981011E82817E00549400 /* ForumTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumTableCell.xib; sourceTree = "<group>"; };
 		4CE981041E839BE200549400 /* PopularityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularityCollectionView.swift; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 				4C78108B1E7FDDC90021ED86 /* UINavigationService.swift */,
 				4C57A03922A46F4400F4C4D2 /* UIImageView_Gif.swift */,
 				4C57A03D22A4DD7200F4C4D2 /* UIViewExtension.swift */,
+				4C84C02622B2537200CDF76D /* UIApplicationExtension.swift */,
 			);
 			name = UIExtension;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				4C6DD2CE1E8802D50006E378 /* PersonalManageViewController.swift in Sources */,
 				4C7810861E7E7E470021ED86 /* BTServiceInfo.swift in Sources */,
 				4C6DD2F01E88B7D30006E378 /* ArticleDetailViewController.swift in Sources */,
+				4C84C02722B2537200CDF76D /* UIApplicationExtension.swift in Sources */,
 				4C6DD2F41E88F23B0006E378 /* HistoryDetailViewController.swift in Sources */,
 				4C1180801E6D14FE00155C4D /* LoginViewController.swift in Sources */,
 				4C11807A1E6CFFE000155C4D /* ApiList.swift in Sources */,

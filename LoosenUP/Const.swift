@@ -27,7 +27,7 @@ class Const {
     static let black = UIColor(red: 3/255.0, green: 3/255.0, blue: 3/255.0, alpha: 1.0)
     static let coral = UIColor(red: 244/255.0, green: 111/255.0, blue: 96/255.0, alpha: 1.0)
     static let whiteSmoke = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
-    static let grayChateau = UIColor(red: 163/255.0, green: 164/255.0, blue: 168/255.0, alpha: 1.0)
+    static let grayChateau = UIColor(red: 163/255.0, green: 164/255.0, blue: 168/255.0, alpha: 0.2)
     
     
 }

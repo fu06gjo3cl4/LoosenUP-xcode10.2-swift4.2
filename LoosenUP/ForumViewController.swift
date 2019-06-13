@@ -32,6 +32,8 @@ class ForumViewController: UIViewController {
         swipe_right.direction = .right
         self.view.addGestureRecognizer(swipe_right)
         
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,48 +56,61 @@ class ForumViewController: UIViewController {
 
 extension ForumViewController : UITableViewDelegate,UITableViewDataSource{
     
-    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
         return 8
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        
         let cell = self.tableview.dequeueReusableCell(withIdentifier: "ForumTableCell", for: indexPath)
-        
-        
-        cell.contentView.backgroundColor = UIColor.clear
-        
-        let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: self.view.frame.size.width - 20, height: 100))
-        
-        whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 0.9])
-        whiteRoundedView.layer.masksToBounds = false
-        whiteRoundedView.layer.cornerRadius = 2.0
-        whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
-        whiteRoundedView.layer.shadowOpacity = 0.2
-        
-        cell.contentView.addSubview(whiteRoundedView)
-        cell.contentView.sendSubviewToBack(whiteRoundedView)
-        
-        
         return cell
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("select item at indexPath:" )
         print(indexPath.row)
-        
-        
+
         let viewcontroller = ArticleDetailViewController()
         viewcontroller.title = "文章內容"
         self.navigationController?.pushViewController(viewcontroller, animated: true)
-        
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 115.0
     }
+    
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print("cell did deselect")
+    }
+    
+    //highlight or not for backgroundcolor
+    public func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ForumTableCell
+        cell.whiteRoundedView.backgroundColor = Const.grayChateau
+        print("cell did highlight")
+    }
+    
+    //highlight or not for backgroundcolor
+    public func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ForumTableCell
+        cell.whiteRoundedView.backgroundColor = Const.white
+        print("cell did unhighlight")
+    }
+    
+    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        print("cell should highlight")
+        return true
+    }
+    
+    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        print("cell row will select")
+        return indexPath
+    }
+    
+    public func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        print("cell row will select")
+    }
+    
+    
     
 }
 

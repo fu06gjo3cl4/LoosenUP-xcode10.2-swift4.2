@@ -25,12 +25,13 @@ extension UIView {
         view.layer.addSublayer(bottomborder)
     }
     
-    public func addborder(view:UIView,color:CGColor,height:CGFloat){
+    public func addborder(view:UIView,color:CGColor,height:CGFloat,opacity:Float = 1){
         view.layer.borderColor = color
         view.layer.borderWidth = height
+        view.layer.opacity = Float(opacity)
     }
 
-    public func addShadow(view:UIView,color:CGColor,width:CGFloat,height:CGFloat,radius:CGFloat,opacity:CGFloat){
+    public func addShadow(view:UIView,color:CGColor,width:CGFloat,height:CGFloat,radius:CGFloat,opacity:CGFloat = 1){
         view.layer.shadowColor = color
         view.layer.shadowOffset = CGSize(width: width, height: height)
         view.layer.shadowRadius = radius
@@ -44,7 +45,6 @@ extension UIView {
     
     public func setBackgroundColor(view:UIView,color:CGColor){
         view.layer.backgroundColor = color
-        
     }
 
 }
