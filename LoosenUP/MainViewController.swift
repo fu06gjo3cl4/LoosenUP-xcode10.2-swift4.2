@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     
     fileprivate let sectionTitles = ["Configurations", "Item Size", "Interitem Spacing"]
     fileprivate let configurationTitles = ["Automatic sliding","Infinite"]
-    fileprivate let imageNames = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg"]
+    fileprivate let imageNames = ["1.png","2.png","3.jpg","4.png","5.png","6.png","7.png"]
     
     var times_viewDidLayoutSubviews:Int = 0
     var total_height_forscrolview_container : CGFloat = 0
