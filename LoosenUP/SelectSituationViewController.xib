@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,10 +25,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-Zj-eXN">
-                            <rect key="frame" x="19" y="13" width="338" height="254"/>
+                            <rect key="frame" x="19" y="13.5" width="338" height="253.5"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Qg4-QS-pu7">
-                                    <rect key="frame" x="0.0" y="63" width="338" height="191"/>
+                                    <rect key="frame" x="0.0" y="63" width="338" height="190.5"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KwM-2S-hyQ">
                                         <size key="itemSize" width="50" height="50"/>
@@ -39,19 +38,19 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpS-Km-tIw">
-                                    <rect key="frame" x="0.0" y="13" width="169" height="50"/>
+                                    <rect key="frame" x="0.0" y="12.5" width="169" height="50.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMs-07-e6W">
-                                    <rect key="frame" x="0.0" y="83" width="102" height="152"/>
+                                    <rect key="frame" x="0.0" y="82" width="101.5" height="152.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Office" translatesAutoresizingMaskIntoConstraints="NO" id="XgA-p9-ZI1">
-                                            <rect key="frame" x="0.0" y="0.0" width="102" height="122"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="101.5" height="122"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="辦公室" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuC-lz-b2j">
-                                            <rect key="frame" x="0.0" y="122" width="102" height="30"/>
+                                            <rect key="frame" x="0.0" y="122" width="101.5" height="30.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -69,16 +68,16 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOc-ZN-02L">
-                                    <rect key="frame" x="119" y="83" width="101" height="152"/>
+                                    <rect key="frame" x="118" y="82" width="101.5" height="152.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="住家" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRR-OR-QhR">
-                                            <rect key="frame" x="0.0" y="122" width="101" height="30"/>
+                                            <rect key="frame" x="0.0" y="122" width="101.5" height="30.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home" translatesAutoresizingMaskIntoConstraints="NO" id="BT0-3i-JrS">
-                                            <rect key="frame" x="0.0" y="0.0" width="101" height="122"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="101.5" height="122"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -93,16 +92,16 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KzM-Qv-tH5">
-                                    <rect key="frame" x="237" y="82" width="101" height="153"/>
+                                    <rect key="frame" x="236.5" y="82" width="101.5" height="152.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="戶外" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3n-h6-dwX">
-                                            <rect key="frame" x="0.0" y="123" width="101" height="30"/>
+                                            <rect key="frame" x="0.0" y="122" width="101.5" height="30.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Outdoor" translatesAutoresizingMaskIntoConstraints="NO" id="Ze0-i4-aGo">
-                                            <rect key="frame" x="0.0" y="0.0" width="101" height="123"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="101.5" height="122"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -149,10 +148,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gW0-M2-DZo">
-                    <rect key="frame" x="0.0" y="267" width="375" height="267"/>
+                    <rect key="frame" x="0.0" y="267" width="375" height="266.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S54-5H-nJZ">
-                            <rect key="frame" x="19" y="13" width="338" height="254"/>
+                            <rect key="frame" x="19" y="13" width="338" height="253.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作內容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10d-pH-qYn">
                                     <rect key="frame" x="0.0" y="0.0" width="169" height="51"/>
@@ -161,7 +160,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ttJ-mS-Jq0">
-                                    <rect key="frame" x="0.0" y="51" width="338" height="203"/>
+                                    <rect key="frame" x="0.0" y="51" width="338" height="202.5"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HPb-6w-2OL">
                                         <size key="itemSize" width="50" height="50"/>
@@ -171,16 +170,16 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8I-LP-FvM">
-                                    <rect key="frame" x="237" y="71.5" width="101" height="162"/>
+                                    <rect key="frame" x="236.5" y="71" width="101.5" height="162.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="打程式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwd-6K-dFt">
-                                            <rect key="frame" x="0.0" y="130.5" width="101" height="31.5"/>
+                                            <rect key="frame" x="0.0" y="130" width="101.5" height="32.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="nxw-Yx-Dj5">
-                                            <rect key="frame" x="0.0" y="0.0" width="101" height="130.5"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2.png" translatesAutoresizingMaskIntoConstraints="NO" id="nxw-Yx-Dj5">
+                                            <rect key="frame" x="0.0" y="0.0" width="101.5" height="130"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -195,13 +194,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYl-OZ-NUK">
-                                    <rect key="frame" x="0.0" y="71.5" width="102" height="162"/>
+                                    <rect key="frame" x="0.0" y="71" width="101.5" height="162.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Readding" translatesAutoresizingMaskIntoConstraints="NO" id="IdJ-Fu-u3X">
-                                            <rect key="frame" x="0.0" y="0.0" width="102" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="101.5" height="130"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="讀書" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgc-Fg-ai9">
-                                            <rect key="frame" x="0.0" y="130" width="102" height="32"/>
+                                            <rect key="frame" x="0.0" y="130" width="101.5" height="32.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -219,16 +218,16 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EqN-cF-NEL">
-                                    <rect key="frame" x="118.5" y="71.5" width="101" height="162"/>
+                                    <rect key="frame" x="118" y="71" width="101.5" height="162.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maD-pN-BoI">
-                                            <rect key="frame" x="0.0" y="130" width="101" height="32"/>
+                                            <rect key="frame" x="0.0" y="130" width="101.5" height="32.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Running" translatesAutoresizingMaskIntoConstraints="NO" id="tiv-x8-n7t">
-                                            <rect key="frame" x="0.0" y="0.0" width="101" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="101.5" height="130"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -290,7 +289,7 @@
         </view>
     </objects>
     <resources>
-        <image name="2.jpg" width="720" height="450"/>
+        <image name="2.png" width="137.82856750488281" height="92.571426391601562"/>
         <image name="Home" width="512" height="389"/>
         <image name="Office" width="1200" height="801"/>
         <image name="Outdoor" width="512" height="384"/>
