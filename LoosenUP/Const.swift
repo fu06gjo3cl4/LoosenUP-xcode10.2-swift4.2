@@ -15,7 +15,10 @@ class Const {
     static let Screen_Width = Screen_Size.width
     static let Screen_Height = Screen_Size.height
     
-//    static let Main_Color:UIColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
+//    static let Orange_Color:UIColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
+//    static let Green_Color:UIColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
+//    static let Purple_Color:UIColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
+    
     static let white = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
     static let black = UIColor(red: 3/255.0, green: 3/255.0, blue: 3/255.0, alpha: 1.0)
     static let coral = UIColor(red: 244/255.0, green: 111/255.0, blue: 96/255.0, alpha: 1.0)
