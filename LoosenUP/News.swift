@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct News {
+class News {
     var title:String = "default"
     var datetime:String = "default"
     var detail_btn_image:String = "testpic"

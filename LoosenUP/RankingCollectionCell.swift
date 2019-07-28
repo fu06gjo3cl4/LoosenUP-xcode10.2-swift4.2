@@ -19,7 +19,7 @@ class RankingCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.view_container.addborder(view: self.view_container, color: Const.Main_Color.cgColor, height: 1.0)
+        self.view_container.addborder(view: self.view_container, color: Setting.shared.mainColor().cgColor, height: 1.0)
     }
 
 }

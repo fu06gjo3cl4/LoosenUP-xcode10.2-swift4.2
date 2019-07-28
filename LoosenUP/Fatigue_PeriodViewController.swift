@@ -29,19 +29,19 @@ class Fatigue_PeriodViewController: UIViewController {
     
     @IBOutlet weak var lb_title1: UILabel!{
         didSet{
-            lb_title1.setBackgroundColor(view: lb_title1, color: Const.Main_Color.cgColor)
+            lb_title1.setBackgroundColor(view: lb_title1, color: Setting.shared.mainColor().cgColor)
         }
     }
     
     @IBOutlet weak var lb_title2: UILabel!{
         didSet{
-            lb_title2.setBackgroundColor(view: lb_title2, color: Const.Main_Color.cgColor)
+            lb_title2.setBackgroundColor(view: lb_title2, color: Setting.shared.mainColor().cgColor)
         }
     }
     
     @IBOutlet weak var lb_title3: UILabel!{
         didSet{
-            lb_title3.setBackgroundColor(view: lb_title3, color: Const.Main_Color.cgColor)
+            lb_title3.setBackgroundColor(view: lb_title3, color: Setting.shared.mainColor().cgColor)
         }
     }
     

@@ -17,61 +17,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        
-        
+                
         let subviewcontroller1 = MainViewController()
         subviewcontroller1.title = "首頁"
+        let subviewcontroller2 = ForumViewController()
+        subviewcontroller2.title = "討論區"
+        let subviewcontroller3 = ManageViewController()
+        subviewcontroller3.title = "個人專區"
+        
         let animation1 = RAMBounceAnimation.init()
-//        let animation1 = RAMFrameItemAnimation()
-//        let animation1 = RAMFumeAnimation()
-        RAMAnimateService.setItemSelectedColor(Item: animation1, color: Const.Main_Color)
+        RAMAnimateService.setItemSelectedColor(Item: animation1, color: Setting.shared.mainColor())
         let animateditem1 = RAMAnimatedTabBarItem.init()
         animateditem1.title = "首頁"
         RAMAnimateService.setItemColor(tabbarItem: animateditem1,color: UIColor.lightGray)
         animateditem1.image = UIImage(named: "icon1")
-//        animateditem1.image = UIImage(named: "TabbarIcon1")
         animateditem1.animation = animation1
-        subviewcontroller1.tabBarItem = animateditem1
 
-
-        let subviewcontroller2 = ForumViewController()
-        subviewcontroller2.title = "討論區"
         let animation2 = RAMBounceAnimation.init()
-        RAMAnimateService.setItemSelectedColor(Item: animation2, color: Const.Main_Color)
+        RAMAnimateService.setItemSelectedColor(Item: animation2, color: Setting.shared.mainColor())
         let animateditem2 = RAMAnimatedTabBarItem.init()
         animateditem2.title = "討論區"
         RAMAnimateService.setItemColor(tabbarItem: animateditem2,color: UIColor.lightGray)
         animateditem2.image = UIImage(named: "icon2")
-//        animateditem2.image = UIImage(named: "TabbarIcon2")
         animateditem2.animation = animation2
-        subviewcontroller2.tabBarItem = animateditem2
 
-
-        let subviewcontroller3 = ManageViewController()
-        subviewcontroller3.title = "個人專區"
         let animation3 = RAMBounceAnimation.init()
-        RAMAnimateService.setItemSelectedColor(Item: animation3, color: Const.Main_Color)
+        RAMAnimateService.setItemSelectedColor(Item: animation3, color: Setting.shared.mainColor())
         let animateditem3 = RAMAnimatedTabBarItem.init()
         animateditem3.title = "個人專區"
         RAMAnimateService.setItemColor(tabbarItem: animateditem3,color: UIColor.lightGray)
         animateditem3.image = UIImage(named: "icon3")
-//        animateditem3.image = UIImage(named: "TabbarIcon3")
         animateditem3.animation = animation3
-        subviewcontroller3.tabBarItem = animateditem3
-
 
         let navigationcontroller1 = UINavigationController()
         navigationcontroller1.pushViewController(subviewcontroller1, animated: true)
-        UINavigationService.setNavBarColor(navigationController: navigationcontroller1,color: Const.Main_Color)
+//        UINavigationService.setNavBarColor(navigationController: navigationcontroller1,color: Setting.shared.mainColor())
+        navigationcontroller1.tabBarItem = animateditem1
 
         let navigationcontroller2 = UINavigationController()
         navigationcontroller2.pushViewController(subviewcontroller2, animated: true)
-        UINavigationService.setNavBarColor(navigationController: navigationcontroller2,color: Const.Main_Color)
+//        UINavigationService.setNavBarColor(navigationController: navigationcontroller2,color: Setting.shared.mainColor())
+        navigationcontroller2.tabBarItem = animateditem2
 
         let navigationcontroller3 = UINavigationController()
         navigationcontroller3.pushViewController(subviewcontroller3, animated: true)
-        UINavigationService.setNavBarColor(navigationController: navigationcontroller3,color: Const.Main_Color)
+//        UINavigationService.setNavBarColor(navigationController: navigationcontroller3,color: Setting.shared.mainColor())
+        navigationcontroller3.tabBarItem = animateditem3
 
         let viewcontroller = HomeTabBarController()
         viewcontroller.setViewControllers([navigationcontroller2,navigationcontroller1,navigationcontroller3], animated: true)

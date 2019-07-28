@@ -11,7 +11,6 @@ import Foundation
 struct ApiList {
     static let GetNewsList:String = "News/NewsMain/GetList/"
     static let Login_Check:String = "Members/Login/Post"
-//    let datetime:String = "default"
     static let Get_PostsList:String = "posts"
     static let Get_Post:String = ""
 }

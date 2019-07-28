@@ -81,7 +81,7 @@ class MainViewController: UIViewController {
             btn_Tired.addborder(view: btn_Tired, color: UIColor.black.cgColor, height: 1.0)
             btn_Tired.addShadow(view: btn_Tired, color: UIColor.black.cgColor, width: 1.0, height: 1.0, radius: 5.0, opacity: 0.5)
             
-            btn_Tired.setBackgroundColor(view: btn_Tired, color: Const.Main_Color.cgColor)
+            btn_Tired.setBackgroundColor(view: btn_Tired, color: Setting.shared.mainColor().cgColor)
             btn_Tired.SetCornerRadius(view: btn_Tired, cornerRadius: 5.0)
         }
     }
@@ -90,7 +90,7 @@ class MainViewController: UIViewController {
             btn_Relax.addborder(view: btn_Relax, color: UIColor.black.cgColor, height: 1.0)
             btn_Relax.addShadow(view: btn_Relax, color: UIColor.black.cgColor, width: 1.0, height: 1.0, radius: 5.0, opacity: 0.5)
             
-            btn_Relax.setBackgroundColor(view: btn_Relax, color: Const.Main_Color.cgColor)
+            btn_Relax.setBackgroundColor(view: btn_Relax, color: Setting.shared.mainColor().cgColor)
             btn_Relax.SetCornerRadius(view: btn_Relax, cornerRadius: 5.0)
         }
     }
@@ -144,6 +144,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UINavigationService.setNavBarColor(navigationController: self.navigationController!, color: Setting.shared.mainColor())
+        
         // 加入左滑根右滑手勢
         let swipe_left = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipe_tabs_left))
         swipe_left.direction = .left
@@ -153,55 +155,18 @@ class MainViewController: UIViewController {
         swipe_right.direction = .right
         self.view.addGestureRecognizer(swipe_right)
         
-//        for subview in self.scrolview_container.subviews{
-//            total_height_forscrolview_container = total_height_forscrolview_container + subview.bounds.size.height
-//        }
+        //觀察佈景主題變數
+        Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
         
-
+        
 //        RestfulService.request_get(url: GetUrl.Url,callback: callbacktest)
         RestfulService.request_get(url: GetUrl.Url)
-        
-
-        
-//        Alamofire.request(GetUrl.Url, method: .get, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-//        Alamofire.request(GetUrl.Url, method: .get, parameters: ["userId":"1"]).responseJSON { response in
-
-        
-//        let parameters : Parameters = ["id":"2"]
-//        Alamofire.request(GetUrl.Url, method: .get, parameters: parameters).responseJSON { response in
-//                if let value = response.result.value {
-//                    let json = JSON(value)
-//                    print("-------------------json data-------------------")
-//                    print(json)
-//                    print("-------------the end of json data--------------")
-//
-//                    Alamofire.request(GetUrl.Url, method: .get, parameters: [:]).responseJSON { response in
-//                        if let value = response.result.value {
-//                            let json = JSON(value)
-//                            print("-------------------json data-------------------")
-//                            print(json)
-//                            print("-------------the end of json data--------------")
-//
-//
-//                        }
-//                    }
-//                }
-//        }
-
-        
-
-        
-        
         
     }
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        print("view did layoutSubviews width: ")
-//        print(self.effect_container.frame.width)
-//        print(self.effect_container.frame.height)
-//        print(Const.Screen_Width)
         
         times_viewDidLayoutSubviews = times_viewDidLayoutSubviews+1
         if(times_viewDidLayoutSubviews == 2){
@@ -216,11 +181,6 @@ class MainViewController: UIViewController {
         for subview in self.scrolview_container.subviews{
             total_height_forscrolview_container = total_height_forscrolview_container + subview.bounds.size.height
         }
-//        self.scrolview_container.bounds.size.height =  1000
-
-//        self.scrolview_container.heightAnchor.constraint(equalToConstant: total_height_forscrolview_container).isActive = true
-//        self.scrolview_container.heightAnchor.constraint(equalToConstant: 2000).isActive = true
-        
         
     }
     
@@ -246,6 +206,14 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+//        self.navigationController?.navigationBar.tintColor = Setting.shared.mainColor()
+        self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+        btn_Tired.setBackgroundColor(view: btn_Tired, color: Setting.shared.mainColor().cgColor)
+        btn_Relax.setBackgroundColor(view: btn_Relax, color: Setting.shared.mainColor().cgColor)
+        
+    }
 }
 extension MainViewController: FSPagerViewDelegate,FSPagerViewDataSource{
     

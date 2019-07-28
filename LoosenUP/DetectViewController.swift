@@ -40,13 +40,13 @@ class DetectViewController: UIViewController , CBCentralManagerDelegate ,CBPerip
     
     @IBOutlet weak var btn_start_detect: UIButton!{
         didSet{
-            btn_start_detect.setBackgroundColor(view: btn_start_detect, color: Const.Main_Color.cgColor)
+            btn_start_detect.setBackgroundColor(view: btn_start_detect, color: Setting.shared.mainColor().cgColor)
             btn_start_detect.SetCornerRadius(view: btn_start_detect, cornerRadius: 5.0)
         }
     }
     @IBOutlet weak var btn_finish_detect: UIButton!{
         didSet{
-            btn_finish_detect.setBackgroundColor(view: btn_finish_detect, color: Const.Main_Color.cgColor)
+            btn_finish_detect.setBackgroundColor(view: btn_finish_detect, color: Setting.shared.mainColor().cgColor)
             btn_finish_detect.SetCornerRadius(view: btn_finish_detect, cornerRadius: 5.0)
         }
     }

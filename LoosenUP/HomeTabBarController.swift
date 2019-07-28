@@ -16,11 +16,8 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let buttonImage = UIImage(named: "icon2"){
-//            self.addCenterButtonWithImage(buttonImage: buttonImage , highlightImage: buttonImage)
-//        }
-        
         setupMiddleButton()
+        Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
         
     }
     
@@ -49,19 +46,14 @@ class HomeTabBarController: RAMAnimatedTabBarController {
             animationItem.playAnimation()
             
             let deselectItem = items[selectedIndex]
-            
-//            let containerPrevious : UIView = deselectItem.iconView!.icon.superview!
-//            containerPrevious.backgroundColor = items[currentIndex].bgDefaultColor
-            
             deselectItem.deselectAnimation()
             
             let container : UIView = animationItem.iconView!.icon.superview!
-//            container.backgroundColor = items[currentIndex].bgSelectedColor
             
             //-----擴充-----
             let location = CGPoint(x: container.frame.midX, y: container.frame.midY)
             print(location)
-            Ripple.border(self.view, locationInView: location, color: Const.Main_Color)
+            Ripple.border(self.view, locationInView: location, color: Setting.shared.mainColor())
             //-------------
             
             selectedIndex = gestureView.tag
@@ -69,9 +61,9 @@ class HomeTabBarController: RAMAnimatedTabBarController {
             
         } else if selectedIndex == currentIndex {
             
-            if let navVC = self.viewControllers![selectedIndex] as? UINavigationController {
-                navVC.popToRootViewController(animated: true)
-            }
+//            if let navVC = self.viewControllers![selectedIndex] as? UINavigationController {
+//                navVC.popToRootViewController(animated: true)
+//            }
         }
     }
     
@@ -135,7 +127,25 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     
 }
 
-
+extension HomeTabBarController {
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        //RAMAnimatedTabBarItem 的title數值改變會創建一個新的textlable 若要修改titile要修改源碼
+        //self.viewControllers?[0].tabBarItem.title = "fu06gjo3cl4"
+        //self.animatedItems[selectedIndex].title = "changed"
+        print("tabbaritems color change")
+        
+        for tabBarItem in animatedItems{
+            tabBarItem.animation.iconSelectedColor = Setting.shared.mainColor()
+            tabBarItem.animation.textSelectedColor = Setting.shared.mainColor()
+        }
+        
+        self.animatedItems[selectedIndex].playAnimation()
+        
+    }
+    
+}
 
 
 

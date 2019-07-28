@@ -22,6 +22,11 @@ class ManageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
+        
+        UINavigationService.setNavBarColor(navigationController: self.navigationController!, color: Setting.shared.mainColor())
+        
+        
         UINavigationService.setedgefor_navigationbar(viewcontroller: self)
         
         let swipe_left = UISwipeGestureRecognizer(target: self, action: #selector(ManageViewController.swipe_tabs_left))
@@ -52,7 +57,7 @@ class ManageViewController: UIViewController {
         print("to account manage")
         
         let viewcontroller = AccountManageViewController()
-        viewcontroller.title = "帳戶管理"
+        viewcontroller.title = "系統設置"
         self.navigationController?.pushViewController(viewcontroller, animated: true)
     }
     
@@ -80,4 +85,15 @@ class ManageViewController: UIViewController {
         HomeTabBarController.swipe_tabs_right()
         //        rootvc?.tabBarController?.selectedIndex = (rootvc?.tabBarController?.selectedIndex)!-1
     }
+}
+
+extension ManageViewController {
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+//        self.navigationController?.navigationBar.tintColor = Setting.shared.mainColor()
+        self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+        
+    }
+    
 }

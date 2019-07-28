@@ -22,7 +22,11 @@ class ForumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
+        
+        UINavigationService.setNavBarColor(navigationController: self.navigationController!, color: Setting.shared.mainColor())
+        
         let swipe_left = UISwipeGestureRecognizer(target: self, action: #selector(ForumViewController.swipe_tabs_left))
  
         swipe_left.direction = .left
@@ -31,8 +35,6 @@ class ForumViewController: UIViewController {
         let swipe_right = UISwipeGestureRecognizer(target: self, action: #selector(ForumViewController.swipe_tabs_right))
         swipe_right.direction = .right
         self.view.addGestureRecognizer(swipe_right)
-        
-        
         
     }
 
@@ -51,7 +53,12 @@ class ForumViewController: UIViewController {
         HomeTabBarController.swipe_tabs_right()
     }
     
-    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+//        self.navigationController?.navigationBar.tintColor = Setting.shared.mainColor()
+        self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+        
+    }
 }
 
 extension ForumViewController : UITableViewDelegate,UITableViewDataSource{
