@@ -34,18 +34,10 @@ class AccountManageViewController: UIViewController {
         btn_theme2.backgroundColor = UIColor(red: 0.0/255.0,green: 255.0/255.0,blue: 170.0/255,alpha: 1.0)
         btn_theme3.backgroundColor = UIColor(red: 170/255.0,green: 0.0/255.0,blue: 255.0/255,alpha: 1.0)
         
-        Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        
-        
     }
     
     

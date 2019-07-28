@@ -96,21 +96,15 @@ class DetectViewController: UIViewController , CBCentralManagerDelegate ,CBPerip
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
+        
         CM = CBCentralManager(delegate: self, queue: nil)
         btServices = []
         //設定uiview與navigationbar的邊緣。避免覆蓋uiview內容
         UINavigationService.setedgefor_navigationbar(viewcontroller: self)
 
-        
-        
-//        for _ in 0...8{
-//            initchart()
-//        }
-        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DetectViewController.settestchart), userInfo: nil, repeats: true)
-        
-//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DetectViewController.setchart), userInfo: nil, repeats: true)
-        
         
         view_lineChart.setViewPortOffsets(left: 40, top: 40, right: 40, bottom: 40)
         view_lineChart.xAxis.drawGridLinesEnabled = false
@@ -422,4 +416,14 @@ class DetectViewController: UIViewController , CBCentralManagerDelegate ,CBPerip
     
     
     
+}
+
+
+extension DetectViewController{
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        btn_start_detect.setBackgroundColor(view: btn_start_detect, color: Setting.shared.mainColor().cgColor)
+        btn_finish_detect.setBackgroundColor(view: btn_finish_detect, color: Setting.shared.mainColor().cgColor)
+        
+    }
 }

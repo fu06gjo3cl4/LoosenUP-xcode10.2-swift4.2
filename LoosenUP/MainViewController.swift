@@ -187,19 +187,6 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
-//        print("view did appear width: ")
-//        print(self.effect_container.frame.width)
-//        print(self.effect_container.frame.height)
-//        print(Const.Screen_Width) 22 22 12 25
-        
-        // 加入上邊界與下邊界   (加在viewdidload無法正確呈現)
-//        UIViewService.addtopborder(view: self.effect_container, color: UIColor.black.cgColor, height: 3.0)
-//        UIViewService.addbottomborder(view: self.effect_container, color: UIColor.black.cgColor, height: 3.0)
-//        
-//        UIViewService.addtopborder(view: self.popularity_Container, color: UIColor.black.cgColor, height: 3.0)
-//        UIViewService.addbottomborder(view: self.popularity_Container, color: UIColor.black.cgColor, height: 3.0)
-        
     }
 
     override func didReceiveMemoryWarning() {
