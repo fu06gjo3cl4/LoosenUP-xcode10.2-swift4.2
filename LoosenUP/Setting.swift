@@ -32,6 +32,10 @@ class Setting :NSObject{
         self.themeType = newthemeType
     }
     
+    func getThemeType() -> ThemeType{
+        return themeType
+    }
+    
     
 }
 

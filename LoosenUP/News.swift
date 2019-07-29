@@ -11,7 +11,7 @@ import Foundation
 class News {
     var title:String = "default"
     var datetime:String = "default"
-    var detail_btn_image:String = "testpic"
-    var thumbnail_image:String = "testpic"
+    var detail_btn_image:String = "More"
+    var thumbnail_image:String = "RelaxIcon"
     var content:String = "default"
 }

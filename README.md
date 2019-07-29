@@ -14,7 +14,7 @@ RestfulService : 重構網路請求，提供callback方法參數以因應網路�
 
 Singleton & factory & KVO : 實現全域佈景主題更新
 
-MVVM for data rendering (studing)
+MVVM：將介面渲染及數據更新委派給ViewModel處理，由ViewModel持有數據及介面渲染方法，View中將介面元件注入ViewModel更新。
 
 ## Real machine screen
 

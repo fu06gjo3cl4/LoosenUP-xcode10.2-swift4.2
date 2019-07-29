@@ -27,12 +27,17 @@ class ForumTableCell: UITableViewCell {
             
         }
     }
-//    var whiteRoundedView : UIView!
+
+    func updateWithPresenter(presenter: ForumCellViewModelPresenter){
+        presenter.updateTitleLable(label: lb_title)
+        presenter.updateDetailLable(label: lb_detail)
+        presenter.updateReplyCountLable(lable: lb_replyCount)
+        presenter.updateThumbnailImage(imageView: imageview)
+        presenter.updateImageRight(imageView: image_right)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        ReplyIcon
-//        let iconImage = UIImage(named: "testIcon")
         Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
         
         self.tintColor = Setting.shared.mainColor()

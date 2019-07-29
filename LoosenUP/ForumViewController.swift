@@ -16,6 +16,9 @@ class ForumViewController: UIViewController {
             let ForumCell = UINib(nibName: "ForumTableCell", bundle: nil)
             self.tableview.register(ForumCell, forCellReuseIdentifier: "ForumTableCell")
             
+            let NewsCell = UINib(nibName: "NewsTableViewCell", bundle: nil)
+            self.tableview.register(NewsCell, forCellReuseIdentifier: "NewsTableViewCell")
+            
         }
     }
     
@@ -68,7 +71,13 @@ extension ForumViewController : UITableViewDelegate,UITableViewDataSource{
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = self.tableview.dequeueReusableCell(withIdentifier: "ForumTableCell", for: indexPath)
+        
+        let forum = ForumArticle()
+        let viewmodel = ForumCellViewModel(forumArticle: forum)
+        
+        let cell = self.tableview.dequeueReusableCell(withIdentifier: "ForumTableCell", for: indexPath) as! ForumTableCell
+        cell.updateWithPresenter(presenter: viewmodel)
+        
         return cell
     }
     
