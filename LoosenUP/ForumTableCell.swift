@@ -31,11 +31,24 @@ class ForumTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        ReplyIcon
+//        let iconImage = UIImage(named: "testIcon")
+        Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
+        
+        self.tintColor = Setting.shared.mainColor()
+        image_right.image = image_right.image?.withRenderingMode(.alwaysTemplate)
         
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        self.tintColor = Setting.shared.mainColor()
+        image_right.image = image_right.image?.withRenderingMode(.alwaysTemplate)
+        
     }
     
 }

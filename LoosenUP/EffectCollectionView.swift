@@ -30,21 +30,26 @@ extension EffectCollectionView: UICollectionViewDelegate,UICollectionViewDataSou
         
         switch indexPath.row {
         case 0:
-            rankcell.image_no.image = UIImage(named: "NO1")
+//            rankcell.image_no.image = UIImage(named: "NO1")
+            rankcell.image_no.image = UIImage(named: "NO")
         case 1:
-            rankcell.image_no.image = UIImage(named: "NO2")
+//            rankcell.image_no.image = UIImage(named: "NO2")
+            rankcell.image_no.image = UIImage(named: "NO")
         case 2:
-            rankcell.image_no.image = UIImage(named: "NO3")
+//            rankcell.image_no.image = UIImage(named: "NO3")
+            rankcell.image_no.image = UIImage(named: "NO")
         case 3:
-            rankcell.image_no.image = UIImage(named: "NO4")
+//            rankcell.image_no.image = UIImage(named: "NO4")
+            rankcell.image_no.image = UIImage(named: "NO")
         case 4:
-            rankcell.image_no.image = UIImage(named: "NO5")
+//            rankcell.image_no.image = UIImage(named: "NO5")
+            rankcell.image_no.image = UIImage(named: "NO")
         default:
-            rankcell.image_no.image = UIImage(named: "empty")
+            rankcell.image_no.image = UIImage(named: "NO")
         }
         
         if (rankcell.isSelected) {
-            rankcell.backgroundColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
+//            rankcell.backgroundColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
         }
         else
         {
@@ -88,7 +93,7 @@ extension EffectCollectionView: UICollectionViewDelegate,UICollectionViewDataSou
     //highlight or not for backgroundcolor
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
+//        cell?.backgroundColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
     }
     //highlight or not for backgroundcolor
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {

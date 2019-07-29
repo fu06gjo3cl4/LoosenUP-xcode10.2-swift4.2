@@ -424,6 +424,8 @@ extension DetectViewController{
         
         btn_start_detect.setBackgroundColor(view: btn_start_detect, color: Setting.shared.mainColor().cgColor)
         btn_finish_detect.setBackgroundColor(view: btn_finish_detect, color: Setting.shared.mainColor().cgColor)
+//        lb_TiredValue.textColor = Setting.shared.mainColor()
+        
         
     }
 }

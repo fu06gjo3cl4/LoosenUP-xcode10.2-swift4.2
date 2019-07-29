@@ -23,17 +23,22 @@ extension PopularityCollectionView: UICollectionViewDelegate,UICollectionViewDat
         
         switch indexPath.row {
         case 0:
-            rankcell.image_no.image = UIImage(named: "NO1")
+//            rankcell.image_no.image = UIImage(named: "NO1")
+            rankcell.image_no.image = UIImage(named: "NO")
         case 1:
-            rankcell.image_no.image = UIImage(named: "NO2")
+//            rankcell.image_no.image = UIImage(named: "NO2")
+            rankcell.image_no.image = UIImage(named: "NO")
         case 2:
-            rankcell.image_no.image = UIImage(named: "NO3")
+//            rankcell.image_no.image = UIImage(named: "NO3")
+            rankcell.image_no.image = UIImage(named: "NO")
         case 3:
-            rankcell.image_no.image = UIImage(named: "NO4")
+//            rankcell.image_no.image = UIImage(named: "NO4")
+            rankcell.image_no.image = UIImage(named: "NO")
         case 4:
-            rankcell.image_no.image = UIImage(named: "NO5")
+//            rankcell.image_no.image = UIImage(named: "NO5")
+            rankcell.image_no.image = UIImage(named: "NO")
         default:
-            rankcell.image_no.image = UIImage(named: "empty")
+            rankcell.image_no.image = UIImage(named: "NO")
         }
         
         
