@@ -21,7 +21,7 @@ class ForumCellViewModel : ForumCellViewModelPresenter {
         title = forumArticle.title
         detail = forumArticle.detail
         replyCount = forumArticle.replyCount
-        image_right = UIImage(named: forumArticle.image_right)!
+        image_right = UIImage(named: forumArticle.image_right)!.withRenderingMode(.alwaysTemplate)
         thumbnail_image = UIImage(named: forumArticle.thumbnail_image)!
     }
     

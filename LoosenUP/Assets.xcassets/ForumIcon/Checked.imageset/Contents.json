@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "kisspng-checkbox-computer-icons-scalable-vector-graphics-c-gps-checkbox-svg-png-icon-free-download-231435-5cb136415d8431.9017375415551176333831.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "kisspng-checkbox-computer-icons-scalable-vector-graphics-c-gps-checkbox-svg-png-icon-free-download-231435-5cb136415d8431.9017375415551176333831-1.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "kisspng-checkbox-computer-icons-scalable-vector-graphics-c-gps-checkbox-svg-png-icon-free-download-231435-5cb136415d8431.9017375415551176333831-2.png",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
