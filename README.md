@@ -27,3 +27,5 @@ MVVM：將介面渲染及數據更新委派給ViewModel處理，由ViewModel持�
 <img align="left" src="https://github.com/fu06gjo3cl4/screenshots/blob/master/Screenshots/todetect.gif"  />
 
 <img align="left" src="https://github.com/fu06gjo3cl4/screenshots/blob/master/Screenshots/ThemeTypeChangeDemo.gif"  />
+
+<img align="left" src="https://github.com/fu06gjo3cl4/screenshots/blob/master/Screenshots/Editing mode for tableView.gif"  />
