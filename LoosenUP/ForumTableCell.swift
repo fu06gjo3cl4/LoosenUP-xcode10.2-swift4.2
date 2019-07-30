@@ -42,12 +42,10 @@ class ForumTableCell: UITableViewCell {
         Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
         
         self.tintColor = Setting.shared.mainColor()
-        image_right.image = image_right.image?.withRenderingMode(.alwaysTemplate)
         
         self.btn = UIButton(frame: CGRect(x: (-(32.0/2.0)-(25.0/2.0)), y: (self.contentView.frame.size.height/2.0)-(25/2.0), width: 25.0, height: 25.0))
-        btn.setImage(UIImage(named: "UnCheck"), for: .normal)
-        btn.setImage(UIImage(named: "Checked"), for: .selected)
-        btn.imageView?.image = btn.imageView?.image?.withRenderingMode(.alwaysTemplate)
+        btn.setImage(UIImage(named: "UnCheck")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.setImage(UIImage(named: "Checked")?.withRenderingMode(.alwaysTemplate), for: .selected)
         btn.addTarget(self, action: #selector(buttonSelected), for: .touchUpInside)
         btn.adjustsImageWhenHighlighted = false
         self.addSubview(btn)
