@@ -133,12 +133,12 @@ class MainViewController: UIViewController {
     
     @objc func swipe_tabs_left(){
         print("left")
-        HomeTabBarController.swipe_tabs_left()
+        HomeTabBarController.shared.swipe_tabs_left()
     }
     
     @objc func swipe_tabs_right(){
         print("right")
-        HomeTabBarController.swipe_tabs_right()
+        HomeTabBarController.shared.swipe_tabs_right()
     }
     
     override func viewDidLoad() {

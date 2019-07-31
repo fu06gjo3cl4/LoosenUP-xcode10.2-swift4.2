@@ -63,7 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationService.setNavBarColor(navigationController: navigationcontroller3,color: Setting.shared.mainColor())
         navigationcontroller3.tabBarItem = animateditem3
 
-        let viewcontroller = HomeTabBarController()
+//        let viewcontroller = HomeTabBarController()
+        let viewcontroller = HomeTabBarController.shared
         viewcontroller.setViewControllers([navigationcontroller2,navigationcontroller1,navigationcontroller3], animated: true)
         viewcontroller.tabBar.isTranslucent = false
         viewcontroller.setSelectIndex(from: 0, to: 1)

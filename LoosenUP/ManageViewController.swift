@@ -75,15 +75,12 @@ class ManageViewController: UIViewController {
 
     @objc func swipe_tabs_left(){
         print("left")
-        HomeTabBarController.swipe_tabs_left()
-        //        rootvc?.tabBarController?.selectedIndex = (rootvc?.tabBarController?.selectedIndex)!-1
-        //    [rootVC.tabBarController setSelectedIndex:selectedIndex + 1];
+        HomeTabBarController.shared.swipe_tabs_left()
     }
     
     @objc func swipe_tabs_right(){
         print("right")
-        HomeTabBarController.swipe_tabs_right()
-        //        rootvc?.tabBarController?.selectedIndex = (rootvc?.tabBarController?.selectedIndex)!-1
+        HomeTabBarController.shared.swipe_tabs_right()
     }
 }
 

@@ -11,7 +11,15 @@ import RAMAnimatedTabBarController
 
 class HomeTabBarController: RAMAnimatedTabBarController {
     
+    static let shared = HomeTabBarController(nibName: "HomeTabBarController", bundle: nil)
     
+    private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,80 +57,102 @@ class HomeTabBarController: RAMAnimatedTabBarController {
             deselectItem.deselectAnimation()
             
             let container : UIView = animationItem.iconView!.icon.superview!
-            
-            //-----擴充-----
             let location = CGPoint(x: container.frame.midX, y: container.frame.midY)
-            print(location)
             Ripple.border(self.view, locationInView: location, color: Setting.shared.mainColor())
-            //-------------
             
             selectedIndex = gestureView.tag
             delegate?.tabBarController?(self, didSelect: controller)
             
         } else if selectedIndex == currentIndex {
-            
-//            if let navVC = self.viewControllers![selectedIndex] as? UINavigationController {
-//                navVC.popToRootViewController(animated: true)
-//            }
+            self.animatedItems[currentIndex].playAnimation()
+            let container : UIView = HomeTabBarController.shared.animatedItems[currentIndex].iconView!.icon.superview!
+            let location = CGPoint(x: container.frame.midX, y: container.frame.midY)
+            Ripple.border(self.view, locationInView: location, color: Setting.shared.mainColor())
         }
     }
     
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("test")
-        let location = item.accessibilityActivationPoint
-        Ripple.border(self.view, absolutePosition: location, color: UIColor.black)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
-    static func swipe_tabs_left(){
-//        let rootvc = UIApplication.shared.keyWindow?.rootViewController as! HomeTabBarController
-        print("left")
-//        rootvc.selectedIndex = (rootvc.selectedIndex)+1
-//        let animationItem : RAMAnimatedTabBarItem = items[rootvc.selectedIndex]
-//        animationItem.playAnimation()
+    func swipe_tabs_left(){
+        print("swipe left")
         
+        let rootvc = HomeTabBarController.shared
+        if rootvc.selectedIndex < rootvc.children.count-1 {
+            guard let items = rootvc.tabBar.items as? [RAMAnimatedTabBarItem]else {
+                fatalError("items must inherit RAMAnimatedTabBarItem")
+            }
+            
+            let animationItem : RAMAnimatedTabBarItem = items[rootvc.selectedIndex+1]
+            animationItem.playAnimation()
+            
+            let deselectItem = items[rootvc.selectedIndex]
+            deselectItem.deselectAnimation()
+            
+            let container : UIView = animationItem.iconView!.icon.superview!
+            
+            let location = CGPoint(x: container.frame.midX, y: container.frame.midY)
+            print(location)
+            Ripple.border(rootvc.view, locationInView: location, color: Setting.shared.mainColor())
+            
+            rootvc.selectedIndex += 1
+            let controller = rootvc.children[rootvc.selectedIndex]
+            rootvc.delegate?.tabBarController?(rootvc, didSelect: controller)
+        }
     }
     
-    static func swipe_tabs_right(){
-//        let rootvc = UIApplication.shared.keyWindow?.rootViewController as! HomeTabBarController
-        print("right")
-//        rootvc.selectedIndex = (rootvc.selectedIndex)-1
+    func swipe_tabs_right(){
+        print("swipe right")
+        
+        let rootvc = HomeTabBarController.shared
+        if rootvc.selectedIndex > 0 {
+            guard let items = rootvc.tabBar.items as? [RAMAnimatedTabBarItem]else {
+                fatalError("items must inherit RAMAnimatedTabBarItem")
+            }
+            
+            let animationItem : RAMAnimatedTabBarItem = items[rootvc.selectedIndex-1]
+            animationItem.playAnimation()
+            
+            let deselectItem = items[rootvc.selectedIndex]
+            deselectItem.deselectAnimation()
+            
+            let container : UIView = animationItem.iconView!.icon.superview!
+            
+            let location = CGPoint(x: container.frame.midX, y: container.frame.midY)
+            print(location)
+            Ripple.border(rootvc.view, locationInView: location, color: Setting.shared.mainColor())
+            
+            rootvc.selectedIndex -= 1
+            let controller = rootvc.children[rootvc.selectedIndex]
+            rootvc.delegate?.tabBarController?(rootvc, didSelect: controller)
+        }
     }
     
-    //func 1
     func setupMiddleButton() {
-        let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
+        let middleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
         
-        var menuButtonFrame = menuButton.frame
+        var middleButtonFrame = middleButton.frame
         let rectBoundTabbar = self.tabBar.bounds//CGRect
-        menuButtonFrame.origin.y = view.bounds.height - ((64 - rectBoundTabbar.height)/2 + rectBoundTabbar.height)//midY//menuButtonFrame.height/2
-        menuButtonFrame.origin.x = view.bounds.width/2 - menuButtonFrame.size.width/2
-        menuButton.frame = menuButtonFrame
+        middleButtonFrame.origin.y = view.bounds.height - ((64 - rectBoundTabbar.height)/2 + rectBoundTabbar.height)//midY//middleButtonFrame.height/2
+        middleButtonFrame.origin.x = view.bounds.width/2 - middleButtonFrame.size.width/2
+        middleButton.frame = middleButtonFrame
         
         tabBar.barTintColor = UIColor.white
-        menuButton.backgroundColor = tabBar.barTintColor
-        menuButton.layer.borderWidth = 0.5
-        menuButton.layer.borderColor = UIColor.lightGray.cgColor
-        menuButton.layer.cornerRadius = menuButtonFrame.height/2
-        view.addSubview(menuButton)
+        middleButton.backgroundColor = tabBar.barTintColor
+        middleButton.layer.borderWidth = 0.5
+        middleButton.layer.borderColor = UIColor.lightGray.cgColor
+        middleButton.layer.cornerRadius = middleButtonFrame.height/2
+        view.addSubview(middleButton)
         
-        menuButton.setImage(UIImage(named: "emptyIcon"), for: .normal)
-        menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
+        middleButton.setImage(UIImage(named: "emptyIcon"), for: .normal)
+        middleButton.addTarget(self, action: #selector(middleButtonAction(sender:)), for: .touchUpInside)
         
         view.layoutIfNeeded()
     }
     
-    
-    // MARK: - Actions
-    
-    @objc private func menuButtonAction(sender: UIButton) {
-        selectedIndex = 2
-        print("test")
+    @objc private func middleButtonAction(sender: UIButton) {
+        print("middleButtonAction")
     }
     
 }
@@ -142,7 +172,6 @@ extension HomeTabBarController {
         }
         
         self.animatedItems[selectedIndex].playAnimation()
-        
     }
     
 }
