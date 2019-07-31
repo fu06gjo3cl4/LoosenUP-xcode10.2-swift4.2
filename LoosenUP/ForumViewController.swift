@@ -83,7 +83,11 @@ class ForumViewController: UIViewController {
     
     @objc func swipe_tabs_left(){
         print("left")
-        HomeTabBarController.shared.swipe_tabs_left()
+        if(tableview.isEditing){
+            
+        }else{
+            HomeTabBarController.shared.swipe_tabs_left()
+        }
     }
     
     @objc func swipe_tabs_right(){
