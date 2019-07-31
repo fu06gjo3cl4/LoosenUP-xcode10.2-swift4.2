@@ -32,8 +32,6 @@
 		4C3EF5E822EF4C1700BF6C99 /* NO.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3EF5E722EF4C1700BF6C99 /* NO.png */; };
 		4C3EF5EA22EF98DA00BF6C99 /* ForumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3EF5E922EF98DA00BF6C99 /* ForumCellViewModel.swift */; };
 		4C3EF5EC22EF996600BF6C99 /* ForumArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3EF5EB22EF996600BF6C99 /* ForumArticle.swift */; };
-		4C3EF5F722F07C4400BF6C99 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3EF5F522F07C4400BF6C99 /* TableViewCell.swift */; };
-		4C3EF5F822F07C4400BF6C99 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3EF5F622F07C4400BF6C99 /* TableViewCell.xib */; };
 		4C57A03A22A46F4400F4C4D2 /* UIImageView_Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C57A03922A46F4400F4C4D2 /* UIImageView_Gif.swift */; };
 		4C57A03C22A4702300F4C4D2 /* loading_cat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4C57A03B22A4702300F4C4D2 /* loading_cat.gif */; };
 		4C57A03E22A4DD7200F4C4D2 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C57A03D22A4DD7200F4C4D2 /* UIViewExtension.swift */; };
@@ -156,8 +154,6 @@
 		4C3EF5E722EF4C1700BF6C99 /* NO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NO.png; sourceTree = "<group>"; };
 		4C3EF5E922EF98DA00BF6C99 /* ForumCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumCellViewModel.swift; sourceTree = "<group>"; };
 		4C3EF5EB22EF996600BF6C99 /* ForumArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumArticle.swift; sourceTree = "<group>"; };
-		4C3EF5F522F07C4400BF6C99 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		4C3EF5F622F07C4400BF6C99 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		4C57A03922A46F4400F4C4D2 /* UIImageView_Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView_Gif.swift; sourceTree = "<group>"; };
 		4C57A03B22A4702300F4C4D2 /* loading_cat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading_cat.gif; sourceTree = "<group>"; };
 		4C57A03D22A4DD7200F4C4D2 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -373,8 +369,6 @@
 				4CE981011E82817E00549400 /* ForumTableCell.xib */,
 				4C6DD2F61E88F3B40006E378 /* HistoryTableCell.swift */,
 				4C6DD2F71E88F3B40006E378 /* HistoryTableCell.xib */,
-				4C3EF5F522F07C4400BF6C99 /* TableViewCell.swift */,
-				4C3EF5F622F07C4400BF6C99 /* TableViewCell.xib */,
 			);
 			name = Share;
 			sourceTree = "<group>";
@@ -729,7 +723,6 @@
 				4C6DD2C91E87FD100006E378 /* RankingDetailViewController.xib in Resources */,
 				4C84C0CD22C28BD300CDF76D /* 7.png in Resources */,
 				4C1180811E6D14FE00155C4D /* LoginViewController.xib in Resources */,
-				4C3EF5F822F07C4400BF6C99 /* TableViewCell.xib in Resources */,
 				4C6DD2D71E8809020006E378 /* Personal_RelaxListViewController.xib in Resources */,
 				4C6DD2E01E880A160006E378 /* Situation_AnalysisViewController.xib in Resources */,
 				4C21DC0E1EA47F700042DFA6 /* NO3.png in Resources */,
@@ -894,7 +887,6 @@
 				4CF78A651E6D62F80063254E /* HomeTabBarController.swift in Sources */,
 				4C6DD2FE1E8A71890006E378 /* ChartFormatter.swift in Sources */,
 				4C1180781E6C7BBD00155C4D /* News.swift in Sources */,
-				4C3EF5F722F07C4400BF6C99 /* TableViewCell.swift in Sources */,
 				4C57A04222A832CC00F4C4D2 /* RestfulService.swift in Sources */,
 				4C1180831E6D15B100155C4D /* LoginViewService.swift in Sources */,
 				4C21DBC81EA11A3E0042DFA6 /* PIRipple.swift in Sources */,

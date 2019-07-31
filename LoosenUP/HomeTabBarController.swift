@@ -13,8 +13,85 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     
     static let shared = HomeTabBarController(nibName: "HomeTabBarController", bundle: nil)
     
+    var toolbar = UIToolbar()
+    var toolView = UIView()
+    var middleButton = UIButton()
+    
     private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.nibSetup()
+    }
+    
+    private func nibSetup(){
+        
+        toolView = UIView(frame:CGRect(x:0, y:Const.Screen_Height, width:Const.Screen_Width, height:64))
+        toolView.layer.zPosition = CGFloat.greatestFiniteMagnitude
+        toolView.backgroundColor = Const.white
+        
+        let toolViewTap = UITapGestureRecognizer(target: self, action: #selector(self.toolItemTrashAction))
+        toolView.addGestureRecognizer(toolViewTap)
+        
+        let deleteLabel = UILabel(frame: CGRect(x:0, y:0, width:Const.Screen_Width, height:64))
+        deleteLabel.text = "刪除"
+        deleteLabel.textAlignment = .center
+        deleteLabel.isEnabled = false
+        toolView.addSubview(deleteLabel)
+        
+//        toolbar = UIToolbar(frame:CGRect(x:0, y:Const.Screen_Height, width:Const.Screen_Width, height:64))
+//        toolbar.layer.zPosition = CGFloat.greatestFiniteMagnitude
+//        toolbar.backgroundColor = Const.white
+//
+//        let toolItem_LeftSpace = UIBarButtonItem(customView: UIView(frame: CGRect(x:0, y:0, width:Const.Screen_Width/2, height:64)))
+//        let toolItem_LeftTap = UITapGestureRecognizer(target: self, action: #selector(self.toolItemTrashAction))
+//        let toolItem_RightSpace = UIBarButtonItem(customView: UIView(frame: CGRect(x:0, y:0, width:Const.Screen_Width/2, height:64)))
+//        let toolItem_RightTap = UITapGestureRecognizer(target: self, action: #selector(self.toolItemTrashAction))
+//        toolItem_LeftSpace.customView?.backgroundColor = Const.black
+//        toolItem_RightSpace.customView?.backgroundColor = Const.black
+//        toolItem_LeftSpace.customView?.addGestureRecognizer(toolItem_LeftTap)
+//        toolItem_RightSpace.customView?.addGestureRecognizer(toolItem_RightTap)
+//
+//        let toolItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(self.toolItemTrashAction))
+//        toolbar.setItems([toolItem_LeftSpace,toolItem,toolItem_RightSpace], animated: false)
+        
+//        self.view.addSubview(toolbar)
+        
+        self.view.addSubview(toolView)
+        setupMiddleButton()
+    }
+    
+    @objc func toolItemTrashAction(){
+        print("toolItemTrashAction")
+        
+        ForumViewController.shared.deleteSelectedRows()
+    }
+    
+    func showToolBar(){
+        print("show toolbar action")
+        
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: {
+                        self.toolView.center.y -= 64
+                        },
+                       completion: { finish in
+                        self.animationTabBarHidden(true)
+                        self.middleButton.isHidden = true
+                        })
+    }
+    
+    func hideToolBar(){
+        print("hide toolbar action")
+        
+        self.animationTabBarHidden(false)
+        self.middleButton.isHidden = false
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations: {
+                        self.toolView.center.y += 64
+        },
+                       completion: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,13 +101,10 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupMiddleButton()
         Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
-        
     }
     
     override func tapHandler(_ gesture: UIGestureRecognizer) {
-        
         print("HomeTabBarController's tapHandler")
         
         guard let items = tabBar.items as? [RAMAnimatedTabBarItem],
@@ -130,7 +204,7 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     }
     
     func setupMiddleButton() {
-        let middleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
+        middleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
         
         var middleButtonFrame = middleButton.frame
         let rectBoundTabbar = self.tabBar.bounds//CGRect

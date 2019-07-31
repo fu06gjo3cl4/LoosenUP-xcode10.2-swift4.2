@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let subviewcontroller1 = MainViewController()
         subviewcontroller1.title = "首頁"
-        let subviewcontroller2 = ForumViewController()
+        let subviewcontroller2 = ForumViewController.shared
         subviewcontroller2.title = "討論區"
         let subviewcontroller3 = ManageViewController()
         subviewcontroller3.title = "個人專區"

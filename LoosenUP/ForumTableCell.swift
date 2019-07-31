@@ -16,8 +16,6 @@ class ForumTableCell: UITableViewCell {
     @IBOutlet weak var image_right: UIImageView!
     @IBOutlet weak var lb_replyCount: UILabel!
     
-    @IBOutlet weak var container_view: UIView!
-    
     @IBOutlet weak var whiteRoundedView: UIView!{
         didSet{
             whiteRoundedView.addborder(view: whiteRoundedView, color: Const.white.cgColor, height: 1)
