@@ -10,8 +10,12 @@ import UIKit
 
 class EffectCollectionView: UICollectionView {
     
-//    var ranklist : [rank]!
-    
+//    var ranklist : [rank]()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.isScrollEnabled = false
+    }
 
 }
 
@@ -19,61 +23,38 @@ class EffectCollectionView: UICollectionView {
 extension EffectCollectionView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
         
         let rankcell = collectionView.dequeueReusableCell(withReuseIdentifier: "RankingCollectionCell", for: indexPath) as! RankingCollectionCell
         
         switch indexPath.row {
         case 0:
-//            rankcell.image_no.image = UIImage(named: "NO1")
-            rankcell.image_no.image = UIImage(named: "NO")
+            rankcell.image_no.image = UIImage(named: "NO")?.withRenderingMode(.alwaysTemplate)
         case 1:
-//            rankcell.image_no.image = UIImage(named: "NO2")
-            rankcell.image_no.image = UIImage(named: "NO")
+            rankcell.image_no.image = UIImage(named: "NO")?.withRenderingMode(.alwaysTemplate)
         case 2:
-//            rankcell.image_no.image = UIImage(named: "NO3")
-            rankcell.image_no.image = UIImage(named: "NO")
+            rankcell.image_no.image = UIImage(named: "NO")?.withRenderingMode(.alwaysTemplate)
         case 3:
-//            rankcell.image_no.image = UIImage(named: "NO4")
-            rankcell.image_no.image = UIImage(named: "NO")
+            rankcell.image_no.image = UIImage(named: "NO")?.withRenderingMode(.alwaysTemplate)
         case 4:
-//            rankcell.image_no.image = UIImage(named: "NO5")
-            rankcell.image_no.image = UIImage(named: "NO")
+            rankcell.image_no.image = UIImage(named: "NO")?.withRenderingMode(.alwaysTemplate)
         default:
-            rankcell.image_no.image = UIImage(named: "NO")
-        }
-        
-        if (rankcell.isSelected) {
-//            rankcell.backgroundColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
-        }
-        else
-        {
-            rankcell.backgroundColor = UIColor.clear
+            rankcell.image_no.image = UIImage(named: "NO")?.withRenderingMode(.alwaysTemplate)
         }
         
         return rankcell
     }
     
-    //use for size
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let size = CGSize(width: self.frame.width*0.25, height: self.frame.height*0.85)
-        
+        let size = CGSize(width: (self.frame.width-20)/3, height: (self.frame.height-10)/2)
         return size
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        let cell = collectionView.cellForItem(at: indexPath)
-//        cell?.backgroundColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
-        
-        print("select item at indexPath:" )
-        print(indexPath.row)
+        print("select item at indexPath: \(indexPath.row)" )
         
         if let topController = UIApplication.topViewController(){
             print(topController)
@@ -81,37 +62,5 @@ extension EffectCollectionView: UICollectionViewDelegate,UICollectionViewDataSou
             viewcontroller.ranking = indexPath.row
             topController.navigationController?.pushViewController(viewcontroller, animated: true)
         }
-        
-        
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath)
-//        cell?.backgroundColor = UIColor.clear
-    }
-    
-    //highlight or not for backgroundcolor
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-//        cell?.backgroundColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
-    }
-    //highlight or not for backgroundcolor
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = UIColor.clear
-    }
-    
-    
-    
 }
-
-
-
-//Use for interspacing
-//    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1.0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1.0
-//    }

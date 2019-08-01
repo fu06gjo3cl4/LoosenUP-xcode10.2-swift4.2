@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let subviewcontroller1 = MainViewController()
+        let subviewcontroller1 = MainViewController.shared
         subviewcontroller1.title = "首頁"
         let subviewcontroller2 = ForumViewController.shared
         subviewcontroller2.title = "討論區"
-        let subviewcontroller3 = ManageViewController()
+        let subviewcontroller3 = ManageViewController.shared
         subviewcontroller3.title = "個人專區"
         
         let animation1 = RAMBounceAnimation.init()

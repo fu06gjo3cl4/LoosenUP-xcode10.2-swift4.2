@@ -19,18 +19,22 @@ class MainViewController: UIViewController {
     fileprivate let imageNames = ["1.png","2.png","3.jpg","4.png","5.png","6.png","7.png"]
     
     var times_viewDidLayoutSubviews:Int = 0
-    var total_height_forscrolview_container : CGFloat = 0
+    var total_height_forscrollview_container : CGFloat = 0
     
     //介面連結區
-    @IBOutlet weak var scrolview: UIScrollView!
-    
-    @IBOutlet weak var scrolview_container: UIView!{
+    @IBOutlet weak var scrollview: UIScrollView!{
         didSet{
-            for subview in self.scrolview_container.subviews{
-                total_height_forscrolview_container = total_height_forscrolview_container + subview.bounds.size.height
+//            self.scrollview.delegate = self
+        }
+    }
+    
+    @IBOutlet weak var scrollview_container: UIView!{
+        didSet{
+            for subview in self.scrollview_container.subviews{
+                total_height_forscrollview_container = total_height_forscrollview_container + subview.bounds.size.height
             }
-            self.scrolview_container.bounds.size.height = total_height_forscrolview_container
-//            self.scrolview_container.heightAnchor.constraint(equalToConstant: total_height_forscrolview_container).isActive = true
+            self.scrollview_container.bounds.size.height = total_height_forscrollview_container
+//            self.scrollview_container.heightAnchor.constraint(equalToConstant: total_height_forscrollview_container).isActive = true
             
         }
     }
@@ -141,6 +145,16 @@ class MainViewController: UIViewController {
         HomeTabBarController.shared.swipe_tabs_right()
     }
     
+    static let shared = MainViewController()
+    
+    private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -162,7 +176,9 @@ class MainViewController: UIViewController {
 //        RestfulService.request_get(url: GetUrl.Url,callback: callbacktest)
         RestfulService.request_get(url: GetUrl.Url)
         
+        
     }
+    
     
     
     override func viewDidLayoutSubviews() {
@@ -178,8 +194,8 @@ class MainViewController: UIViewController {
             
         }
         
-        for subview in self.scrolview_container.subviews{
-            total_height_forscrolview_container = total_height_forscrolview_container + subview.bounds.size.height
+        for subview in self.scrollview_container.subviews{
+            total_height_forscrollview_container = total_height_forscrollview_container + subview.bounds.size.height
         }
         
     }

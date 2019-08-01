@@ -84,6 +84,10 @@
 		4C84C0D022C28BD300CDF76D /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C84C0C922C28BD300CDF76D /* 1.png */; };
 		4C84C0D122C28BD300CDF76D /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C84C0CA22C28BD300CDF76D /* 6.png */; };
 		4C84C0DD22C2953600CDF76D /* NewsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C84C0DC22C2953600CDF76D /* NewsCellViewModel.swift */; };
+		4C92BB9522F2CEFE007CA8B0 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92BB9322F2CEFE007CA8B0 /* ContentViewController.swift */; };
+		4C92BB9622F2CEFE007CA8B0 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C92BB9422F2CEFE007CA8B0 /* ContentViewController.xib */; };
+		4CD5564722F20A5500EFF4E2 /* CustomUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD5564622F20A5500EFF4E2 /* CustomUIScrollView.swift */; };
+		4CD5564922F20A6300EFF4E2 /* CustomUIScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD5564822F20A6300EFF4E2 /* CustomUIScrollView.xib */; };
 		4CE981021E82817E00549400 /* ForumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE981001E82817E00549400 /* ForumTableCell.swift */; };
 		4CE981031E82817E00549400 /* ForumTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE981011E82817E00549400 /* ForumTableCell.xib */; };
 		4CE981051E839BE200549400 /* PopularityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE981041E839BE200549400 /* PopularityCollectionView.swift */; };
@@ -206,6 +210,10 @@
 		4C84C0C922C28BD300CDF76D /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		4C84C0CA22C28BD300CDF76D /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
 		4C84C0DC22C2953600CDF76D /* NewsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCellViewModel.swift; sourceTree = "<group>"; };
+		4C92BB9322F2CEFE007CA8B0 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		4C92BB9422F2CEFE007CA8B0 /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
+		4CD5564622F20A5500EFF4E2 /* CustomUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIScrollView.swift; sourceTree = "<group>"; };
+		4CD5564822F20A6300EFF4E2 /* CustomUIScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomUIScrollView.xib; sourceTree = "<group>"; };
 		4CE981001E82817E00549400 /* ForumTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTableCell.swift; sourceTree = "<group>"; };
 		4CE981011E82817E00549400 /* ForumTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumTableCell.xib; sourceTree = "<group>"; };
 		4CE981041E839BE200549400 /* PopularityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularityCollectionView.swift; sourceTree = "<group>"; };
@@ -369,6 +377,10 @@
 				4CE981011E82817E00549400 /* ForumTableCell.xib */,
 				4C6DD2F61E88F3B40006E378 /* HistoryTableCell.swift */,
 				4C6DD2F71E88F3B40006E378 /* HistoryTableCell.xib */,
+				4CD5564622F20A5500EFF4E2 /* CustomUIScrollView.swift */,
+				4CD5564822F20A6300EFF4E2 /* CustomUIScrollView.xib */,
+				4C92BB9322F2CEFE007CA8B0 /* ContentViewController.swift */,
+				4C92BB9422F2CEFE007CA8B0 /* ContentViewController.xib */,
 			);
 			name = Share;
 			sourceTree = "<group>";
@@ -704,6 +716,7 @@
 			files = (
 				4C84C0CB22C28BD300CDF76D /* 4.png in Resources */,
 				4CE981031E82817E00549400 /* ForumTableCell.xib in Resources */,
+				4C92BB9622F2CEFE007CA8B0 /* ContentViewController.xib in Resources */,
 				4C84C0CF22C28BD300CDF76D /* 5.png in Resources */,
 				4C84C0CC22C28BD300CDF76D /* 2.png in Resources */,
 				4C21DC0D1EA47F700042DFA6 /* NO4.png in Resources */,
@@ -734,6 +747,7 @@
 				4C3EF5E822EF4C1700BF6C99 /* NO.png in Resources */,
 				4C7810821E7E55530021ED86 /* DetectViewController.xib in Resources */,
 				4C84C0CE22C28BD300CDF76D /* 3.jpg in Resources */,
+				4CD5564922F20A6300EFF4E2 /* CustomUIScrollView.xib in Resources */,
 				4C6DD2D31E8802EB0006E378 /* AccountManageViewController.xib in Resources */,
 				4C21DC0C1EA47F700042DFA6 /* NO5.png in Resources */,
 				4C1180031E6964C500155C4D /* Main.storyboard in Resources */,
@@ -794,6 +808,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeMenuViewController/SwipeMenuViewController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -805,6 +820,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeMenuViewController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -872,6 +888,7 @@
 				4CF78A711E6D7BE10063254E /* ForumViewController.swift in Sources */,
 				4C7810811E7E55530021ED86 /* DetectViewController.swift in Sources */,
 				4CE981021E82817E00549400 /* ForumTableCell.swift in Sources */,
+				4C92BB9522F2CEFE007CA8B0 /* ContentViewController.swift in Sources */,
 				4CE981051E839BE200549400 /* PopularityCollectionView.swift in Sources */,
 				4C6DD2D61E8809020006E378 /* Personal_RelaxListViewController.swift in Sources */,
 				4C117FFE1E6964C500155C4D /* AppDelegate.swift in Sources */,
@@ -901,6 +918,7 @@
 				4C1180351E6AB95D00155C4D /* GetUrl.swift in Sources */,
 				4C780FE91E790C930021ED86 /* Const.swift in Sources */,
 				4C84C0DD22C2953600CDF76D /* NewsCellViewModel.swift in Sources */,
+				4CD5564722F20A5500EFF4E2 /* CustomUIScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

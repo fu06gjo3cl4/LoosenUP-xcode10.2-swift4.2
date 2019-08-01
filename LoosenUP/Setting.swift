@@ -13,7 +13,12 @@ class Setting :NSObject{
     
     static let shared = Setting()
     
-    private override init(){}
+    private override init(){
+        let user = UserDefaults.standard
+        if user.object(forKey: "ThemeType") != nil{
+            self.themeType = ThemeType(rawValue: user.object(forKey: "ThemeType") as! Int)!
+        }
+    }
     
     @objc dynamic private var themeType: ThemeType = .OrangeTheme
     
@@ -30,6 +35,9 @@ class Setting :NSObject{
     
     func chageThemeType(newthemeType: ThemeType) {
         self.themeType = newthemeType
+        let user = UserDefaults.standard
+        user.set(themeType.rawValue, forKey: "ThemeType")
+        user.synchronize()
     }
     
     func getThemeType() -> ThemeType{

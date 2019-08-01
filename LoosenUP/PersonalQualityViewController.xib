@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalQualityViewController" customModule="LoosenUP" customModuleProvider="target">
             <connections>
-                <outlet property="segmentioView" destination="1Mg-p4-sy2" id="nsJ-GM-Tb8"/>
+                <outlet property="swipeMenuView" destination="VFc-wh-OvF" id="yIi-go-yLz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,17 +20,25 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Mg-p4-sy2" customClass="Segmentio" customModule="Segmentio">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xwu-Df-XtS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFc-wh-OvF" customClass="SwipeMenuView" customModule="SwipeMenuViewController">
+                    <rect key="frame" x="0.0" y="133.5" width="375" height="1000.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="1Mg-p4-sy2" secondAttribute="trailing" id="UdN-VX-uh1"/>
-                <constraint firstItem="1Mg-p4-sy2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bD0-Ip-7eB"/>
-                <constraint firstItem="1Mg-p4-sy2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="hZM-Kx-woR"/>
-                <constraint firstItem="1Mg-p4-sy2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jrK-d6-NNn"/>
+                <constraint firstItem="VFc-wh-OvF" firstAttribute="top" secondItem="Xwu-Df-XtS" secondAttribute="bottom" id="3Em-j7-GHf"/>
+                <constraint firstItem="VFc-wh-OvF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5wD-K0-2su"/>
+                <constraint firstItem="Xwu-Df-XtS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L98-1U-jQL"/>
+                <constraint firstItem="Xwu-Df-XtS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NXw-Er-Txb"/>
+                <constraint firstItem="Xwu-Df-XtS" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.2" id="YhS-1R-a2P"/>
+                <constraint firstItem="VFc-wh-OvF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1.5" id="cvp-ub-2OL"/>
+                <constraint firstAttribute="trailing" secondItem="VFc-wh-OvF" secondAttribute="trailing" id="pyN-0l-Fz8"/>
+                <constraint firstAttribute="trailing" secondItem="Xwu-Df-XtS" secondAttribute="trailing" id="tDh-wi-MI6"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>

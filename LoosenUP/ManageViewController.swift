@@ -11,13 +11,18 @@ import UIKit
 class ManageViewController: UIViewController {
     
     @IBOutlet weak var view_AccountManage: UIView!
-    
     @IBOutlet weak var view_personalManage: UIView!
-    
     @IBOutlet weak var view_logout: UIView!
     
+    static let shared = ManageViewController()
     
+    private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +30,6 @@ class ManageViewController: UIViewController {
         Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
         
         UINavigationService.setNavBarColor(navigationController: self.navigationController!, color: Setting.shared.mainColor())
-        
-        
         UINavigationService.setedgefor_navigationbar(viewcontroller: self)
         
         let swipe_left = UISwipeGestureRecognizer(target: self, action: #selector(ManageViewController.swipe_tabs_left))

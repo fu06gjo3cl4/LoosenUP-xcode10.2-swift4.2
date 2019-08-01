@@ -23,7 +23,7 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     }
     
     private func nibSetup(){
-        
+        //臨時解
         toolView = UIView(frame:CGRect(x:0, y:Const.Screen_Height, width:Const.Screen_Width, height:64))
         toolView.layer.zPosition = CGFloat.greatestFiniteMagnitude
         toolView.backgroundColor = Const.white
@@ -36,24 +36,6 @@ class HomeTabBarController: RAMAnimatedTabBarController {
         deleteLabel.textAlignment = .center
         deleteLabel.isEnabled = false
         toolView.addSubview(deleteLabel)
-        
-//        toolbar = UIToolbar(frame:CGRect(x:0, y:Const.Screen_Height, width:Const.Screen_Width, height:64))
-//        toolbar.layer.zPosition = CGFloat.greatestFiniteMagnitude
-//        toolbar.backgroundColor = Const.white
-//
-//        let toolItem_LeftSpace = UIBarButtonItem(customView: UIView(frame: CGRect(x:0, y:0, width:Const.Screen_Width/2, height:64)))
-//        let toolItem_LeftTap = UITapGestureRecognizer(target: self, action: #selector(self.toolItemTrashAction))
-//        let toolItem_RightSpace = UIBarButtonItem(customView: UIView(frame: CGRect(x:0, y:0, width:Const.Screen_Width/2, height:64)))
-//        let toolItem_RightTap = UITapGestureRecognizer(target: self, action: #selector(self.toolItemTrashAction))
-//        toolItem_LeftSpace.customView?.backgroundColor = Const.black
-//        toolItem_RightSpace.customView?.backgroundColor = Const.black
-//        toolItem_LeftSpace.customView?.addGestureRecognizer(toolItem_LeftTap)
-//        toolItem_RightSpace.customView?.addGestureRecognizer(toolItem_RightTap)
-//
-//        let toolItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(self.toolItemTrashAction))
-//        toolbar.setItems([toolItem_LeftSpace,toolItem,toolItem_RightSpace], animated: false)
-        
-//        self.view.addSubview(toolbar)
         
         self.view.addSubview(toolView)
         setupMiddleButton()
