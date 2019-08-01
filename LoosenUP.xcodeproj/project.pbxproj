@@ -38,7 +38,6 @@
 		4C57A04222A832CC00F4C4D2 /* RestfulService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C57A04122A832CC00F4C4D2 /* RestfulService.swift */; };
 		4C62C3CA1EA76DA00033CF37 /* PersonalQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62C3C81EA76DA00033CF37 /* PersonalQualityViewController.swift */; };
 		4C62C3CB1EA76DA00033CF37 /* PersonalQualityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C62C3C91EA76DA00033CF37 /* PersonalQualityViewController.xib */; };
-		4C62C4131EA79FEE0033CF37 /* SegmentioBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62C4121EA79FEE0033CF37 /* SegmentioBuilder.swift */; };
 		4C62C4161EA7A0A20033CF37 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62C4151EA7A0A20033CF37 /* UIFontExtension.swift */; };
 		4C6DD2C41E87FBD70006E378 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DD2C21E87FBD70006E378 /* RankingViewController.swift */; };
 		4C6DD2C51E87FBD70006E378 /* RankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6DD2C31E87FBD70006E378 /* RankingViewController.xib */; };
@@ -164,7 +163,6 @@
 		4C57A04122A832CC00F4C4D2 /* RestfulService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestfulService.swift; sourceTree = "<group>"; };
 		4C62C3C81EA76DA00033CF37 /* PersonalQualityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalQualityViewController.swift; sourceTree = "<group>"; };
 		4C62C3C91EA76DA00033CF37 /* PersonalQualityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalQualityViewController.xib; sourceTree = "<group>"; };
-		4C62C4121EA79FEE0033CF37 /* SegmentioBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentioBuilder.swift; sourceTree = "<group>"; };
 		4C62C4151EA7A0A20033CF37 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		4C6DD2C21E87FBD70006E378 /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		4C6DD2C31E87FBD70006E378 /* RankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingViewController.xib; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 		4C11802E1E6AAB8C00155C4D /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4C62C4111EA79FD50033CF37 /* SegmentioService */,
 				4C21DBC61EA11A280042DFA6 /* PIRippleService */,
 				4C21DB421EA0AD110042DFA6 /* RAMAnimateService */,
 				4C7810871E7FDA630021ED86 /* UIExtensions */,
@@ -453,14 +450,6 @@
 				4C21DBC71EA11A3E0042DFA6 /* PIRipple.swift */,
 			);
 			name = PIRippleService;
-			sourceTree = "<group>";
-		};
-		4C62C4111EA79FD50033CF37 /* SegmentioService */ = {
-			isa = PBXGroup;
-			children = (
-				4C62C4121EA79FEE0033CF37 /* SegmentioBuilder.swift */,
-			);
-			name = SegmentioService;
 			sourceTree = "<group>";
 		};
 		4C780FD91E77BA630021ED86 /* Resource */ = {
@@ -898,7 +887,6 @@
 				4C6DD2DF1E880A160006E378 /* Situation_AnalysisViewController.swift in Sources */,
 				4C1180761E6C7A7400155C4D /* HomeViewService.swift in Sources */,
 				4C780FF51E7C0CCE0021ED86 /* EffectCollectionView.swift in Sources */,
-				4C62C4131EA79FEE0033CF37 /* SegmentioBuilder.swift in Sources */,
 				4C6DD2E31E880A300006E378 /* Fatigue_PeriodViewController.swift in Sources */,
 				4C28823D22E564B7004DFF16 /* Setting.swift in Sources */,
 				4CF78A651E6D62F80063254E /* HomeTabBarController.swift in Sources */,
