@@ -14,10 +14,11 @@ class PersonalQualityViewController: UIViewController {
     
     @IBOutlet weak var swipeMenuView: SwipeMenuView!
     
-    var array = ["Segment1","Segment2","Segment3","Segment4","Segment5","Segment6","Segment7","Segment8",]
+    var array = ["Segment1", "Segment2", "Segment3", "Segment4", "Segment5", "Segment6", "Segment7", ]
     private var lastContentOffset: CGFloat = 0
     private var isNavBarHidden = false
     private var tapPoint: CGPoint = CGPoint(x: 0, y: 0)
+    private var viewControllers = [ContentViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,14 +84,18 @@ extension PersonalQualityViewController: SwipeMenuViewDataSource {
     }
     
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
-        let vc = ContentViewController()
         
+        let vc = ContentViewController()
         let customView = CustomUIScrollView(frame: vc.view.bounds)
         customView.scrollview.delegate = self
-        vc.view.addSubview(customView)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(self.tapEvent))
-        customView.scrollview.addGestureRecognizer(tapGestureRecognizer)
+        vc.customView = customView
+        vc.view.addSubview(vc.customView!)
+        
+        //***待優化
+        //SwipeMenuViewController 產生一個viewcontroller 會跑兩次這個動作，會產生兩倍的vc，並使用第二輪產生的vc顯示
+        //第一輪產生array.count個vc，但沒有使用，使用的是第二輪產生的vc，因此使用上從[array.count]開始
+        viewControllers.append(vc)
         
         return vc
     }
@@ -121,15 +126,35 @@ extension PersonalQualityViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (self.tapPoint.y > scrollView.contentOffset.y) {
             self.swipe_down()
+            print(scrollView.contentSize.height)
+            print(scrollView.bounds.size.height)
+            
+            print(scrollView.contentOffset.y)
         }
         else if (self.tapPoint.y < scrollView.contentOffset.y) {
             self.swipe_up()
+            
+            
+            if(scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.bounds.size.height - 300)){
+                //-----若有內容未載促入，仔入並顯示-----
+                
+                //---------------------------------
+                //擴充scrollview&contentview長度
+                let view = UIView(frame: CGRect(x: 10, y: scrollView.contentSize.height, width: scrollView.bounds.size.width-20, height: scrollView.bounds.size.height/2))
+                view.addborder(view: view, color: Setting.shared.mainColor().cgColor, height: 2)
+                
+                let vc = self.viewControllers[swipeMenuView.currentIndex+array.count]
+                vc.customView?.scrollview.contentSize.height += 1500
+                vc.customView?.contentview.frame.size.height = (vc.customView?.scrollview.contentSize.height)!
+                
+                vc.customView.contentview.addSubview(view)
+                
+                print(vc.customView.scrollview.contentSize)
+                print(vc.customView.contentview.frame.size)
+                //---------------------------------
+            }
+            
         }
-    }
-    
-    @objc func tapEvent(recognizer : UIGestureRecognizer){
-        self.tapPoint = recognizer.location(in: self.swipeMenuView!)
-        print("tapPoint.y: \(tapPoint.y)")
     }
     
 }

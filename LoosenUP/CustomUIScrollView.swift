@@ -12,13 +12,30 @@ class CustomUIScrollView: UIView{
     
     var view:UIView!
     
-    @IBOutlet weak var scrollview: UIScrollView!{
+    @IBOutlet weak var scrollview: UIScrollView!
+    
+    @IBOutlet weak var contentview: UIView!
+    
+    @IBOutlet weak var btnTop: UIButton!{
         didSet{
-//            self.scrollview.delegate = self
+            btnTop.isEnabled = false
+            btnTop.isHidden = true
+        }
+    }
+    @IBOutlet weak var btnBottom: UIButton!{
+        didSet {
+            btnBottom.isEnabled = false
+            btnBottom.isHidden = true
         }
     }
     
-//    weak var scrollViewEventDelegate: ScrollViewEventDelegate?
+    @IBAction func btnTopAction(_ sender: Any) {
+        scrollToBottom()
+    }
+    
+    @IBAction func btnBottomAction(_ sender: Any) {
+        scrollToTop()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,34 +70,13 @@ class CustomUIScrollView: UIView{
         return view
     }
     
+    func scrollToBottom(){
+        let bottomOffset = CGPoint(x: 0, y: scrollview.contentSize.height - scrollview.bounds.size.height)
+        scrollview.setContentOffset(bottomOffset, animated: true)
+    }
     
-    
-//    let swipe_up = UISwipeGestureRecognizer(target: self, action: #selector(self.swipe_up))
-//    swipe_up.direction = .up
-//    self.view.addGestureRecognizer(swipe_up)
-//
-//    let swipe_down = UISwipeGestureRecognizer(target: self, action: #selector(self.swipe_down))
-//    swipe_down.direction = .down
-//    self.view.addGestureRecognizer(swipe_down)
-    
+    func scrollToTop(){
+        let bottomOffset = CGPoint(x: 0, y: 0)
+        scrollview.setContentOffset(bottomOffset, animated: true)
+    }
 }
-
-
-
-//extension CustomUIScrollView: UIScrollViewDelegate{
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-////        scrollViewEventDelegate?.scrollViewDidScrollEvent()
-//    }
-//
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-////        scrollViewEventDelegate?.scrollViewWillEndDragging()
-//        print("scrollview will end dragging")
-//    }
-//}
-
-
-
-//protocol ScrollViewEventDelegate: AnyObject {
-//    func scrollViewDidScrollEvent()
-//    func scrollViewWillEndDragging()
-//}

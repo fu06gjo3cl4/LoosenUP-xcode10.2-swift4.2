@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomUIScrollView" customModule="LoosenUP" customModuleProvider="target">
             <connections>
+                <outlet property="btnBottom" destination="dyH-zV-pbA" id="HRX-t8-pnv"/>
+                <outlet property="btnTop" destination="3NS-0C-akL" id="XVi-yc-w2i"/>
+                <outlet property="contentview" destination="xiB-a1-aCJ" id="dpn-Re-mol"/>
                 <outlet property="scrollview" destination="Rqz-bs-ifq" id="kdv-l5-dmX"/>
             </connections>
         </placeholder>
@@ -24,25 +27,51 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiB-a1-aCJ">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1227"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="2045"/>
                             <color key="backgroundColor" red="0.1511931366" green="0.92558890579999997" blue="0.1092736537" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mP-lR-WCs">
-                            <rect key="frame" x="207" y="0.0" width="207" height="1227"/>
+                            <rect key="frame" x="207" y="0.0" width="207" height="2045"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3NS-0C-akL">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="111" id="C9J-nG-6lx"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="btnTopAction:" destination="-1" eventType="touchUpInside" id="DF5-6h-GHP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyH-zV-pbA">
+                            <rect key="frame" x="0.0" y="1634" width="414" height="111"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="111" id="NJL-el-maq"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="btnBottomAction:" destination="-1" eventType="touchUpInside" id="qsI-yG-ic7"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="top" secondItem="Rqz-bs-ifq" secondAttribute="top" id="7E9-Dt-UQb"/>
+                        <constraint firstItem="3NS-0C-akL" firstAttribute="top" secondItem="Rqz-bs-ifq" secondAttribute="top" id="9Qk-vR-g01"/>
                         <constraint firstAttribute="bottom" secondItem="6mP-lR-WCs" secondAttribute="bottom" id="9zC-1O-QIS"/>
+                        <constraint firstItem="dyH-zV-pbA" firstAttribute="centerX" secondItem="Rqz-bs-ifq" secondAttribute="centerX" id="CJ1-lM-M5O"/>
                         <constraint firstAttribute="trailing" secondItem="xiB-a1-aCJ" secondAttribute="trailing" id="Ebo-88-pIH"/>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="centerX" secondItem="Rqz-bs-ifq" secondAttribute="centerX" id="VgW-Sw-hEN"/>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="leading" secondItem="Rqz-bs-ifq" secondAttribute="leading" id="XdV-y9-sk0"/>
                         <constraint firstItem="6mP-lR-WCs" firstAttribute="top" secondItem="Rqz-bs-ifq" secondAttribute="top" id="dwX-ue-pId"/>
-                        <constraint firstItem="xiB-a1-aCJ" firstAttribute="height" secondItem="Rqz-bs-ifq" secondAttribute="height" multiplier="1.5" id="f5r-Nd-7JE"/>
+                        <constraint firstItem="xiB-a1-aCJ" firstAttribute="height" secondItem="Rqz-bs-ifq" secondAttribute="height" multiplier="2.5" id="f5r-Nd-7JE"/>
                         <constraint firstAttribute="bottom" secondItem="xiB-a1-aCJ" secondAttribute="bottom" id="h90-KU-IbT"/>
                         <constraint firstItem="6mP-lR-WCs" firstAttribute="width" secondItem="Rqz-bs-ifq" secondAttribute="width" multiplier="0.5" id="l0Z-EW-qvR"/>
                         <constraint firstAttribute="trailing" secondItem="6mP-lR-WCs" secondAttribute="trailing" id="lEF-5J-tc6"/>
+                        <constraint firstItem="dyH-zV-pbA" firstAttribute="width" secondItem="Rqz-bs-ifq" secondAttribute="width" id="mEm-xb-7sT"/>
+                        <constraint firstItem="dyH-zV-pbA" firstAttribute="bottom" secondItem="xiB-a1-aCJ" secondAttribute="bottom" constant="-300" id="qGo-gd-EcN"/>
+                        <constraint firstItem="3NS-0C-akL" firstAttribute="centerX" secondItem="Rqz-bs-ifq" secondAttribute="centerX" id="y5s-hP-3Y1"/>
+                        <constraint firstItem="3NS-0C-akL" firstAttribute="width" secondItem="Rqz-bs-ifq" secondAttribute="width" id="za6-Ah-clS"/>
                     </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="t5X-Ic-YHX"/>
@@ -58,6 +87,7 @@
                 <constraint firstItem="Rqz-bs-ifq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="x7h-r4-xF4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
         </view>
     </objects>
 </document>
