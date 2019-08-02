@@ -25,7 +25,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFc-wh-OvF" customClass="SwipeMenuView" customModule="SwipeMenuViewController">
-                    <rect key="frame" x="0.0" y="133.5" width="375" height="1000.5"/>
+                    <rect key="frame" x="0.0" y="133.5" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
@@ -36,7 +36,7 @@
                 <constraint firstItem="Xwu-Df-XtS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L98-1U-jQL"/>
                 <constraint firstItem="Xwu-Df-XtS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NXw-Er-Txb"/>
                 <constraint firstItem="Xwu-Df-XtS" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.2" id="YhS-1R-a2P"/>
-                <constraint firstItem="VFc-wh-OvF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1.5" id="cvp-ub-2OL"/>
+                <constraint firstItem="VFc-wh-OvF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="cvp-ub-2OL"/>
                 <constraint firstAttribute="trailing" secondItem="VFc-wh-OvF" secondAttribute="trailing" id="pyN-0l-Fz8"/>
                 <constraint firstAttribute="trailing" secondItem="Xwu-Df-XtS" secondAttribute="trailing" id="tDh-wi-MI6"/>
             </constraints>

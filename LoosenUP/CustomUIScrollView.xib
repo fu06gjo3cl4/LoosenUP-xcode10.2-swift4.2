@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="btnBottom" destination="dyH-zV-pbA" id="HRX-t8-pnv"/>
                 <outlet property="btnTop" destination="3NS-0C-akL" id="XVi-yc-w2i"/>
+                <outlet property="collectionView" destination="59Q-bf-aZu" id="N0b-9r-D7b"/>
                 <outlet property="contentview" destination="xiB-a1-aCJ" id="dpn-Re-mol"/>
                 <outlet property="scrollview" destination="Rqz-bs-ifq" id="kdv-l5-dmX"/>
             </connections>
@@ -28,11 +29,31 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiB-a1-aCJ">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="2045"/>
-                            <color key="backgroundColor" red="0.1511931366" green="0.92558890579999997" blue="0.1092736537" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="59Q-bf-aZu" customClass="EffectCollectionView" customModule="LoosenUP" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="999" constant="250" identifier="heightOfCollectionView" id="fp2-94-FpE"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2rQ-Et-5SE">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="5" minY="10" maxX="5" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="59Q-bf-aZu" firstAttribute="top" secondItem="xiB-a1-aCJ" secondAttribute="top" id="R5Y-BK-7XD"/>
+                                <constraint firstAttribute="trailing" secondItem="59Q-bf-aZu" secondAttribute="trailing" id="shr-pk-CPQ"/>
+                                <constraint firstItem="59Q-bf-aZu" firstAttribute="leading" secondItem="xiB-a1-aCJ" secondAttribute="leading" id="wap-hh-FKt"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mP-lR-WCs">
                             <rect key="frame" x="207" y="0.0" width="207" height="2045"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3NS-0C-akL">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
@@ -44,22 +65,20 @@
                                 <action selector="btnTopAction:" destination="-1" eventType="touchUpInside" id="DF5-6h-GHP"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyH-zV-pbA">
-                            <rect key="frame" x="0.0" y="1634" width="414" height="111"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="111" id="NJL-el-maq"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyH-zV-pbA">
+                            <rect key="frame" x="0.0" y="211" width="414" height="111"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="There is no data anymore"/>
                             <connections>
                                 <action selector="btnBottomAction:" destination="-1" eventType="touchUpInside" id="qsI-yG-ic7"/>
                             </connections>
                         </button>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="top" secondItem="Rqz-bs-ifq" secondAttribute="top" id="7E9-Dt-UQb"/>
                         <constraint firstItem="3NS-0C-akL" firstAttribute="top" secondItem="Rqz-bs-ifq" secondAttribute="top" id="9Qk-vR-g01"/>
                         <constraint firstAttribute="bottom" secondItem="6mP-lR-WCs" secondAttribute="bottom" id="9zC-1O-QIS"/>
-                        <constraint firstItem="dyH-zV-pbA" firstAttribute="centerX" secondItem="Rqz-bs-ifq" secondAttribute="centerX" id="CJ1-lM-M5O"/>
                         <constraint firstAttribute="trailing" secondItem="xiB-a1-aCJ" secondAttribute="trailing" id="Ebo-88-pIH"/>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="centerX" secondItem="Rqz-bs-ifq" secondAttribute="centerX" id="VgW-Sw-hEN"/>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="leading" secondItem="Rqz-bs-ifq" secondAttribute="leading" id="XdV-y9-sk0"/>
@@ -68,8 +87,6 @@
                         <constraint firstAttribute="bottom" secondItem="xiB-a1-aCJ" secondAttribute="bottom" id="h90-KU-IbT"/>
                         <constraint firstItem="6mP-lR-WCs" firstAttribute="width" secondItem="Rqz-bs-ifq" secondAttribute="width" multiplier="0.5" id="l0Z-EW-qvR"/>
                         <constraint firstAttribute="trailing" secondItem="6mP-lR-WCs" secondAttribute="trailing" id="lEF-5J-tc6"/>
-                        <constraint firstItem="dyH-zV-pbA" firstAttribute="width" secondItem="Rqz-bs-ifq" secondAttribute="width" id="mEm-xb-7sT"/>
-                        <constraint firstItem="dyH-zV-pbA" firstAttribute="bottom" secondItem="xiB-a1-aCJ" secondAttribute="bottom" constant="-300" id="qGo-gd-EcN"/>
                         <constraint firstItem="3NS-0C-akL" firstAttribute="centerX" secondItem="Rqz-bs-ifq" secondAttribute="centerX" id="y5s-hP-3Y1"/>
                         <constraint firstItem="3NS-0C-akL" firstAttribute="width" secondItem="Rqz-bs-ifq" secondAttribute="width" id="za6-Ah-clS"/>
                     </constraints>
@@ -78,7 +95,7 @@
                     </connections>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Rqz-bs-ifq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Cgw-tS-0np"/>
                 <constraint firstItem="Rqz-bs-ifq" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="VBd-4n-x3i"/>

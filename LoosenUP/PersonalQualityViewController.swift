@@ -18,7 +18,10 @@ class PersonalQualityViewController: UIViewController {
     private var lastContentOffset: CGFloat = 0
     private var isNavBarHidden = false
     private var tapPoint: CGPoint = CGPoint(x: 0, y: 0)
+    private var collectionCellsCount = 20
     private var viewControllers = [ContentViewController]()
+    private var executeCount = 0
+    private var isGoingTop = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,6 @@ class PersonalQualityViewController: UIViewController {
         swipeMenuView.delegate = self
         
         let options: SwipeMenuViewOptions = .init()
-        
         swipeMenuView.reloadData(options: options)
     }
     
@@ -58,12 +60,18 @@ class PersonalQualityViewController: UIViewController {
                             self.navigationController?.navigationBar.center.y += ((self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height)
                             self.view.center.y += ((self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height)
                             },
-                           completion: nil)
+                           completion: { (finished: Bool) in
+                                self.isGoingTop = false
+                            })
             self.isNavBarHidden = false
         }else{
             
         }
-        
+    }
+    
+    @objc func TapEvent(recognizer : UIGestureRecognizer){
+        let tappedPoint: CGPoint = recognizer.location(in: self.view!)
+        print(tappedPoint)
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,21 +91,38 @@ extension PersonalQualityViewController: SwipeMenuViewDataSource {
         return array[index]
     }
     
+    //will call twice, a bug issue still open at SwipeMenuViewController, this is a temporary solution
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
+        
+        executeCount += 1
         
         let vc = ContentViewController()
         let customView = CustomUIScrollView(frame: vc.view.bounds)
         customView.scrollview.delegate = self
-        
         vc.customView = customView
+        vc.customView.backgroundColor = UIColor.clear
+        
+        for constraint in vc.customView.collectionView.constraints {
+            if constraint.identifier == "heightOfCollectionView" {
+                constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+            }
+        }
+        vc.customView.layoutIfNeeded()
+        
+        let tapEvent = UITapGestureRecognizer(target: self, action: #selector(TapEvent))
+        vc.customView.addGestureRecognizer(tapEvent)
         vc.view.addSubview(vc.customView!)
         
-        //***待優化
-        //SwipeMenuViewController 產生一個viewcontroller 會跑兩次這個動作，會產生兩倍的vc，並使用第二輪產生的vc顯示
-        //第一輪產生array.count個vc，但沒有使用，使用的是第二輪產生的vc，因此使用上從[array.count]開始
-        viewControllers.append(vc)
+        vc.customView.addObserver(self, forKeyPath: "isGoTopBtnActive", options: .new, context: nil)
         
-        return vc
+        if executeCount < array.count+1{
+            return UIViewController()
+        }else{
+            self.viewControllers.append(vc)
+            print(viewControllers.count)
+            return vc
+        }
+//        return vc
     }
 }
 
@@ -126,35 +151,53 @@ extension PersonalQualityViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (self.tapPoint.y > scrollView.contentOffset.y) {
             self.swipe_down()
-            print(scrollView.contentSize.height)
-            print(scrollView.bounds.size.height)
-            
-            print(scrollView.contentOffset.y)
         }
         else if (self.tapPoint.y < scrollView.contentOffset.y) {
-            self.swipe_up()
-            
+            if isGoingTop == false{
+                self.swipe_up()
+            }else{}
             
             if(scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.bounds.size.height - 300)){
-                //-----若有內容未載促入，仔入並顯示-----
                 
-                //---------------------------------
-                //擴充scrollview&contentview長度
-                let view = UIView(frame: CGRect(x: 10, y: scrollView.contentSize.height, width: scrollView.bounds.size.width-20, height: scrollView.bounds.size.height/2))
-                view.addborder(view: view, color: Setting.shared.mainColor().cgColor, height: 2)
+                //--若有內容未載入，擴充scrollView&contentView&collectionView長度並載入內容---
+                //else顯示回到最頂端按鈕在最下方
+                let vc = self.viewControllers[swipeMenuView.currentIndex]
                 
-                let vc = self.viewControllers[swipeMenuView.currentIndex+array.count]
-                vc.customView?.scrollview.contentSize.height += 1500
-                vc.customView?.contentview.frame.size.height = (vc.customView?.scrollview.contentSize.height)!
-                
-                vc.customView.contentview.addSubview(view)
-                
-                print(vc.customView.scrollview.contentSize)
-                print(vc.customView.contentview.frame.size)
+                if(vc.customView.collectionCellsCount < vc.customView.totalCellCount){
+                    vc.customView?.scrollview.contentSize.height += 1500
+                    vc.customView?.contentview.frame.size.height = (vc.customView?.scrollview.contentSize.height)!
+                    
+                    vc.customView.collectionCellsCount += 20
+                    vc.customView.collectionView.reloadData()
+                    for constraint in vc.customView.collectionView.constraints {
+                        if constraint.identifier == "heightOfCollectionView" {
+                            constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                        }
+                    }
+                    vc.customView.layoutIfNeeded()
+                }else{
+                    
+                    let distance = vc.customView.scrollview.contentSize.height-vc.customView.collectionView.contentSize.height
+                    
+                    vc.customView.btnBottom.isHidden = false
+                    vc.customView.btnBottom.isEnabled = true
+                    
+                    vc.customView.btnBottom.layer.frame =
+                        CGRect(x: 0, y: vc.customView.scrollview.contentSize.height-distance, width: vc.customView.btnBottom.frame.width, height: vc.customView.btnBottom.frame.height)
+                    
+                    print(vc.customView.btnBottom.frame)
+                }
                 //---------------------------------
             }
             
         }
     }
     
+}
+
+extension PersonalQualityViewController{
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        swipe_down()
+        isGoingTop = true
+    }
 }
