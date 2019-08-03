@@ -50,7 +50,7 @@ class ForumViewController: UIViewController {
         swipe_right.direction = .right
         self.view.addGestureRecognizer(swipe_right)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "編輯", style: .plain , target: self, action: #selector(self.editBtnAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("EditControl.Edit", comment: ""), style: .plain , target: self, action: #selector(self.editBtnAction))
         
     }
 
@@ -67,10 +67,10 @@ class ForumViewController: UIViewController {
         self.tableview.setEditing(!tableview.isEditing, animated: true)
         if (!tableview.isEditing) {
             HomeTabBarController.shared.hideToolBar()
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "編輯", style: .plain , target: self, action: #selector(self.editBtnAction))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("EditControl.Edit", comment: ""), style: .plain , target: self, action: #selector(self.editBtnAction))
         }else{
             HomeTabBarController.shared.showToolBar()
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .plain , target: self, action: #selector(self.editBtnAction))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("EditControl.Down", comment: ""), style: .plain , target: self, action: #selector(self.editBtnAction))
         }
     }
     

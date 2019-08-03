@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  LoosenUP
+
+  Created by 黃麒安 on 2019/8/4.
+  Copyright © 2019 黃麒安. All rights reserved.
+*/
+
+"" = "";
+
+"MainVC.NavBarTitle" = "首頁";
+"ForumVC.NavBarTitle" = "討論區";
+"ManageVC.NavBarTitle" = "個人專區";
+
+"MainVC.TabBtnTitle" = "首頁";
+"ForumVC.TabBtnTitle" = "討論區";
+"ManageVC.TabBtnTitle" = "個人專區";
+
+//-------ForumVC--------
+
+"EditControl.Edit" = "編輯";
+"EditControl.Down" = "完成";
+
+//-------ForumVC--------
+
+//-------HomeVC--------
+"EditMode.delete" = "刪除";
+
+//-------HomeVC--------

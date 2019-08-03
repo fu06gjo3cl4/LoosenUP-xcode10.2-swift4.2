@@ -18,16 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let subviewcontroller1 = MainViewController.shared
-        subviewcontroller1.title = "首頁"
+        subviewcontroller1.title = NSLocalizedString("MainVC.NavBarTitle", comment: "")
         let subviewcontroller2 = ForumViewController.shared
-        subviewcontroller2.title = "討論區"
+        subviewcontroller2.title = NSLocalizedString("ForumVC.NavBarTitle", comment: "")
         let subviewcontroller3 = ManageViewController.shared
-        subviewcontroller3.title = "個人專區"
+        subviewcontroller3.title = NSLocalizedString("ManageVC.NavBarTitle", comment: "")
         
         let animation1 = RAMBounceAnimation.init()
         RAMAnimateService.setItemSelectedColor(Item: animation1, color: Setting.shared.mainColor())
         let animateditem1 = RAMAnimatedTabBarItem.init()
-        animateditem1.title = "首頁"
+        animateditem1.title = NSLocalizedString("MainVC.TabBtnTitle", comment: "")
         RAMAnimateService.setItemColor(tabbarItem: animateditem1,color: UIColor.lightGray)
         animateditem1.image = UIImage(named: "icon1")
         animateditem1.animation = animation1
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let animation2 = RAMBounceAnimation.init()
         RAMAnimateService.setItemSelectedColor(Item: animation2, color: Setting.shared.mainColor())
         let animateditem2 = RAMAnimatedTabBarItem.init()
-        animateditem2.title = "討論區"
+        animateditem2.title = NSLocalizedString("ForumVC.TabBtnTitle", comment: "")
         RAMAnimateService.setItemColor(tabbarItem: animateditem2,color: UIColor.lightGray)
         animateditem2.image = UIImage(named: "icon2")
         animateditem2.animation = animation2
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let animation3 = RAMBounceAnimation.init()
         RAMAnimateService.setItemSelectedColor(Item: animation3, color: Setting.shared.mainColor())
         let animateditem3 = RAMAnimatedTabBarItem.init()
-        animateditem3.title = "個人專區"
+        animateditem3.title = NSLocalizedString("ManageVC.TabBtnTitle", comment: "")
         RAMAnimateService.setItemColor(tabbarItem: animateditem3,color: UIColor.lightGray)
         animateditem3.image = UIImage(named: "icon3")
         animateditem3.animation = animation3

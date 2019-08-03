@@ -7,18 +7,17 @@
 //
 
 import UIKit
-import Segmentio
 import SwipeMenuViewController
 
 class PersonalQualityViewController: UIViewController {
     
     @IBOutlet weak var swipeMenuView: SwipeMenuView!
     
-    var array = ["Segment1", "Segment2", "Segment3", "Segment4", "Segment5", "Segment6", "Segment7", ]
+    var array = ["Segment1", "Segment2", "Segment3"]
     private var lastContentOffset: CGFloat = 0
     private var isNavBarHidden = false
     private var tapPoint: CGPoint = CGPoint(x: 0, y: 0)
-    private var collectionCellsCount = 20
+    private var collectionCellsCount = 15
     private var viewControllers = [ContentViewController]()
     private var executeCount = 0
     private var isGoingTop = false

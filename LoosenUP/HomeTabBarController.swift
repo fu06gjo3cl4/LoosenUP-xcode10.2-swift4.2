@@ -32,7 +32,7 @@ class HomeTabBarController: RAMAnimatedTabBarController {
         toolView.addGestureRecognizer(toolViewTap)
         
         let deleteLabel = UILabel(frame: CGRect(x:0, y:0, width:Const.Screen_Width, height:64))
-        deleteLabel.text = "刪除"
+        deleteLabel.text = NSLocalizedString("EditMode.delete", comment: "")
         deleteLabel.textAlignment = .center
         deleteLabel.isEnabled = false
         toolView.addSubview(deleteLabel)
