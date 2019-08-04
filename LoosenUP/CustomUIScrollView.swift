@@ -115,3 +115,32 @@ extension CustomUIScrollView: UICollectionViewDelegate,UICollectionViewDataSourc
         print("select item at indexPath: \(indexPath.row)" )
     }
 }
+
+
+/* Usage
+ ViewController
+ 1) set uiview class to CustomUIScrollView at Xib and connect outlet
+ 2) init CustomUIScrollView.
+    Set scrollview.delegate,collectionView.delegate,collectionView.dataSource.
+    Register CollectionCell.
+    Assign customView to vc.customView.
+ 
+ class CustomViewController: UIViewController {
+    @IBOutlet weak var customView: CustomUIScrollView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let customView = CustomUIScrollView(frame: self.view.bounds)
+        customView.scrollview.delegate = self
+
+        customView.collectionView.delegate = customView
+        customView.collectionView.dataSource = customView
+        let rankCell = UINib(nibName: "yourCollectionCell", bundle: nil)
+        customView.collectionView.register(rankCell, forCellWithReuseIdentifier: "yourCollectionCell")
+
+        self.customView = customView
+    }
+ }
+ 
+ */
+

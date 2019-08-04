@@ -43,14 +43,6 @@
                                         <inset key="sectionInset" minX="5" minY="10" maxX="5" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyH-zV-pbA">
-                                    <rect key="frame" x="0.0" y="707" width="414" height="111"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="There is no data anymore"/>
-                                    <connections>
-                                        <action selector="btnBottomAction:" destination="-1" eventType="touchUpInside" id="qsI-yG-ic7"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -71,6 +63,14 @@
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="btnTopAction:" destination="-1" eventType="touchUpInside" id="DF5-6h-GHP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyH-zV-pbA">
+                            <rect key="frame" x="0.0" y="353" width="414" height="111"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="There is no data anymore"/>
+                            <connections>
+                                <action selector="btnBottomAction:" destination="-1" eventType="touchUpInside" id="qsI-yG-ic7"/>
                             </connections>
                         </button>
                     </subviews>

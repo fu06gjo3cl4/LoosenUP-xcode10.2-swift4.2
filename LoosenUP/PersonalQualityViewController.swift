@@ -103,10 +103,10 @@ class PersonalQualityViewController: UIViewController {
         }
     }
     
-    @objc func TapEvent(recognizer : UIGestureRecognizer){
-        let tappedPoint: CGPoint = recognizer.location(in: self.view!)
-        print(tappedPoint)
-    }
+//    @objc func TapEvent(recognizer : UIGestureRecognizer){
+//        let tappedPoint: CGPoint = recognizer.location(in: self.view!)
+//        print(tappedPoint)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -142,8 +142,8 @@ extension PersonalQualityViewController: SwipeMenuViewDataSource {
         }
         vc.customView.layoutIfNeeded()
         
-        let tapEvent = UITapGestureRecognizer(target: self, action: #selector(TapEvent))
-        vc.customView.addGestureRecognizer(tapEvent)
+//        let tapEvent = UITapGestureRecognizer(target: self, action: #selector(TapEvent))
+//        vc.customView.addGestureRecognizer(tapEvent)
         vc.view.addSubview(vc.customView!)
         
         vc.customView.addObserver(self, forKeyPath: "isGoTopBtnActive", options: .new, context: nil)
@@ -177,7 +177,8 @@ extension PersonalQualityViewController: SwipeMenuViewDelegate {
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // Codes
         //is init or not? init , don't do anything
-        let vc = self.viewControllers[swipeMenuView.currentIndex]
+        let vc = self.viewControllers[toIndex]
+        
         if !vc.customView.isInitDataOrNot{
             if(vc.customView.collectionCellsCount+20 < vc.customView.totalCellCount){
                 vc.customView.collectionCellsCount += 20
@@ -251,7 +252,7 @@ extension PersonalQualityViewController: UIScrollViewDelegate{
                     vc.customView.btnBottom.isEnabled = true
                     
                     vc.customView.btnBottom.layer.frame =
-                        CGRect(x: 0, y: vc.customView.scrollview.contentSize.height-distance, width: vc.customView.btnBottom.frame.width, height: vc.customView.btnBottom.frame.height)
+                        CGRect(x: 0, y: vc.customView.scrollview.contentSize.height-distance, width: vc.customView.btnBottom.frame.width, height: vc.customView.btnBottom.layer.frame.height)
                     
                     print(vc.customView.btnBottom.frame)
                 }
