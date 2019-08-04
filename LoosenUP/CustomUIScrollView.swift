@@ -13,6 +13,7 @@ class CustomUIScrollView: UIView{
     var view:UIView!
     var collectionCellsCount = 20
     var totalCellCount = 82
+    var isInitDataOrNot = false
     @objc dynamic var isGoTopBtnActive = false
     
     @IBOutlet weak var collectionView: UICollectionView!{

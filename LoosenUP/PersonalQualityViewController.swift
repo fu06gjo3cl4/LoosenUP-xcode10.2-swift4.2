@@ -18,6 +18,7 @@ class PersonalQualityViewController: UIViewController {
     private var isNavBarHidden = false
     private var tapPoint: CGPoint = CGPoint(x: 0, y: 0)
     private var viewControllers = [ContentViewController]()
+//    private var isInitDataOrNot = [Bool]()
     private var executeCount = 0
     private var isGoingTop = false
     
@@ -50,7 +51,8 @@ class PersonalQualityViewController: UIViewController {
                 }
             }
             vc.customView.layoutIfNeeded()
-        }else{
+            vc.customView.isInitDataOrNot = true
+        }else if vc.customView.collectionCellsCount != vc.customView.totalCellCount{
             vc.customView.collectionCellsCount = vc.customView.totalCellCount
             vc.customView.collectionView.reloadData()
             for constraint in vc.customView.collectionView.constraints {
@@ -59,6 +61,9 @@ class PersonalQualityViewController: UIViewController {
                 }
             }
             vc.customView.layoutIfNeeded()
+            vc.customView.isInitDataOrNot = true
+        }else{
+            
         }
     }
     
@@ -171,25 +176,30 @@ extension PersonalQualityViewController: SwipeMenuViewDelegate {
     
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // Codes
+        //is init or not? init , don't do anything
         let vc = self.viewControllers[swipeMenuView.currentIndex]
-        if(vc.customView.collectionCellsCount+20 < vc.customView.totalCellCount){
-            vc.customView.collectionCellsCount += 20
-            vc.customView.collectionView.reloadData()
-            for constraint in vc.customView.collectionView.constraints {
-                if constraint.identifier == "heightOfCollectionView" {
-                    constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+        if !vc.customView.isInitDataOrNot{
+            if(vc.customView.collectionCellsCount+20 < vc.customView.totalCellCount){
+                vc.customView.collectionCellsCount += 20
+                vc.customView.collectionView.reloadData()
+                for constraint in vc.customView.collectionView.constraints {
+                    if constraint.identifier == "heightOfCollectionView" {
+                        constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                    }
                 }
-            }
-            vc.customView.layoutIfNeeded()
-        }else{
-            vc.customView.collectionCellsCount = vc.customView.totalCellCount
-            vc.customView.collectionView.reloadData()
-            for constraint in vc.customView.collectionView.constraints {
-                if constraint.identifier == "heightOfCollectionView" {
-                    constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                vc.customView.layoutIfNeeded()
+                vc.customView.isInitDataOrNot = true
+            }else if vc.customView.collectionCellsCount != vc.customView.totalCellCount{
+                vc.customView.collectionCellsCount = vc.customView.totalCellCount
+                vc.customView.collectionView.reloadData()
+                for constraint in vc.customView.collectionView.constraints {
+                    if constraint.identifier == "heightOfCollectionView" {
+                        constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                    }
                 }
-            }
-            vc.customView.layoutIfNeeded()
+                vc.customView.layoutIfNeeded()
+                vc.customView.isInitDataOrNot = true
+            }else{}
         }
     }
 }
