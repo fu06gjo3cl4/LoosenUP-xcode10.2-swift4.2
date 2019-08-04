@@ -34,7 +34,6 @@ class MainViewController: UIViewController {
                 total_height_forscrollview_container = total_height_forscrollview_container + subview.bounds.size.height
             }
             self.scrollview_container.bounds.size.height = total_height_forscrollview_container
-//            self.scrollview_container.heightAnchor.constraint(equalToConstant: total_height_forscrollview_container).isActive = true
             
         }
     }

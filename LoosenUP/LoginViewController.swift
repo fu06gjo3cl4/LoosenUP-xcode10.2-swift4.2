@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        LoginViewService.Login_Check(account: "qiantest",password: "qiantest")
         
         // Do any additional setup after loading the view.
     }

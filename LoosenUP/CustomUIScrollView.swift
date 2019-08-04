@@ -12,15 +12,15 @@ class CustomUIScrollView: UIView{
     
     var view:UIView!
     var collectionCellsCount = 20
-    var totalCellCount = 80
+    var totalCellCount = 82
     @objc dynamic var isGoTopBtnActive = false
     
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
             let rankCell = UINib(nibName: "RankingCollectionCell", bundle: nil)
             self.collectionView.register(rankCell, forCellWithReuseIdentifier: "RankingCollectionCell")
-            self.collectionView.dataSource = self
-            self.collectionView.delegate = self
+//            self.collectionView.dataSource = self
+//            self.collectionView.delegate = self
         }
     }
     @IBOutlet weak var scrollview: UIScrollView!

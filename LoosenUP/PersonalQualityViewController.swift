@@ -17,7 +17,6 @@ class PersonalQualityViewController: UIViewController {
     private var lastContentOffset: CGFloat = 0
     private var isNavBarHidden = false
     private var tapPoint: CGPoint = CGPoint(x: 0, y: 0)
-    private var collectionCellsCount = 15
     private var viewControllers = [ContentViewController]()
     private var executeCount = 0
     private var isGoingTop = false
@@ -30,6 +29,37 @@ class PersonalQualityViewController: UIViewController {
         
         let options: SwipeMenuViewOptions = .init()
         swipeMenuView.reloadData(options: options)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        for vc in viewControllers{
+            vc.customView.collectionView.dataSource = vc.customView
+            vc.customView.collectionView.delegate = vc.customView
+        }
+        
+        let vc = self.viewControllers[swipeMenuView.currentIndex]
+        if(vc.customView.collectionCellsCount+20 < vc.customView.totalCellCount){
+            vc.customView.collectionCellsCount += 20
+            vc.customView.collectionView.reloadData()
+            for constraint in vc.customView.collectionView.constraints {
+                if constraint.identifier == "heightOfCollectionView" {
+                    constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                }
+            }
+            vc.customView.layoutIfNeeded()
+        }else{
+            vc.customView.collectionCellsCount = vc.customView.totalCellCount
+            vc.customView.collectionView.reloadData()
+            for constraint in vc.customView.collectionView.constraints {
+                if constraint.identifier == "heightOfCollectionView" {
+                    constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                }
+            }
+            vc.customView.layoutIfNeeded()
+        }
     }
     
     @objc func swipe_up(){
@@ -99,7 +129,6 @@ extension PersonalQualityViewController: SwipeMenuViewDataSource {
         let customView = CustomUIScrollView(frame: vc.view.bounds)
         customView.scrollview.delegate = self
         vc.customView = customView
-        vc.customView.backgroundColor = UIColor.clear
         
         for constraint in vc.customView.collectionView.constraints {
             if constraint.identifier == "heightOfCollectionView" {
@@ -142,6 +171,26 @@ extension PersonalQualityViewController: SwipeMenuViewDelegate {
     
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // Codes
+        let vc = self.viewControllers[swipeMenuView.currentIndex]
+        if(vc.customView.collectionCellsCount+20 < vc.customView.totalCellCount){
+            vc.customView.collectionCellsCount += 20
+            vc.customView.collectionView.reloadData()
+            for constraint in vc.customView.collectionView.constraints {
+                if constraint.identifier == "heightOfCollectionView" {
+                    constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                }
+            }
+            vc.customView.layoutIfNeeded()
+        }else{
+            vc.customView.collectionCellsCount = vc.customView.totalCellCount
+            vc.customView.collectionView.reloadData()
+            for constraint in vc.customView.collectionView.constraints {
+                if constraint.identifier == "heightOfCollectionView" {
+                    constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                }
+            }
+            vc.customView.layoutIfNeeded()
+        }
     }
 }
 
@@ -158,13 +207,10 @@ extension PersonalQualityViewController: UIScrollViewDelegate{
             
             if(scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.bounds.size.height - 300)){
                 
-                //--若有內容未載入，擴充scrollView&contentView&collectionView長度並載入內容---
-                //else顯示回到最頂端按鈕在最下方
+                //若有內容未載入，擴充scrollView&contentView&collectionView長度並載入內容
+                //else顯示最底部按鈕
                 let vc = self.viewControllers[swipeMenuView.currentIndex]
-                
-                if(vc.customView.collectionCellsCount < vc.customView.totalCellCount){
-                    vc.customView?.scrollview.contentSize.height += 1500
-                    vc.customView?.contentview.frame.size.height = (vc.customView?.scrollview.contentSize.height)!
+                if(vc.customView.collectionCellsCount+20 < vc.customView.totalCellCount){
                     
                     vc.customView.collectionCellsCount += 20
                     vc.customView.collectionView.reloadData()
@@ -174,10 +220,23 @@ extension PersonalQualityViewController: UIScrollViewDelegate{
                         }
                     }
                     vc.customView.layoutIfNeeded()
+                    vc.customView?.scrollview.contentSize.height = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height+500
+                    vc.customView?.contentview.frame.size.height = (vc.customView?.scrollview.contentSize.height)!
+                }else if vc.customView.collectionCellsCount != vc.customView.totalCellCount{
+                    //載入全部資料
+                    vc.customView.collectionCellsCount = vc.customView.totalCellCount
+                    vc.customView.collectionView.reloadData()
+                    for constraint in vc.customView.collectionView.constraints {
+                        if constraint.identifier == "heightOfCollectionView" {
+                            constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
+                        }
+                    }
+                    vc.customView.layoutIfNeeded()
+                    vc.customView?.scrollview.contentSize.height = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height+500
+                    vc.customView?.contentview.frame.size.height = (vc.customView?.scrollview.contentSize.height)!
                 }else{
-                    
+                    //顯示最底部按鈕
                     let distance = vc.customView.scrollview.contentSize.height-vc.customView.collectionView.contentSize.height
-                    
                     vc.customView.btnBottom.isHidden = false
                     vc.customView.btnBottom.isEnabled = true
                     
@@ -186,7 +245,6 @@ extension PersonalQualityViewController: UIScrollViewDelegate{
                     
                     print(vc.customView.btnBottom.frame)
                 }
-                //---------------------------------
             }
             
         }

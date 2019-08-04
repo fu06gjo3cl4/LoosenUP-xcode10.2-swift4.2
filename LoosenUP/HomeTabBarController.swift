@@ -25,7 +25,7 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     private func nibSetup(){
         //臨時解
         toolView = UIView(frame:CGRect(x:0, y:Const.Screen_Height, width:Const.Screen_Width, height:64))
-        toolView.layer.zPosition = CGFloat.greatestFiniteMagnitude
+        toolView.layer.zPosition = CGFloat(Float.greatestFiniteMagnitude)
         toolView.backgroundColor = Const.white
         
         let toolViewTap = UITapGestureRecognizer(target: self, action: #selector(self.toolItemTrashAction))
@@ -186,19 +186,14 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     }
     
     func setupMiddleButton() {
-        middleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
         
-        var middleButtonFrame = middleButton.frame
-        let rectBoundTabbar = self.tabBar.bounds//CGRect
-        middleButtonFrame.origin.y = view.bounds.height - ((64 - rectBoundTabbar.height)/2 + rectBoundTabbar.height)//midY//middleButtonFrame.height/2
-        middleButtonFrame.origin.x = view.bounds.width/2 - middleButtonFrame.size.width/2
-        middleButton.frame = middleButtonFrame
+        middleButton = UIButton(frame: CGRect(x: (self.view.bounds.width/2)-(64/2), y: self.view.bounds.height-(self.tabBar.bounds.height/2)-(64/2), width: 64, height: 64))
         
         tabBar.barTintColor = UIColor.white
         middleButton.backgroundColor = tabBar.barTintColor
         middleButton.layer.borderWidth = 0.5
         middleButton.layer.borderColor = UIColor.lightGray.cgColor
-        middleButton.layer.cornerRadius = middleButtonFrame.height/2
+        middleButton.layer.cornerRadius = middleButton.frame.height/2
         view.addSubview(middleButton)
         
         middleButton.setImage(UIImage(named: "emptyIcon"), for: .normal)
