@@ -211,9 +211,11 @@ class MainViewController: UIViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
 //        self.navigationController?.navigationBar.tintColor = Setting.shared.mainColor()
-        self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
-        btn_Tired.setBackgroundColor(view: btn_Tired, color: Setting.shared.mainColor().cgColor)
-        btn_Relax.setBackgroundColor(view: btn_Relax, color: Setting.shared.mainColor().cgColor)
+        if keyPath! == "themeType"{
+            self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+            btn_Tired.setBackgroundColor(view: btn_Tired, color: Setting.shared.mainColor().cgColor)
+            btn_Relax.setBackgroundColor(view: btn_Relax, color: Setting.shared.mainColor().cgColor)
+        }
         
     }
 }

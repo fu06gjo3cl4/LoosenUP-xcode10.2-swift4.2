@@ -28,9 +28,9 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiB-a1-aCJ">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="2045"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                             <subviews>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="59Q-bf-aZu" customClass="EffectCollectionView" customModule="LoosenUP" customModuleProvider="target">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="59Q-bf-aZu" customClass="EffectCollectionView" customModule="LoosenUP" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -44,16 +44,12 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="59Q-bf-aZu" firstAttribute="top" secondItem="xiB-a1-aCJ" secondAttribute="top" id="R5Y-BK-7XD"/>
                                 <constraint firstAttribute="trailing" secondItem="59Q-bf-aZu" secondAttribute="trailing" id="shr-pk-CPQ"/>
                                 <constraint firstItem="59Q-bf-aZu" firstAttribute="leading" secondItem="xiB-a1-aCJ" secondAttribute="leading" id="wap-hh-FKt"/>
                             </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mP-lR-WCs">
-                            <rect key="frame" x="207" y="0.0" width="207" height="2045"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3NS-0C-akL">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
@@ -78,15 +74,11 @@
                     <constraints>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="top" secondItem="Rqz-bs-ifq" secondAttribute="top" id="7E9-Dt-UQb"/>
                         <constraint firstItem="3NS-0C-akL" firstAttribute="top" secondItem="Rqz-bs-ifq" secondAttribute="top" id="9Qk-vR-g01"/>
-                        <constraint firstAttribute="bottom" secondItem="6mP-lR-WCs" secondAttribute="bottom" id="9zC-1O-QIS"/>
                         <constraint firstAttribute="trailing" secondItem="xiB-a1-aCJ" secondAttribute="trailing" id="Ebo-88-pIH"/>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="centerX" secondItem="Rqz-bs-ifq" secondAttribute="centerX" id="VgW-Sw-hEN"/>
                         <constraint firstItem="xiB-a1-aCJ" firstAttribute="leading" secondItem="Rqz-bs-ifq" secondAttribute="leading" id="XdV-y9-sk0"/>
-                        <constraint firstItem="6mP-lR-WCs" firstAttribute="top" secondItem="Rqz-bs-ifq" secondAttribute="top" id="dwX-ue-pId"/>
-                        <constraint firstItem="xiB-a1-aCJ" firstAttribute="height" secondItem="Rqz-bs-ifq" secondAttribute="height" multiplier="2.5" id="f5r-Nd-7JE"/>
+                        <constraint firstItem="xiB-a1-aCJ" firstAttribute="height" secondItem="Rqz-bs-ifq" secondAttribute="height" identifier="contentViewHeight" id="f5r-Nd-7JE"/>
                         <constraint firstAttribute="bottom" secondItem="xiB-a1-aCJ" secondAttribute="bottom" id="h90-KU-IbT"/>
-                        <constraint firstItem="6mP-lR-WCs" firstAttribute="width" secondItem="Rqz-bs-ifq" secondAttribute="width" multiplier="0.5" id="l0Z-EW-qvR"/>
-                        <constraint firstAttribute="trailing" secondItem="6mP-lR-WCs" secondAttribute="trailing" id="lEF-5J-tc6"/>
                         <constraint firstItem="3NS-0C-akL" firstAttribute="centerX" secondItem="Rqz-bs-ifq" secondAttribute="centerX" id="y5s-hP-3Y1"/>
                         <constraint firstItem="3NS-0C-akL" firstAttribute="width" secondItem="Rqz-bs-ifq" secondAttribute="width" id="za6-Ah-clS"/>
                     </constraints>

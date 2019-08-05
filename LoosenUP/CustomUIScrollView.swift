@@ -103,6 +103,10 @@ extension CustomUIScrollView: UICollectionViewDelegate,UICollectionViewDataSourc
         let rankcell = collectionView.dequeueReusableCell(withReuseIdentifier: "RankingCollectionCell", for: indexPath) as! RankingCollectionCell
         rankcell.image_no.image = UIImage(named: "NO")?.withRenderingMode(.alwaysTemplate)
         
+        rankcell.isSelected = false
+        collectionView.deselectItem(at: indexPath, animated: true)
+
+        
         return rankcell
     }
     
@@ -113,7 +117,18 @@ extension CustomUIScrollView: UICollectionViewDelegate,UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("select item at indexPath: \(indexPath.row)" )
+        let cell = collectionView.cellForItem(at: indexPath) as! RankingCollectionCell
+        cell.addborder(view: cell, color: UIColor.orange.cgColor, height: 1)
+        
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! RankingCollectionCell
+        cell.addborder(view: cell, color: Setting.shared.mainColor().cgColor, height: 1)
+    }
+    
+    
+    
 }
 
 
@@ -139,6 +154,7 @@ extension CustomUIScrollView: UICollectionViewDelegate,UICollectionViewDataSourc
         customView.collectionView.register(rankCell, forCellWithReuseIdentifier: "yourCollectionCell")
 
         self.customView = customView
+ vc.view.addSubview(vc.customView!)     //待測試
     }
  }
  

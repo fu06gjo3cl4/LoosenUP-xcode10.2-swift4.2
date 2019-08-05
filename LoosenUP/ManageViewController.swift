@@ -60,7 +60,7 @@ class ManageViewController: UIViewController {
         print("to account manage")
         
         let viewcontroller = AccountManageViewController()
-        viewcontroller.title = "系統設置"
+        viewcontroller.title = NSLocalizedString("AccountManageViewController.title", comment: "")
         self.navigationController?.pushViewController(viewcontroller, animated: true)
     }
     
@@ -68,7 +68,7 @@ class ManageViewController: UIViewController {
         print("to personal manage")
         
         let viewcontroller = PersonalManageViewController()
-        viewcontroller.title = "個人化管理"
+        viewcontroller.title = NSLocalizedString("PersonalManageViewController.title", comment: "")
         self.navigationController?.pushViewController(viewcontroller, animated: true)
     }
     
@@ -91,8 +91,11 @@ extension ManageViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
+        if keyPath! == "themeType"{
+            self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+        }
+        
 //        self.navigationController?.navigationBar.tintColor = Setting.shared.mainColor()
-        self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
         
     }
     

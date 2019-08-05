@@ -5,7 +5,7 @@
   Created by 黃麒安 on 2019/8/4.
   Copyright © 2019 黃麒安. All rights reserved.
 */
-
+//NSLocalizedString("", comment: "")
 "" = "";
 
 "MainVC.NavBarTitle" = "首页";
@@ -27,3 +27,11 @@
 "EditMode.delete" = "删除";
 
 //-------HomeVC--------
+
+//------ManageVC-------
+"AccountManageViewController.title" = "系统设置";
+"PersonalManageViewController.title" = "个人化管理";
+    //------PersonalManageVC-------
+    "PersonalQualityViewController.title" = "个人素质分析";
+    //------PersonalManageVC-------
+//------ManageVC-------

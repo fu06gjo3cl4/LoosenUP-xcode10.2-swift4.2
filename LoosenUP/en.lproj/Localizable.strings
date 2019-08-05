@@ -5,7 +5,7 @@
   Created by 黃麒安 on 2019/8/4.
   Copyright © 2019 黃麒安. All rights reserved.
 */
-
+//NSLocalizedString("", comment: "")
 "" = "";
 
 "MainVC.NavBarTitle" = "Home";
@@ -27,3 +27,12 @@
 "EditMode.delete" = "Delete";
 
 //-------HomeVC--------
+
+//------ManageVC-------
+"AccountManageViewController.title" = "System Setting";
+"PersonalManageViewController.title" = "Personal Management";
+    //------PersonalManageVC-------
+    "PersonalQualityViewController.title" = "Personal Quality Analysis";
+    //------PersonalManageVC-------
+//------ManageVC-------
+

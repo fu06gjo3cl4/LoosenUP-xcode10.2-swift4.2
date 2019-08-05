@@ -30,6 +30,8 @@
 		4C25F95C22F5F70800844F8E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F95E22F5F70800844F8E /* Localizable.strings */; };
 		4C25F96322F5FB2B00844F8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F96522F5FB2B00844F8E /* InfoPlist.strings */; };
 		4C25F96822F5FD4900844F8E /* loading_cat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F96A22F5FD4900844F8E /* loading_cat.gif */; };
+		4C25F9C022F81CB100844F8E /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25F9BF22F81CB100844F8E /* CustomCollectionView.swift */; };
+		4C25F9C222F81CD900844F8E /* CustomCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F9C122F81CD900844F8E /* CustomCollectionView.xib */; };
 		4C28823D22E564B7004DFF16 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28823C22E564B7004DFF16 /* Setting.swift */; };
 		4C28823F22EC352E004DFF16 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28823E22EC352D004DFF16 /* Theme.swift */; };
 		4C3EF5E822EF4C1700BF6C99 /* NO.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3EF5E722EF4C1700BF6C99 /* NO.png */; };
@@ -167,6 +169,8 @@
 		4C25F96922F5FD4900844F8E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = en; path = en.lproj/loading_cat.gif; sourceTree = "<group>"; };
 		4C25F96B22F5FD5900844F8E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "zh-Hans"; path = "zh-Hans.lproj/loading_cat.gif"; sourceTree = "<group>"; };
 		4C25F96C22F5FD5A00844F8E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "zh-Hant"; path = "zh-Hant.lproj/loading_cat.gif"; sourceTree = "<group>"; };
+		4C25F9BF22F81CB100844F8E /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		4C25F9C122F81CD900844F8E /* CustomCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionView.xib; sourceTree = "<group>"; };
 		4C28823C22E564B7004DFF16 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4C28823E22EC352D004DFF16 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4C3EF5E722EF4C1700BF6C99 /* NO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NO.png; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 				4CD5564822F20A6300EFF4E2 /* CustomUIScrollView.xib */,
 				4C92BB9322F2CEFE007CA8B0 /* ContentViewController.swift */,
 				4C92BB9422F2CEFE007CA8B0 /* ContentViewController.xib */,
+				4C25F9BF22F81CB100844F8E /* CustomCollectionView.swift */,
+				4C25F9C122F81CD900844F8E /* CustomCollectionView.xib */,
 			);
 			name = Share;
 			sourceTree = "<group>";
@@ -732,6 +738,7 @@
 				4CF78A721E6D7BE10063254E /* ForumViewController.xib in Resources */,
 				4C6DD2C51E87FBD70006E378 /* RankingViewController.xib in Resources */,
 				4C780FED1E7AD5E10021ED86 /* RankingCollectionCell.xib in Resources */,
+				4C25F9C222F81CD900844F8E /* CustomCollectionView.xib in Resources */,
 				4CF78A661E6D62F80063254E /* HomeTabBarController.xib in Resources */,
 				4C21DC0F1EA47F700042DFA6 /* NO2.png in Resources */,
 				4CF78A6E1E6D7BD50063254E /* MainViewController.xib in Resources */,
@@ -813,7 +820,6 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
-				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -825,7 +831,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -891,6 +896,7 @@
 				4C1180801E6D14FE00155C4D /* LoginViewController.swift in Sources */,
 				4C11807A1E6CFFE000155C4D /* ApiList.swift in Sources */,
 				4C3EF5EA22EF98DA00BF6C99 /* ForumCellViewModel.swift in Sources */,
+				4C25F9C022F81CB100844F8E /* CustomCollectionView.swift in Sources */,
 				4C6DD2C41E87FBD70006E378 /* RankingViewController.swift in Sources */,
 				4C6DD2C81E87FD100006E378 /* RankingDetailViewController.swift in Sources */,
 				4C62C4161EA7A0A20033CF37 /* UIFontExtension.swift in Sources */,

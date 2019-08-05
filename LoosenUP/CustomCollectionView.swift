@@ -1,31 +1,35 @@
 //
-//  PopularityCollectionView.swift
+//  CustomCollectionView.swift
 //  LoosenUP
 //
-//  Created by 黃麒安 on 2017/3/23.
-//  Copyright © 2017年 黃麒安. All rights reserved.
+//  Created by 黃麒安 on 2019/8/5.
+//  Copyright © 2019 黃麒安. All rights reserved.
 //
 
 import UIKit
 
-class PopularityCollectionView: UICollectionView {
+class CustomCollectionView: UICollectionView {
+    
+    //    var ranklist : [rank]()
+    var cellCount: Int = 16
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.isScrollEnabled = false
     }
-
+    
 }
 
-extension PopularityCollectionView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+
+extension CustomCollectionView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let rankcell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularityCollectionCell", for: indexPath) as! RankingCollectionCell
+        
+        let rankcell = collectionView.dequeueReusableCell(withReuseIdentifier: "RankingCollectionCell", for: indexPath) as! RankingCollectionCell
         
         switch indexPath.row {
         case 0:
@@ -42,6 +46,9 @@ extension PopularityCollectionView: UICollectionViewDelegate,UICollectionViewDat
             rankcell.image_no.image = UIImage(named: "NO")?.withRenderingMode(.alwaysTemplate)
         }
         
+        rankcell.isSelected = false
+        collectionView.deselectItem(at: indexPath, animated: true)
+
         return rankcell
     }
     
@@ -51,15 +58,26 @@ extension PopularityCollectionView: UICollectionViewDelegate,UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("select item at indexPath:\(indexPath.row)" )
+        print("select item at indexPath: \(indexPath.row)" )
         
-        if let topController = UIApplication.topViewController(){
-            print(topController)
-            let viewcontroller = RankingDetailViewController()
-            viewcontroller.ranking = indexPath.row
-            topController.navigationController?.pushViewController(viewcontroller, animated: true)
-        }
+        let cell = collectionView.cellForItem(at: indexPath) as! RankingCollectionCell
+        cell.addborder(view: cell, color: UIColor.orange.cgColor, height: 1)
         
     }
-}
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == self.cellCount - 1 ) {
+            //Load more data & reload your collection view
+            self.cellCount += 20
+            self.reloadData()
+            
+            for constraint in self.constraints {
+                if constraint.identifier == "heightOfCollectionView" {
+                    constraint.constant = self.collectionViewLayout.collectionViewContentSize.height
+                }
+            }
+            self.layoutIfNeeded()
 
+        }
+    }
+}

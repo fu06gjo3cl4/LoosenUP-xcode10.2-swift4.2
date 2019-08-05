@@ -11,6 +11,8 @@ import UIKit
 class EffectCollectionView: UICollectionView {
     
 //    var ranklist : [rank]()
+    var cellCount: Int = 16
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -23,7 +25,7 @@ class EffectCollectionView: UICollectionView {
 extension EffectCollectionView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

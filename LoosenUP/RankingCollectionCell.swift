@@ -30,5 +30,9 @@ class RankingCollectionCell: UICollectionViewCell {
         self.tintColor = Setting.shared.mainColor()
         image_no.image = image_no.image?.withRenderingMode(.alwaysTemplate)
     }
+    
+    deinit {
+        self.observationInfo = nil
+    }
 
 }

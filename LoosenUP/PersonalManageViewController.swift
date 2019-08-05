@@ -47,7 +47,7 @@ class PersonalManageViewController: UIViewController {
         print("to personal ranking")
         
         let viewcontroller = PersonalQualityViewController()
-        viewcontroller.title = "個人素質分析"
+        viewcontroller.title = NSLocalizedString("PersonalQualityViewController.title", comment: "")
         self.navigationController?.pushViewController(viewcontroller, animated: true)
     }
     

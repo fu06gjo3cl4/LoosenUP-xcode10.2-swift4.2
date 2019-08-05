@@ -97,7 +97,9 @@ class ForumViewController: UIViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+        if keyPath! == "themeType"{
+            self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+        }
     }
 }
 
