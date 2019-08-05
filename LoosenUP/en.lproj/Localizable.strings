@@ -19,7 +19,9 @@
 //-------ForumVC--------
 
 "EditControl.Edit" = "Edit";
-"EditControl.Down" = "Down";
+"EditControl.Done" = "Done";
+"EditMode.SelectAll" = "SelectAll";
+"EditMode.DeSelectAll" = "DeSelectAll";
 
 //-------ForumVC--------
 

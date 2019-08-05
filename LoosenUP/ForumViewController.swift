@@ -30,7 +30,8 @@ class ForumViewController: UIViewController {
         }
     }
     
-    var selectedRow = [IndexPath]()
+    var selectedIndexs = [IndexPath]()
+    var isSelectedAll = false
     var numberOfRows: Int = 10
     var toolView = UIView()
     
@@ -51,7 +52,6 @@ class ForumViewController: UIViewController {
         self.view.addGestureRecognizer(swipe_right)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("EditControl.Edit", comment: ""), style: .plain , target: self, action: #selector(self.editBtnAction))
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,17 +67,38 @@ class ForumViewController: UIViewController {
         self.tableview.setEditing(!tableview.isEditing, animated: true)
         if (!tableview.isEditing) {
             HomeTabBarController.shared.hideToolBar()
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("EditControl.Edit", comment: ""), style: .plain , target: self, action: #selector(self.editBtnAction))
+//            self.navigationItem.leftBarButtonItem?.isEnabled = false
+            self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem?.title = NSLocalizedString("EditControl.Edit", comment: "")
         }else{
             HomeTabBarController.shared.showToolBar()
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("EditControl.Down", comment: ""), style: .plain , target: self, action: #selector(self.editBtnAction))
+//            self.navigationItem.leftBarButtonItem?.isEnabled = true
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("EditMode.SelectAll", comment: ""), style: .plain , target: self, action: #selector(self.selectAllRows))
+            self.navigationItem.rightBarButtonItem!.title = NSLocalizedString("EditControl.Done", comment: "")
         }
     }
     
+    @objc func selectAllRows() {
+        
+        if isSelectedAll == false{
+            selectedIndexs.removeAll()
+            for i in 0..<numberOfRows{
+                selectedIndexs.append(IndexPath(row: i, section: 0))
+            }
+            isSelectedAll = true
+            self.navigationItem.leftBarButtonItem!.title = NSLocalizedString("EditMode.DeSelectAll", comment: "")
+        }else{
+            selectedIndexs.removeAll()
+            isSelectedAll = false
+            self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("EditMode.SelectAll", comment: "")
+        }
+        self.tableview.reloadData()
+    }
+    
     @objc func deleteSelectedRows() {
-        self.numberOfRows -= self.selectedRow.count
-        let temp = self.selectedRow
-        self.selectedRow.removeAll()    //correct value befor datareload
+        self.numberOfRows -= self.selectedIndexs.count
+        let temp = self.selectedIndexs
+        self.selectedIndexs.removeAll() //correct value before datareload
         self.tableview.deleteRows(at: temp, with: .fade)
     }
     
@@ -120,7 +141,7 @@ extension ForumViewController : UITableViewDelegate,UITableViewDataSource{
         let cell = self.tableview.dequeueReusableCell(withIdentifier: "ForumTableCell", for: indexPath) as! ForumTableCell
         cell.updateWithPresenter(presenter: viewmodel)
         
-        if selectedRow.contains(indexPath) {
+        if selectedIndexs.contains(indexPath) {
             cell.btn.isSelected = true
         }else{
             cell.btn.isSelected = false
@@ -134,10 +155,10 @@ extension ForumViewController : UITableViewDelegate,UITableViewDataSource{
         if tableview.isEditing{
             let cell = tableView.cellForRow(at: indexPath) as! ForumTableCell
             cell.buttonSelected()
-            if selectedRow.contains(indexPath){
-                selectedRow.remove(at: selectedRow.index(of: indexPath)!)
+            if selectedIndexs.contains(indexPath){
+                selectedIndexs.remove(at: selectedIndexs.index(of: indexPath)!)
             }else{
-                selectedRow.append(indexPath)
+                selectedIndexs.append(indexPath)
             }
             
         }else{
