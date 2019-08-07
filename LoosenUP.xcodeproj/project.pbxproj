@@ -528,9 +528,9 @@
 		4C25F9F022FB311100844F8E /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4C25F9D822F9E79500844F8E /* SearchViewController.xib */,
 				4C25F9E122FAB8BA00844F8E /* SearchContainerViewController.xib */,
 				4C25F9DD22F9E93B00844F8E /* SearchTableViewController.xib */,
-				4C25F9D822F9E79500844F8E /* SearchViewController.xib */,
 			);
 			name = SearchViewController;
 			sourceTree = "<group>";

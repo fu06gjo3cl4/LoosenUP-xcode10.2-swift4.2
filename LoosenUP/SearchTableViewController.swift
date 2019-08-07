@@ -10,7 +10,7 @@ import UIKit
 
 class SearchTableViewController: UITableViewController{
     
-    var songs = ["nqlwiehfa/", "qpwuez/xclk", "qythgk", "a/liweur", "[quwoe45123]", "0as9dfi", "a/iewjgl", "agne/jkl", "zh;oisdj", "apqweior", "[ihbodnvkxz]"]
+    var songs = ["Qnqlwiehfa/", "qpwruRez/xclk", "qythgk", "a/liweur", "[quwoe45123]", "0as9dfi", "a/iewjgl", "agne/jkl", "zrRh;oisdj", "apqweiQor", "[ihbodnvkxz]"]
     
     var searchedSongs = [String]()
     var searchController: MySearchController?
