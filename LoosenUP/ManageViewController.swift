@@ -95,8 +95,6 @@ extension ManageViewController {
             self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
         }
         
-//        self.navigationController?.navigationBar.tintColor = Setting.shared.mainColor()
-        
     }
     
 }

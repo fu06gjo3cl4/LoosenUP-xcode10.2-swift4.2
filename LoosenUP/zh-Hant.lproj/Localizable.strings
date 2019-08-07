@@ -11,10 +11,14 @@
 "MainVC.NavBarTitle" = "首頁";
 "ForumVC.NavBarTitle" = "討論區";
 "ManageVC.NavBarTitle" = "個人專區";
+"SearchVC.NavBarTitle" = "搜尋";
+"ShelfVC.NavBarTitle" = "架子";
 
 "MainVC.TabBtnTitle" = "首頁";
 "ForumVC.TabBtnTitle" = "討論區";
 "ManageVC.TabBtnTitle" = "個人專區";
+"SearchVC.TabBtnTitle" = "搜尋";
+"ShelfVC.TabBtnTitle" = "架子";
 
 //-------ForumVC--------
 

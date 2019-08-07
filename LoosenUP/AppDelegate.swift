@@ -23,33 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         subviewcontroller2.title = NSLocalizedString("ForumVC.NavBarTitle", comment: "")
         let subviewcontroller3 = ManageViewController.shared
         subviewcontroller3.title = NSLocalizedString("ManageVC.NavBarTitle", comment: "")
-        
-        let subviewcontroller4 = SearchViewController()
-        subviewcontroller4.title = NSLocalizedString("ManageVC.NavBarTitle", comment: "")
-        let subviewcontroller5 = PersonalQualityViewController()
-        subviewcontroller5.title = NSLocalizedString("ManageVC.NavBarTitle", comment: "")
-        let animation4 = RAMBounceAnimation.init()
-        RAMAnimateService.setItemSelectedColor(Item: animation4, color: Setting.shared.mainColor())
-        let animateditem4 = RAMAnimatedTabBarItem.init()
-        animateditem4.title = NSLocalizedString("MainVC.TabBtnTitle", comment: "")
-        RAMAnimateService.setItemColor(tabbarItem: animateditem4,color: UIColor.lightGray)
-        animateditem4.image = UIImage(named: "icon1")
-        animateditem4.animation = animation4
-        let animation5 = RAMBounceAnimation.init()
-        RAMAnimateService.setItemSelectedColor(Item: animation5, color: Setting.shared.mainColor())
-        let animateditem5 = RAMAnimatedTabBarItem.init()
-        animateditem5.title = NSLocalizedString("MainVC.TabBtnTitle", comment: "")
-        RAMAnimateService.setItemColor(tabbarItem: animateditem5,color: UIColor.lightGray)
-        animateditem5.image = UIImage(named: "icon1")
-        animateditem5.animation = animation5
-        let navigationcontroller4 = UINavigationController()
-        navigationcontroller4.pushViewController(subviewcontroller4, animated: true)
-        navigationcontroller4.tabBarItem = animateditem4
-        let navigationcontroller5 = UINavigationController()
-        navigationcontroller5.pushViewController(subviewcontroller5, animated: true)
-        navigationcontroller5.tabBarItem = animateditem5
-        
-        
+        let subviewcontroller4 = SearchViewController.shared
+        subviewcontroller4.title = NSLocalizedString("SearchVC.NavBarTitle", comment: "")
+        let subviewcontroller5 = PersonalQualityViewController.shared
+        subviewcontroller5.title = NSLocalizedString("ShelfVC.NavBarTitle", comment: "")
         
         let animation1 = RAMBounceAnimation.init()
         RAMAnimateService.setItemSelectedColor(Item: animation1, color: Setting.shared.mainColor())
@@ -74,27 +51,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RAMAnimateService.setItemColor(tabbarItem: animateditem3,color: UIColor.lightGray)
         animateditem3.image = UIImage(named: "icon3")
         animateditem3.animation = animation3
+        
+        let animation4 = RAMBounceAnimation.init()
+        RAMAnimateService.setItemSelectedColor(Item: animation4, color: Setting.shared.mainColor())
+        let animateditem4 = RAMAnimatedTabBarItem.init()
+        animateditem4.title = NSLocalizedString("SearchVC.TabBtnTitle", comment: "")
+        RAMAnimateService.setItemColor(tabbarItem: animateditem4,color: UIColor.lightGray)
+        animateditem4.image = UIImage(named: "icon1")
+        animateditem4.animation = animation4
+        
+        let animation5 = RAMBounceAnimation.init()
+        RAMAnimateService.setItemSelectedColor(Item: animation5, color: Setting.shared.mainColor())
+        let animateditem5 = RAMAnimatedTabBarItem.init()
+        animateditem5.title = NSLocalizedString("ShelfVC.TabBtnTitle", comment: "")
+        RAMAnimateService.setItemColor(tabbarItem: animateditem5,color: UIColor.lightGray)
+        animateditem5.image = UIImage(named: "icon1")
+        animateditem5.animation = animation5
 
         let navigationcontroller1 = UINavigationController()
         navigationcontroller1.pushViewController(subviewcontroller1, animated: true)
-//        UINavigationService.setNavBarColor(navigationController: navigationcontroller1,color: Setting.shared.mainColor())
         navigationcontroller1.tabBarItem = animateditem1
 
         let navigationcontroller2 = UINavigationController()
         navigationcontroller2.pushViewController(subviewcontroller2, animated: true)
-//        UINavigationService.setNavBarColor(navigationController: navigationcontroller2,color: Setting.shared.mainColor())
         navigationcontroller2.tabBarItem = animateditem2
 
         let navigationcontroller3 = UINavigationController()
         navigationcontroller3.pushViewController(subviewcontroller3, animated: true)
-//        UINavigationService.setNavBarColor(navigationController: navigationcontroller3,color: Setting.shared.mainColor())
         navigationcontroller3.tabBarItem = animateditem3
+        
+        let navigationcontroller4 = UINavigationController()
+        navigationcontroller4.pushViewController(subviewcontroller4, animated: true)
+        navigationcontroller4.tabBarItem = animateditem4
+        let navigationcontroller5 = UINavigationController()
+        navigationcontroller5.pushViewController(subviewcontroller5, animated: true)
+        navigationcontroller5.tabBarItem = animateditem5
 
-//        let viewcontroller = HomeTabBarController()
         let viewcontroller = HomeTabBarController.shared
-        viewcontroller.setViewControllers([navigationcontroller2,navigationcontroller1,navigationcontroller3,navigationcontroller4,navigationcontroller5], animated: true)
+        viewcontroller.setViewControllers([navigationcontroller2,navigationcontroller5,navigationcontroller1,navigationcontroller4,navigationcontroller3], animated: true)
         viewcontroller.tabBar.isTranslucent = false
-        viewcontroller.setSelectIndex(from: 0, to: 1)
+        viewcontroller.setSelectIndex(from: 0, to: 2)
         
         self.window?.rootViewController = viewcontroller
         window?.makeKeyAndVisible()

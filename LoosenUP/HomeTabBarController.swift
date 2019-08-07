@@ -133,7 +133,7 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     
     func swipe_tabs_left(){
         print("swipe left")
-        
+        /*
         let rootvc = HomeTabBarController.shared
         if rootvc.selectedIndex < rootvc.children.count-1 {
             guard let items = rootvc.tabBar.items as? [RAMAnimatedTabBarItem]else {
@@ -156,11 +156,12 @@ class HomeTabBarController: RAMAnimatedTabBarController {
             let controller = rootvc.children[rootvc.selectedIndex]
             rootvc.delegate?.tabBarController?(rootvc, didSelect: controller)
         }
+        */
     }
     
     func swipe_tabs_right(){
         print("swipe right")
-        
+        /*
         let rootvc = HomeTabBarController.shared
         if rootvc.selectedIndex > 0 {
             guard let items = rootvc.tabBar.items as? [RAMAnimatedTabBarItem]else {
@@ -183,6 +184,7 @@ class HomeTabBarController: RAMAnimatedTabBarController {
             let controller = rootvc.children[rootvc.selectedIndex]
             rootvc.delegate?.tabBarController?(rootvc, didSelect: controller)
         }
+        */
     }
     
     func setupMiddleButton() {

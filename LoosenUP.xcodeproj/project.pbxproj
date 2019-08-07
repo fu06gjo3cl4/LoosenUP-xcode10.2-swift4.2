@@ -351,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF78A631E6D62F80063254E /* HomeTabBarController.swift */,
+				4C25F9EE22FB308600844F8E /* ShelfViewController */,
 				4C25F9C722F977A000844F8E /* SearchViewController */,
 				4C780FF01E7BDC400021ED86 /* ManageViewController */,
 				4C780FEF1E7BDBBD0021ED86 /* ForumViewController */,
@@ -363,6 +364,8 @@
 		4C11802C1E6AAB6C00155C4D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C25F9EF22FB310700844F8E /* ShelfViewController */,
+				4C25F9F022FB311100844F8E /* SearchViewController */,
 				4CF78A641E6D62F80063254E /* HomeTabBarController.xib */,
 				4C780FF31E7BDF9E0021ED86 /* ManagementView */,
 				4C780FF21E7BDF960021ED86 /* ForumView */,
@@ -496,15 +499,38 @@
 		4C25F9C722F977A000844F8E /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4C25F9E022FAB8BA00844F8E /* SearchContainerViewController.swift */,
-				4C25F9E122FAB8BA00844F8E /* SearchContainerViewController.xib */,
-				4C25F9DC22F9E93B00844F8E /* SearchTableViewController.swift */,
-				4C25F9DD22F9E93B00844F8E /* SearchTableViewController.xib */,
 				4C25F9D922F9E79500844F8E /* SearchViewController.swift */,
-				4C25F9D822F9E79500844F8E /* SearchViewController.xib */,
+				4C25F9E022FAB8BA00844F8E /* SearchContainerViewController.swift */,
+				4C25F9DC22F9E93B00844F8E /* SearchTableViewController.swift */,
 				4C25F9E422FB00C700844F8E /* SlideAnimatedTransitioning.swift */,
 				4C25F9E622FB08E400844F8E /* SearchBarContainerView.swift */,
 				4C25F9EC22FB18D300844F8E /* MySearchController.swift */,
+			);
+			name = SearchViewController;
+			sourceTree = "<group>";
+		};
+		4C25F9EE22FB308600844F8E /* ShelfViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C62C3C81EA76DA00033CF37 /* PersonalQualityViewController.swift */,
+			);
+			name = ShelfViewController;
+			sourceTree = "<group>";
+		};
+		4C25F9EF22FB310700844F8E /* ShelfViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C62C3C91EA76DA00033CF37 /* PersonalQualityViewController.xib */,
+			);
+			name = ShelfViewController;
+			sourceTree = "<group>";
+		};
+		4C25F9F022FB311100844F8E /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C25F9E122FAB8BA00844F8E /* SearchContainerViewController.xib */,
+				4C25F9DD22F9E93B00844F8E /* SearchTableViewController.xib */,
+				4C25F9D822F9E79500844F8E /* SearchViewController.xib */,
 			);
 			name = SearchViewController;
 			sourceTree = "<group>";
@@ -557,7 +583,6 @@
 			children = (
 				4CF78A731E6D7BEE0063254E /* ManageViewController.swift */,
 				4C6DD2D01E8802EB0006E378 /* AccountManageViewController.swift */,
-				4C62C3C81EA76DA00033CF37 /* PersonalQualityViewController.swift */,
 				4C6DD2D41E8809020006E378 /* Personal_RelaxListViewController.swift */,
 				4C6DD2DD1E880A160006E378 /* Situation_AnalysisViewController.swift */,
 				4C6DD2E11E880A300006E378 /* Fatigue_PeriodViewController.swift */,
@@ -595,7 +620,6 @@
 			children = (
 				4CF78A741E6D7BEE0063254E /* ManageViewController.xib */,
 				4C6DD2D11E8802EB0006E378 /* AccountManageViewController.xib */,
-				4C62C3C91EA76DA00033CF37 /* PersonalQualityViewController.xib */,
 				4C6DD2D51E8809020006E378 /* Personal_RelaxListViewController.xib */,
 				4C6DD2DE1E880A160006E378 /* Situation_AnalysisViewController.xib */,
 				4C6DD2E21E880A300006E378 /* Fatigue_PeriodViewController.xib */,

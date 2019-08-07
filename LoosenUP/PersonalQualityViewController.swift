@@ -11,6 +11,16 @@ import SwipeMenuViewController
 
 class PersonalQualityViewController: UIViewController {
     
+    static let shared = PersonalQualityViewController()
+    
+    private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @IBOutlet weak var swipeMenuView: SwipeMenuView!
     
     var array = ["Segment1", "Segment2", "Segment3"]
@@ -23,6 +33,10 @@ class PersonalQualityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
+        
+        UINavigationService.setNavBarColor(navigationController: self.navigationController!, color: Setting.shared.mainColor())
         
         swipeMenuView.dataSource = self
         swipeMenuView.delegate = self
@@ -294,13 +308,13 @@ extension PersonalQualityViewController{
             isGoingTop = true
         }
         
+        if keyPath! == "themeType"{
+            self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+        }
+        
     }
 }
 
 
-
 //To do : change data update by better way like https://medium.com/flawless-app-stories/a-better-way-to-update-uicollectionview-data-in-swift-with-diff-framework-924db158db86
 //collectionView.performBatchUpdates
-
-//a bug appear with themetype change when leave this controller to change
-

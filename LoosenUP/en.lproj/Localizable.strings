@@ -11,10 +11,14 @@
 "MainVC.NavBarTitle" = "Home";
 "ForumVC.NavBarTitle" = "Forum";
 "ManageVC.NavBarTitle" = "Account";
+"SearchVC.NavBarTitle" = "Search";
+"ShelfVC.NavBarTitle" = "Shelf";
 
 "MainVC.TabBtnTitle" = "Home";
 "ForumVC.TabBtnTitle" = "Forum";
 "ManageVC.TabBtnTitle" = "Account";
+"SearchVC.TabBtnTitle" = "Search";
+"ShelfVC.TabBtnTitle" = "Shelf";
 
 //-------ForumVC--------
 
