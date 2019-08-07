@@ -32,6 +32,15 @@
 		4C25F96822F5FD4900844F8E /* loading_cat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F96A22F5FD4900844F8E /* loading_cat.gif */; };
 		4C25F9C022F81CB100844F8E /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25F9BF22F81CB100844F8E /* CustomCollectionView.swift */; };
 		4C25F9C222F81CD900844F8E /* CustomCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F9C122F81CD900844F8E /* CustomCollectionView.xib */; };
+		4C25F9DA22F9E79500844F8E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F9D822F9E79500844F8E /* SearchViewController.xib */; };
+		4C25F9DB22F9E79500844F8E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25F9D922F9E79500844F8E /* SearchViewController.swift */; };
+		4C25F9DE22F9E93B00844F8E /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25F9DC22F9E93B00844F8E /* SearchTableViewController.swift */; };
+		4C25F9DF22F9E93B00844F8E /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F9DD22F9E93B00844F8E /* SearchTableViewController.xib */; };
+		4C25F9E222FAB8BA00844F8E /* SearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25F9E022FAB8BA00844F8E /* SearchContainerViewController.swift */; };
+		4C25F9E322FAB8BA00844F8E /* SearchContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C25F9E122FAB8BA00844F8E /* SearchContainerViewController.xib */; };
+		4C25F9E522FB00C700844F8E /* SlideAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25F9E422FB00C700844F8E /* SlideAnimatedTransitioning.swift */; };
+		4C25F9E722FB08E500844F8E /* SearchBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25F9E622FB08E400844F8E /* SearchBarContainerView.swift */; };
+		4C25F9ED22FB18D300844F8E /* MySearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25F9EC22FB18D300844F8E /* MySearchController.swift */; };
 		4C28823D22E564B7004DFF16 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28823C22E564B7004DFF16 /* Setting.swift */; };
 		4C28823F22EC352E004DFF16 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28823E22EC352D004DFF16 /* Theme.swift */; };
 		4C3EF5E822EF4C1700BF6C99 /* NO.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3EF5E722EF4C1700BF6C99 /* NO.png */; };
@@ -171,6 +180,15 @@
 		4C25F96C22F5FD5A00844F8E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "zh-Hant"; path = "zh-Hant.lproj/loading_cat.gif"; sourceTree = "<group>"; };
 		4C25F9BF22F81CB100844F8E /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		4C25F9C122F81CD900844F8E /* CustomCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionView.xib; sourceTree = "<group>"; };
+		4C25F9D822F9E79500844F8E /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		4C25F9D922F9E79500844F8E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4C25F9DC22F9E93B00844F8E /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		4C25F9DD22F9E93B00844F8E /* SearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewController.xib; sourceTree = "<group>"; };
+		4C25F9E022FAB8BA00844F8E /* SearchContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerViewController.swift; sourceTree = "<group>"; };
+		4C25F9E122FAB8BA00844F8E /* SearchContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchContainerViewController.xib; sourceTree = "<group>"; };
+		4C25F9E422FB00C700844F8E /* SlideAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		4C25F9E622FB08E400844F8E /* SearchBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarContainerView.swift; sourceTree = "<group>"; };
+		4C25F9EC22FB18D300844F8E /* MySearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchController.swift; sourceTree = "<group>"; };
 		4C28823C22E564B7004DFF16 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4C28823E22EC352D004DFF16 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4C3EF5E722EF4C1700BF6C99 /* NO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NO.png; sourceTree = "<group>"; };
@@ -333,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF78A631E6D62F80063254E /* HomeTabBarController.swift */,
+				4C25F9C722F977A000844F8E /* SearchViewController */,
 				4C780FF01E7BDC400021ED86 /* ManageViewController */,
 				4C780FEF1E7BDBBD0021ED86 /* ForumViewController */,
 				4C780FEE1E7BDBA60021ED86 /* MainViewController */,
@@ -472,6 +491,22 @@
 				4C21DBC71EA11A3E0042DFA6 /* PIRipple.swift */,
 			);
 			name = PIRippleService;
+			sourceTree = "<group>";
+		};
+		4C25F9C722F977A000844F8E /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C25F9E022FAB8BA00844F8E /* SearchContainerViewController.swift */,
+				4C25F9E122FAB8BA00844F8E /* SearchContainerViewController.xib */,
+				4C25F9DC22F9E93B00844F8E /* SearchTableViewController.swift */,
+				4C25F9DD22F9E93B00844F8E /* SearchTableViewController.xib */,
+				4C25F9D922F9E79500844F8E /* SearchViewController.swift */,
+				4C25F9D822F9E79500844F8E /* SearchViewController.xib */,
+				4C25F9E422FB00C700844F8E /* SlideAnimatedTransitioning.swift */,
+				4C25F9E622FB08E400844F8E /* SearchBarContainerView.swift */,
+				4C25F9EC22FB18D300844F8E /* MySearchController.swift */,
+			);
+			name = SearchViewController;
 			sourceTree = "<group>";
 		};
 		4C780FD91E77BA630021ED86 /* Resource */ = {
@@ -748,6 +783,7 @@
 				4C6DD2E81E880A440006E378 /* Personal_RankingViewController.xib in Resources */,
 				4C25F96822F5FD4900844F8E /* loading_cat.gif in Resources */,
 				4C6DD2C91E87FD100006E378 /* RankingDetailViewController.xib in Resources */,
+				4C25F9DF22F9E93B00844F8E /* SearchTableViewController.xib in Resources */,
 				4C84C0CD22C28BD300CDF76D /* 7.png in Resources */,
 				4C1180811E6D14FE00155C4D /* LoginViewController.xib in Resources */,
 				4C6DD2D71E8809020006E378 /* Personal_RelaxListViewController.xib in Resources */,
@@ -755,6 +791,7 @@
 				4C25F96322F5FB2B00844F8E /* InfoPlist.strings in Resources */,
 				4C21DC0E1EA47F700042DFA6 /* NO3.png in Resources */,
 				4C6DD2E41E880A300006E378 /* Fatigue_PeriodViewController.xib in Resources */,
+				4C25F9E322FAB8BA00844F8E /* SearchContainerViewController.xib in Resources */,
 				4C1180081E6964C500155C4D /* LaunchScreen.storyboard in Resources */,
 				4C1180051E6964C500155C4D /* Assets.xcassets in Resources */,
 				4CF78A761E6D7BEE0063254E /* ManageViewController.xib in Resources */,
@@ -766,6 +803,7 @@
 				4CD5564922F20A6300EFF4E2 /* CustomUIScrollView.xib in Resources */,
 				4C6DD2D31E8802EB0006E378 /* AccountManageViewController.xib in Resources */,
 				4C21DC0C1EA47F700042DFA6 /* NO5.png in Resources */,
+				4C25F9DA22F9E79500844F8E /* SearchViewController.xib in Resources */,
 				4C1180031E6964C500155C4D /* Main.storyboard in Resources */,
 				4C6DD2EC1E880A540006E378 /* HistoryViewController.xib in Resources */,
 				4C6DD2F11E88B7D30006E378 /* ArticleDetailViewController.xib in Resources */,
@@ -887,8 +925,11 @@
 				4C57A03A22A46F4400F4C4D2 /* UIImageView_Gif.swift in Sources */,
 				4C57A03E22A4DD7200F4C4D2 /* UIViewExtension.swift in Sources */,
 				4C780FEC1E7AD5E10021ED86 /* RankingCollectionCell.swift in Sources */,
+				4C25F9DB22F9E79500844F8E /* SearchViewController.swift in Sources */,
+				4C25F9ED22FB18D300844F8E /* MySearchController.swift in Sources */,
 				4C6DD2CE1E8802D50006E378 /* PersonalManageViewController.swift in Sources */,
 				4C7810861E7E7E470021ED86 /* BTServiceInfo.swift in Sources */,
+				4C25F9E722FB08E500844F8E /* SearchBarContainerView.swift in Sources */,
 				4C6DD2F01E88B7D30006E378 /* ArticleDetailViewController.swift in Sources */,
 				4C3EF5EC22EF996600BF6C99 /* ForumArticle.swift in Sources */,
 				4C84C02722B2537200CDF76D /* UIApplicationExtension.swift in Sources */,
@@ -905,6 +946,7 @@
 				4CE981021E82817E00549400 /* ForumTableCell.swift in Sources */,
 				4C92BB9522F2CEFE007CA8B0 /* ContentViewController.swift in Sources */,
 				4CE981051E839BE200549400 /* PopularityCollectionView.swift in Sources */,
+				4C25F9E522FB00C700844F8E /* SlideAnimatedTransitioning.swift in Sources */,
 				4C6DD2D61E8809020006E378 /* Personal_RelaxListViewController.swift in Sources */,
 				4C117FFE1E6964C500155C4D /* AppDelegate.swift in Sources */,
 				4C78107B1E7E54D50021ED86 /* SelectSituationViewController.swift in Sources */,
@@ -914,12 +956,14 @@
 				4C1180761E6C7A7400155C4D /* HomeViewService.swift in Sources */,
 				4C780FF51E7C0CCE0021ED86 /* EffectCollectionView.swift in Sources */,
 				4C6DD2E31E880A300006E378 /* Fatigue_PeriodViewController.swift in Sources */,
+				4C25F9DE22F9E93B00844F8E /* SearchTableViewController.swift in Sources */,
 				4C28823D22E564B7004DFF16 /* Setting.swift in Sources */,
 				4CF78A651E6D62F80063254E /* HomeTabBarController.swift in Sources */,
 				4C6DD2FE1E8A71890006E378 /* ChartFormatter.swift in Sources */,
 				4C1180781E6C7BBD00155C4D /* News.swift in Sources */,
 				4C57A04222A832CC00F4C4D2 /* RestfulService.swift in Sources */,
 				4C1180831E6D15B100155C4D /* LoginViewService.swift in Sources */,
+				4C25F9E222FAB8BA00844F8E /* SearchContainerViewController.swift in Sources */,
 				4C21DBC81EA11A3E0042DFA6 /* PIRipple.swift in Sources */,
 				4C6DD2F81E88F3B40006E378 /* HistoryTableCell.swift in Sources */,
 				4C78108C1E7FDDC90021ED86 /* UINavigationService.swift in Sources */,

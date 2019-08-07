@@ -12,6 +12,7 @@ import UIKit
 
 class Const {
     static let Screen_Size = UIScreen.main.bounds
+//    static let Screen_Size = UIScreen.main.nativeBounds
     static let Screen_Width = Screen_Size.width
     static let Screen_Height = Screen_Size.height
     
@@ -26,3 +27,28 @@ class Const {
     static let grayChateau = UIColor(red: 163/255.0, green: 164/255.0, blue: 168/255.0, alpha: 0.2)
     
 }
+
+//Name:   iPhone 7 Plus
+//Size:   (414.0, 736.0)
+//Scale:  3.0
+//Native: (1242.0, 2208.0)
+//
+//Name:   iPhone X
+//Size:   (375.0, 812.0)
+//Scale:  3.0
+//Native: (1125.0, 2436.0)
+//
+//Name:   iPhone XR
+//Size:   (414.0, 896.0)
+//Scale:  2.0
+//Native: (828.0, 1792.0)
+//
+//Name:   iPhone XS
+//Size:   (375.0, 812.0)
+//Scale:  3.0
+//Native: (1125.0, 2436.0)
+//
+//Name:   iPhone XS Max
+//Size:   (414.0, 896.0)
+//Scale:  3.0
+//Native: (1242.0, 2688.0)
