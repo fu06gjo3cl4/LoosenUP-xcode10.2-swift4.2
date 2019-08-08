@@ -17,8 +17,6 @@
 		4C1180761E6C7A7400155C4D /* HomeViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180751E6C7A7400155C4D /* HomeViewService.swift */; };
 		4C1180781E6C7BBD00155C4D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180771E6C7BBD00155C4D /* News.swift */; };
 		4C11807A1E6CFFE000155C4D /* ApiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180791E6CFFE000155C4D /* ApiList.swift */; };
-		4C1180801E6D14FE00155C4D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11807E1E6D14FE00155C4D /* LoginViewController.swift */; };
-		4C1180811E6D14FE00155C4D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C11807F1E6D14FE00155C4D /* LoginViewController.xib */; };
 		4C1180831E6D15B100155C4D /* LoginViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180821E6D15B100155C4D /* LoginViewService.swift */; };
 		4C21DB441EA0AD2A0042DFA6 /* RAMAnimateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21DB431EA0AD2A0042DFA6 /* RAMAnimateService.swift */; };
 		4C21DBC81EA11A3E0042DFA6 /* PIRipple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21DBC71EA11A3E0042DFA6 /* PIRipple.swift */; };
@@ -155,8 +153,6 @@
 		4C1180751E6C7A7400155C4D /* HomeViewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewService.swift; sourceTree = "<group>"; };
 		4C1180771E6C7BBD00155C4D /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		4C1180791E6CFFE000155C4D /* ApiList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiList.swift; sourceTree = "<group>"; };
-		4C11807E1E6D14FE00155C4D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4C11807F1E6D14FE00155C4D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		4C1180821E6D15B100155C4D /* LoginViewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewService.swift; sourceTree = "<group>"; };
 		4C21DB431EA0AD2A0042DFA6 /* RAMAnimateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimateService.swift; sourceTree = "<group>"; };
 		4C21DBC71EA11A3E0042DFA6 /* PIRipple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIRipple.swift; sourceTree = "<group>"; };
@@ -356,7 +352,6 @@
 				4C780FF01E7BDC400021ED86 /* ManageViewController */,
 				4C780FEF1E7BDBBD0021ED86 /* ForumViewController */,
 				4C780FEE1E7BDBA60021ED86 /* MainViewController */,
-				4C11807B1E6D14C300155C4D /* LoginViewController */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -370,7 +365,6 @@
 				4C780FF31E7BDF9E0021ED86 /* ManagementView */,
 				4C780FF21E7BDF960021ED86 /* ForumView */,
 				4C780FF11E7BDF8F0021ED86 /* MainView */,
-				4C11807C1E6D14D000155C4D /* LoginView */,
 				4C11802F1E6AABB700155C4D /* Share */,
 			);
 			name = Views;
@@ -430,22 +424,6 @@
 				4C1180751E6C7A7400155C4D /* HomeViewService.swift */,
 			);
 			name = HomeViewService;
-			sourceTree = "<group>";
-		};
-		4C11807B1E6D14C300155C4D /* LoginViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4C11807E1E6D14FE00155C4D /* LoginViewController.swift */,
-			);
-			name = LoginViewController;
-			sourceTree = "<group>";
-		};
-		4C11807C1E6D14D000155C4D /* LoginView */ = {
-			isa = PBXGroup;
-			children = (
-				4C11807F1E6D14FE00155C4D /* LoginViewController.xib */,
-			);
-			name = LoginView;
 			sourceTree = "<group>";
 		};
 		4C11807D1E6D14E300155C4D /* LoginViewService */ = {
@@ -809,7 +787,6 @@
 				4C6DD2C91E87FD100006E378 /* RankingDetailViewController.xib in Resources */,
 				4C25F9DF22F9E93B00844F8E /* SearchTableViewController.xib in Resources */,
 				4C84C0CD22C28BD300CDF76D /* 7.png in Resources */,
-				4C1180811E6D14FE00155C4D /* LoginViewController.xib in Resources */,
 				4C6DD2D71E8809020006E378 /* Personal_RelaxListViewController.xib in Resources */,
 				4C6DD2E01E880A160006E378 /* Situation_AnalysisViewController.xib in Resources */,
 				4C25F96322F5FB2B00844F8E /* InfoPlist.strings in Resources */,
@@ -958,7 +935,6 @@
 				4C3EF5EC22EF996600BF6C99 /* ForumArticle.swift in Sources */,
 				4C84C02722B2537200CDF76D /* UIApplicationExtension.swift in Sources */,
 				4C6DD2F41E88F23B0006E378 /* HistoryDetailViewController.swift in Sources */,
-				4C1180801E6D14FE00155C4D /* LoginViewController.swift in Sources */,
 				4C11807A1E6CFFE000155C4D /* ApiList.swift in Sources */,
 				4C3EF5EA22EF98DA00BF6C99 /* ForumCellViewModel.swift in Sources */,
 				4C25F9C022F81CB100844F8E /* CustomCollectionView.swift in Sources */,

@@ -24,7 +24,8 @@
 
 "EditControl.Edit" = "編輯";
 "EditControl.Done" = "完成";
-
+"EditMode.SelectAll" = "全選";
+"EditMode.DeSelectAll" = "取消";
 //-------ForumVC--------
 
 //-------HomeVC--------

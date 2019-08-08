@@ -38,11 +38,21 @@ class PersonalQualityViewController: UIViewController {
         
         UINavigationService.setNavBarColor(navigationController: self.navigationController!, color: Setting.shared.mainColor())
         
+        //swipe menu
         swipeMenuView.dataSource = self
         swipeMenuView.delegate = self
-        
         let options: SwipeMenuViewOptions = .init()
         swipeMenuView.reloadData(options: options)
+        
+        //search btn
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(toSearchVC))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+    }
+    
+    @objc func toSearchVC(){
+        print("toSearchVC")
+        let vc = SearchContainerViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,6 +138,10 @@ class PersonalQualityViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    deinit {
+        Setting.shared.removeObserver(self, forKeyPath: "themeType")
     }
     
 }
@@ -310,6 +324,7 @@ extension PersonalQualityViewController{
         
         if keyPath! == "themeType"{
             self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
+//            self.viewControllers[swipeMenuView.currentIndex].customView.collectionView.reloadData()
         }
         
     }

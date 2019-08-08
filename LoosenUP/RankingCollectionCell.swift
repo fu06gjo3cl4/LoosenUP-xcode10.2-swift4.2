@@ -32,7 +32,7 @@ class RankingCollectionCell: UICollectionViewCell {
     }
     
     deinit {
-        self.observationInfo = nil
+        Setting.shared.removeObserver(self, forKeyPath: "themeType")
     }
 
 }

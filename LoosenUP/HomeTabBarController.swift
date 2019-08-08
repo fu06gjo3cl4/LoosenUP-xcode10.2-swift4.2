@@ -188,8 +188,7 @@ class HomeTabBarController: RAMAnimatedTabBarController {
     }
     
     func setupMiddleButton() {
-        
-        middleButton = UIButton(frame: CGRect(x: (self.view.bounds.width/2)-(64/2), y: self.view.bounds.height-(self.tabBar.bounds.height/2)-(64/2), width: 64, height: 64))
+        middleButton = UIButton(frame: CGRect(x: (Const.Screen_Width/2)-(64/2), y: Const.Screen_Height-(self.tabBar.bounds.height/2)-(64/2), width: 64, height: 64))
         
         tabBar.barTintColor = UIColor.white
         middleButton.backgroundColor = tabBar.barTintColor

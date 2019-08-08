@@ -13,8 +13,25 @@ import UIKit
 class Const {
     static let Screen_Size = UIScreen.main.bounds
 //    static let Screen_Size = UIScreen.main.nativeBounds
-    static let Screen_Width = Screen_Size.width
-    static let Screen_Height = Screen_Size.height
+    static var Screen_Width: CGFloat{
+        get{
+            if Screen_Size.height > Screen_Size.width{
+                return Screen_Size.width
+            }else{
+                return Screen_Size.height
+            }
+        }
+    }
+    
+    static var Screen_Height: CGFloat{
+        get{
+            if Screen_Size.height > Screen_Size.width{
+                return Screen_Size.height
+            }else{
+                return Screen_Size.width
+            }
+        }
+    }
     
 //    static let Orange_Color:UIColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)
 //    static let Green_Color:UIColor = UIColor(red: 255.0/255.0,green: 170.0/255.0,blue: 0/255,alpha: 1.0)

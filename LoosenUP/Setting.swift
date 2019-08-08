@@ -44,6 +44,31 @@ class Setting :NSObject{
         return themeType
     }
     
+    override func removeObserver(_ observer: NSObject, forKeyPath keyPath: String) {
+        // todo: check observer and keyPath exist or not.
+        if isObserverAndKeyPathExist(observer: observer, key: keyPath){
+            super.removeObserver(observer, forKeyPath: keyPath)
+        }
+    }
+    
+    func isObserverAndKeyPathExist(observer: Any?, key: String?) -> Bool{
+        
+//        let info = Unmanaged<AnyObject>
+//            .fromOpaque(self.observationInfo!)
+//            .takeUnretainedValue()
+//        let array = info.value(forKey: "_observances") as? [Any]
+//        for objc in array ?? [] {
+//            let Properties = (objc as AnyObject).value(forKeyPath: "_property")
+//            let newObserver = (objc as AnyObject).value(forKeyPath: "_observer")
+//
+//            let keyPath = (Properties as AnyObject).value(forKeyPath: "_keyPath") as? String
+//            if (key == keyPath) && newObserver == observer {
+//                return true
+//            }
+//        }
+        return true//false
+    }
+    
     
 }
 

@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RAMAnimateService.setItemColor(tabbarItem: animateditem4,color: UIColor.lightGray)
         animateditem4.image = UIImage(named: "icon1")
         animateditem4.animation = animation4
-        
+
         let animation5 = RAMBounceAnimation.init()
         RAMAnimateService.setItemSelectedColor(Item: animation5, color: Setting.shared.mainColor())
         let animateditem5 = RAMAnimatedTabBarItem.init()
@@ -83,12 +83,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationcontroller4 = UINavigationController()
         navigationcontroller4.pushViewController(subviewcontroller4, animated: true)
         navigationcontroller4.tabBarItem = animateditem4
+        
         let navigationcontroller5 = UINavigationController()
         navigationcontroller5.pushViewController(subviewcontroller5, animated: true)
         navigationcontroller5.tabBarItem = animateditem5
 
         let viewcontroller = HomeTabBarController.shared
         viewcontroller.setViewControllers([navigationcontroller2,navigationcontroller5,navigationcontroller1,navigationcontroller4,navigationcontroller3], animated: true)
+        
         viewcontroller.tabBar.isTranslucent = false
         viewcontroller.setSelectIndex(from: 0, to: 2)
         
