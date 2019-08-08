@@ -14,6 +14,9 @@ target 'LoosenUP' do
   pod 'Charts’, ‘~> 3.2.0’
   pod 'SwiftGifOrigin', '~> 1.7.0'
   pod 'SwipeMenuViewController', '~> 3.0.0' 
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+
 
 
   # Pods for LoosenUP

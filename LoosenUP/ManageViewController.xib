@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManageViewController" customModule="LoosenUP" customModuleProvider="target">
             <connections>
+                <outlet property="btn_FBLogin" destination="Or2-7I-sPQ" id="Nmm-Ob-06u"/>
+                <outlet property="lb_userName" destination="Llz-bG-kQf" id="Qz6-w9-Pw8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_AccountManage" destination="QTS-lV-S2D" id="IFC-yr-7bk"/>
                 <outlet property="view_logout" destination="qNf-Z5-Kyd" id="VGb-Va-qUZ"/>
@@ -298,6 +300,64 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlL-3I-AoT">
                     <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73g-2O-L3M">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llz-bG-kQf">
+                                    <rect key="frame" x="265" y="10" width="100" height="30"/>
+                                    <color key="backgroundColor" red="0.57178591540000001" green="0.58026700610000004" blue="0.92558890579999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="G0y-LD-Heh"/>
+                                        <constraint firstAttribute="height" constant="30" id="KjP-jZ-AfS"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Koc-me-mtk">
+                                    <rect key="frame" x="90" y="0.0" width="187.5" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon2" translatesAutoresizingMaskIntoConstraints="NO" id="ii0-97-3H3">
+                                    <rect key="frame" x="20" y="2.5" width="45" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="45" id="7Vf-P4-85r"/>
+                                        <constraint firstAttribute="height" constant="45" id="a7j-3s-J5r"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Or2-7I-sPQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <connections>
+                                        <action selector="facebookCustomLogIn:" destination="-1" eventType="touchUpInside" id="V2w-Ho-3KX"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Llz-bG-kQf" secondAttribute="trailing" constant="10" id="EcL-5f-fIv"/>
+                                <constraint firstItem="Or2-7I-sPQ" firstAttribute="leading" secondItem="73g-2O-L3M" secondAttribute="leading" id="KyU-xX-KpK"/>
+                                <constraint firstItem="ii0-97-3H3" firstAttribute="leading" secondItem="73g-2O-L3M" secondAttribute="leading" constant="20" id="PHw-2c-Ouo"/>
+                                <constraint firstItem="Llz-bG-kQf" firstAttribute="centerY" secondItem="73g-2O-L3M" secondAttribute="centerY" id="T5V-En-6rh"/>
+                                <constraint firstItem="Koc-me-mtk" firstAttribute="height" secondItem="73g-2O-L3M" secondAttribute="height" id="d1W-cZ-Hsu"/>
+                                <constraint firstAttribute="trailing" secondItem="Or2-7I-sPQ" secondAttribute="trailing" id="fKt-1c-8LM"/>
+                                <constraint firstItem="Koc-me-mtk" firstAttribute="centerY" secondItem="73g-2O-L3M" secondAttribute="centerY" id="fvz-c8-r56"/>
+                                <constraint firstAttribute="height" constant="50" id="nE3-J7-I2N"/>
+                                <constraint firstAttribute="bottom" secondItem="Or2-7I-sPQ" secondAttribute="bottom" id="oQj-Hk-54j"/>
+                                <constraint firstItem="ii0-97-3H3" firstAttribute="centerY" secondItem="73g-2O-L3M" secondAttribute="centerY" id="qGn-6Y-Ssj"/>
+                                <constraint firstItem="Koc-me-mtk" firstAttribute="width" secondItem="73g-2O-L3M" secondAttribute="width" multiplier="0.5" id="qXQ-F6-67y"/>
+                                <constraint firstItem="Or2-7I-sPQ" firstAttribute="top" secondItem="73g-2O-L3M" secondAttribute="top" id="rwA-hI-beE"/>
+                                <constraint firstItem="Koc-me-mtk" firstAttribute="leading" secondItem="ii0-97-3H3" secondAttribute="trailing" constant="25" id="vdI-4r-L3E"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="73g-2O-L3M" firstAttribute="leading" secondItem="YlL-3I-AoT" secondAttribute="leading" id="1yp-iI-a09"/>
+                        <constraint firstItem="73g-2O-L3M" firstAttribute="top" secondItem="YlL-3I-AoT" secondAttribute="top" id="8BN-2a-A6S"/>
+                        <constraint firstAttribute="trailing" secondItem="73g-2O-L3M" secondAttribute="trailing" id="xlm-GH-lHn"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -315,7 +375,7 @@
                 <constraint firstItem="YlL-3I-AoT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x2T-xK-pg3"/>
                 <constraint firstItem="IiL-Cm-9Tx" firstAttribute="top" secondItem="hVa-ra-exr" secondAttribute="bottom" id="zZH-dk-UP1"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="32.799999999999997" y="54.422788605697157"/>
         </view>
     </objects>
     <resources>
@@ -324,5 +384,6 @@
         <image name="Logout" width="60" height="60"/>
         <image name="More" width="60" height="60"/>
         <image name="PersonalManage" width="60" height="60"/>
+        <image name="icon2" width="30" height="30"/>
     </resources>
 </document>

@@ -66,6 +66,8 @@ class Setting :NSObject{
 //                return true
 //            }
 //        }
+        //refer here https://github.com/bigsen/DSKVO
+        
         return true//false
     }
     

@@ -25,7 +25,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
-        
         UINavigationService.setNavBarColor(navigationController: self.navigationController!, color: Setting.shared.mainColor())
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(toSearchVC))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
@@ -38,8 +37,8 @@ class SearchViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
 }
+
 extension SearchViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
