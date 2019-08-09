@@ -30,6 +30,8 @@ class PersonalQualityViewController: UIViewController {
     private var viewControllers = [ContentViewController]()
     private var executeCount = 0
     private var isGoingTop = false
+    private var remainNavBarY:CGFloat?
+    private var remainViewY:CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,7 @@ class PersonalQualityViewController: UIViewController {
         //search btn
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(toSearchVC))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        
     }
     
     @objc func toSearchVC(){
@@ -55,9 +58,18 @@ class PersonalQualityViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if remainNavBarY != nil && isNavBarHidden == true{
+            self.navigationController?.navigationBar.center.y = remainNavBarY!
+            self.view.center.y = remainViewY!
+            print("viewDidLayoutSubviews is running")
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         
         for vc in viewControllers{
             vc.customView.collectionView.dataSource = vc.customView
@@ -102,24 +114,32 @@ class PersonalQualityViewController: UIViewController {
     
     @objc func swipe_up(){
         print("PersonalQualityVC be swipe up")
+        
         if isNavBarHidden {
             
         }else{
+            self.isNavBarHidden = true
+            self.remainNavBarY = (self.navigationController?.navigationBar.center.y)! - ((self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height)
+            self.remainViewY = self.view.center.y - ((self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height)
             UIView.animate(withDuration: 0.4,
                            delay: 0,
                            options: .curveEaseOut,
                            animations: {
-                            self.navigationController?.navigationBar.center.y -= ((self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height)
-                            self.view.center.y -= ((self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height)
+                            self.navigationController?.navigationBar.center.y = self.remainNavBarY!
+                            self.view.center.y = self.remainViewY!
                             },
-                           completion: nil)
-            self.isNavBarHidden = true
+                           completion: {(finished: Bool) in
+                            self.isGoingTop = true
+                            
+            })
         }
     }
     
     @objc func swipe_down(){
         print("PersonalQualityVC be swipe down")
+        
         if isNavBarHidden {
+            self.isNavBarHidden = false
             UIView.animate(withDuration: 0.4,
                            delay: 0,
                            options: .curveEaseOut,
@@ -128,9 +148,10 @@ class PersonalQualityViewController: UIViewController {
                             self.view.center.y += ((self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height)
                             },
                            completion: { (finished: Bool) in
-                                self.isGoingTop = false
-                            })
-            self.isNavBarHidden = false
+                            self.isGoingTop = false
+                            self.remainNavBarY = (self.navigationController?.navigationBar.center.y)!
+                            self.remainViewY = self.view.center.y
+            })
         }else{
             
         }
@@ -245,8 +266,8 @@ extension PersonalQualityViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let vc = self.viewControllers[swipeMenuView.currentIndex]
         
-        print(self.tapPoint.y)
-        print(scrollView.contentOffset.y)
+//        print(self.tapPoint.y)
+//        print(scrollView.contentOffset.y)
         
         if (self.tapPoint.y > scrollView.contentOffset.y) && isNavBarHidden == true {
             self.swipe_down()
