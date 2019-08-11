@@ -9,23 +9,33 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import GoogleSignIn
 
-class ManageViewController: UIViewController {
+class ManageViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var view_AccountManage: UIView!
     @IBOutlet weak var view_personalManage: UIView!
     @IBOutlet weak var view_logout: UIView!
     @IBOutlet weak var btn_FBLogin: UIButton!
+    @IBOutlet weak var btn_GoogleLogin: UIButton!
     @IBOutlet weak var lb_userName: UILabel!{
         didSet{
             lb_userName.layer.cornerRadius = 15
             lb_userName.layer.masksToBounds = true
         }
     }
-    
+    @IBOutlet weak var lb_GoogleUser: UILabel!{
+        didSet{
+            lb_GoogleUser.layer.cornerRadius = 15
+            lb_GoogleUser.layer.masksToBounds = true
+        }
+    }
     
     private var firstName = ""
     private var lastName = ""
+    let group = DispatchGroup()
+    var isWaitForGoogleLogin = false
+    var isWaitForFBLogin = false
     
     @IBAction func facebookCustomLogIn(_ sender: UIButton) {
         let loginButton = FBLoginButton()
@@ -37,7 +47,49 @@ class ManageViewController: UIViewController {
         self.view.addSubview(loginButton)
         // Simulating a tap for the actual Facebook SDK button
         loginButton.sendActions(for: UIControl.Event.touchUpInside)
+        
+        if((AccessToken.current?.userID) == nil){
+            //login
+            group.enter()
+            self.isWaitForFBLogin = true
+        }
+        
+        group.notify(queue: .main) {
+            if (UserDefaults.standard.object(forKey: "FBUserName") as! String) != ""{
+                self.lb_userName.text = (UserDefaults.standard.object(forKey: "FBUserName") as! String)
+                self.isWaitForFBLogin = false
+            }else{
+                UserDefaults.standard.set("", forKey: "FBUserName")
+                self.lb_userName.text = "未連結"
+                self.isWaitForFBLogin = false
+            }
+            
+        }
     }
+    
+    @IBAction func googleCustomLogin(_ sender: Any) {
+        let loginButton = GIDSignInButton()
+        loginButton.isHidden = true
+        self.view.addSubview(loginButton)
+        
+        if GIDSignIn.sharedInstance()?.currentUser != nil{
+            print("have login")
+            GIDSignIn.sharedInstance().signOut()
+            lb_GoogleUser.text = "未連結"
+        }else{
+            print("haven't login")
+            group.enter()
+            DispatchQueue.main.async {
+                loginButton.sendActions(for: .touchUpInside)
+                self.isWaitForGoogleLogin = true
+            }
+            group.notify(queue: .main) {
+                self.lb_GoogleUser.text = (UserDefaults.standard.object(forKey: "GoogleUserName") as! String)
+                self.isWaitForGoogleLogin = false
+            }
+        }
+    }
+    
     
     static let shared = ManageViewController()
     
@@ -52,14 +104,24 @@ class ManageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
+        if GIDSignIn.sharedInstance()?.currentUser != nil{
+            print("have login")
+            lb_GoogleUser.text = (UserDefaults.standard.object(forKey: "GoogleUserName") as! String)
+        }else{
+            print("haven't login")
+            lb_GoogleUser.text = "未連結"
+        }
+        
+        //-------fb login--------
         if ((AccessToken.current?.userID) != nil) {
             //user is login
-            fetchProfile()
-            lb_userName.text = "\(self.firstName)\(self.lastName)"
+            lb_userName.text = (UserDefaults.standard.object(forKey: "FBUserName") as! String)
         }else{
             lb_userName.text = "未連結"
         }
-        
+        //-----------------------
         Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
         
         UINavigationService.setNavBarColor(navigationController: self.navigationController!, color: Setting.shared.mainColor())
@@ -83,11 +145,6 @@ class ManageViewController: UIViewController {
         let tap_logout = UITapGestureRecognizer(target: self, action: #selector(self.logout))
         self.view_logout.addGestureRecognizer(tap_logout)
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        btn_connection.titleLabel?.text = "test"
     }
 
     override func didReceiveMemoryWarning() {
@@ -152,27 +209,25 @@ extension ManageViewController: LoginButtonDelegate{
                     
                     print("成功登入")
                     
+                    let userDefault = UserDefaults.standard
+                    let fullName = (resultNew["last_name"] as! String) + (resultNew["first_name"] as! String)
                     let email = resultNew["email"]  as! String
-                    print(email)
-                    
-                    self.firstName = resultNew["first_name"] as! String
-                    print(self.firstName)
-                    
-                    self.lastName = resultNew["last_name"] as! String
-                    print(self.lastName)
-                    
+                    userDefault.set(fullName, forKey: "FBUserName")
+                    userDefault.set(email, forKey: "FBUserEmail")
                     if let picture = resultNew["picture"] as? NSDictionary,
                         let data = picture["data"] as? NSDictionary,
                         let url = data["url"] as? String {
                         print(url) //臉書大頭貼的url, 再放入imageView內秀出來
+                        userDefault.set(url, forKey: "FBAvatar")
                     }
-                    self.lb_userName.text = "\(self.firstName)\(self.lastName)"
                 }
+            }
+            
+            if self.isWaitForFBLogin{
+                self.group.leave()
             }
         })
     }
-
-    
 }
 
 extension ManageViewController {

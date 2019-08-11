@@ -16,6 +16,7 @@ target 'LoosenUP' do
   pod 'SwipeMenuViewController', '~> 3.0.0' 
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
+  pod 'GoogleSignIn'
 
 
 

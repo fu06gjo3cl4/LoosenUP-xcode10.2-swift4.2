@@ -10,18 +10,24 @@ import UIKit
 import RAMAnimatedTabBarController
 import FBSDKCoreKit
 import FBSDKLoginKit
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //---------------Third party login-----------------
         //facebook login code.
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+        //google login
+        GIDSignIn.sharedInstance().clientID = "419010378750-jimfs0ppcnei4kv84vitqf33chn05s77.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signInSilently()
+        //---------------Third party login-----------------
         
         //---------TabBarViewControllerSetting-----------
         let subviewcontroller1 = MainViewController.shared
@@ -135,28 +141,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let handled = ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-        
-        return handled
+        let fbHandled = ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        let googleHandle = GIDSignIn.sharedInstance().handle(url as URL?,
+                                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        return fbHandled && googleHandle
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("----------------------error info----------------------")
+            print("\(error.localizedDescription)")
+            print("----------------------error info----------------------")
+        } else {
+            // Perform any operations on signed in user here.
+            let userDefault = UserDefaults.standard
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            print("----------------------user info----------------------")
+            print(user)
+            
+            userDefault.set(userId, forKey: "GoogleUserID")
+            userDefault.set(idToken, forKey: "GoogleUserIDToken")
+            userDefault.set(fullName, forKey: "GoogleUserName")
+            userDefault.set(givenName, forKey: "GoogleUserGivenName")
+            userDefault.set(familyName, forKey: "GoogleUserFamilyName")
+            userDefault.set(email, forKey: "GoogleUserEmail")
+            userDefault.synchronize()
+            
+            if ManageViewController.shared.isWaitForGoogleLogin {
+                ManageViewController.shared.group.leave()
+            }
+            
+            print("----------------------user info----------------------")
+            // ...
+        }
     }
 
+
 }
-
-
-//extension UIApplication {
-//    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-//        if let navigationController = controller as? UINavigationController {
-//            return topViewController(controller: navigationController.visibleViewController)
-//        }
-//        if let tabController = controller as? UITabBarController {
-//            if let selected = tabController.selectedViewController {
-//                return topViewController(controller: selected)
-//            }
-//        }
-//        if let presented = controller?.presentedViewController {
-//            return topViewController(controller: presented)
-//        }
-//        return controller
-//    }
-//}

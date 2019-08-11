@@ -20,6 +20,4 @@ class UINavigationService{
         navigationController.navigationBar.barTintColor = color
         navigationController.navigationBar.isTranslucent = false
     }
-    
-    
 }

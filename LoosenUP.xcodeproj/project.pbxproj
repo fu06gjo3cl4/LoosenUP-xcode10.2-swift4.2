@@ -14,10 +14,8 @@
 		4C1180131E6964C500155C4D /* LoosenUPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180121E6964C500155C4D /* LoosenUPTests.swift */; };
 		4C11801E1E6964C500155C4D /* LoosenUPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11801D1E6964C500155C4D /* LoosenUPUITests.swift */; };
 		4C1180351E6AB95D00155C4D /* GetUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180341E6AB95D00155C4D /* GetUrl.swift */; };
-		4C1180761E6C7A7400155C4D /* HomeViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180751E6C7A7400155C4D /* HomeViewService.swift */; };
 		4C1180781E6C7BBD00155C4D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180771E6C7BBD00155C4D /* News.swift */; };
 		4C11807A1E6CFFE000155C4D /* ApiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180791E6CFFE000155C4D /* ApiList.swift */; };
-		4C1180831E6D15B100155C4D /* LoginViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1180821E6D15B100155C4D /* LoginViewService.swift */; };
 		4C21DB441EA0AD2A0042DFA6 /* RAMAnimateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21DB431EA0AD2A0042DFA6 /* RAMAnimateService.swift */; };
 		4C21DBC81EA11A3E0042DFA6 /* PIRipple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21DBC71EA11A3E0042DFA6 /* PIRipple.swift */; };
 		4C21DC0C1EA47F700042DFA6 /* NO5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C21DC071EA47F700042DFA6 /* NO5.png */; };
@@ -44,12 +42,10 @@
 		4C3EF5E822EF4C1700BF6C99 /* NO.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3EF5E722EF4C1700BF6C99 /* NO.png */; };
 		4C3EF5EA22EF98DA00BF6C99 /* ForumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3EF5E922EF98DA00BF6C99 /* ForumCellViewModel.swift */; };
 		4C3EF5EC22EF996600BF6C99 /* ForumArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3EF5EB22EF996600BF6C99 /* ForumArticle.swift */; };
-		4C57A03A22A46F4400F4C4D2 /* UIImageView_Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C57A03922A46F4400F4C4D2 /* UIImageView_Gif.swift */; };
-		4C57A03E22A4DD7200F4C4D2 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C57A03D22A4DD7200F4C4D2 /* UIViewExtension.swift */; };
 		4C57A04222A832CC00F4C4D2 /* RestfulService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C57A04122A832CC00F4C4D2 /* RestfulService.swift */; };
 		4C62C3CA1EA76DA00033CF37 /* PersonalQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62C3C81EA76DA00033CF37 /* PersonalQualityViewController.swift */; };
 		4C62C3CB1EA76DA00033CF37 /* PersonalQualityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C62C3C91EA76DA00033CF37 /* PersonalQualityViewController.xib */; };
-		4C62C4161EA7A0A20033CF37 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62C4151EA7A0A20033CF37 /* UIFontExtension.swift */; };
+		4C65667922FEF13B00AAC0AE /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65667822FEF13B00AAC0AE /* UIExtensions.swift */; };
 		4C6DD2C41E87FBD70006E378 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DD2C21E87FBD70006E378 /* RankingViewController.swift */; };
 		4C6DD2C51E87FBD70006E378 /* RankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6DD2C31E87FBD70006E378 /* RankingViewController.xib */; };
 		4C6DD2C81E87FD100006E378 /* RankingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DD2C61E87FD100006E378 /* RankingDetailViewController.swift */; };
@@ -150,10 +146,8 @@
 		4C11801D1E6964C500155C4D /* LoosenUPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoosenUPUITests.swift; sourceTree = "<group>"; };
 		4C11801F1E6964C500155C4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C1180341E6AB95D00155C4D /* GetUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrl.swift; sourceTree = "<group>"; };
-		4C1180751E6C7A7400155C4D /* HomeViewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewService.swift; sourceTree = "<group>"; };
 		4C1180771E6C7BBD00155C4D /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		4C1180791E6CFFE000155C4D /* ApiList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiList.swift; sourceTree = "<group>"; };
-		4C1180821E6D15B100155C4D /* LoginViewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewService.swift; sourceTree = "<group>"; };
 		4C21DB431EA0AD2A0042DFA6 /* RAMAnimateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimateService.swift; sourceTree = "<group>"; };
 		4C21DBC71EA11A3E0042DFA6 /* PIRipple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIRipple.swift; sourceTree = "<group>"; };
 		4C21DC071EA47F700042DFA6 /* NO5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NO5.png; sourceTree = "<group>"; };
@@ -190,12 +184,10 @@
 		4C3EF5E722EF4C1700BF6C99 /* NO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NO.png; sourceTree = "<group>"; };
 		4C3EF5E922EF98DA00BF6C99 /* ForumCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumCellViewModel.swift; sourceTree = "<group>"; };
 		4C3EF5EB22EF996600BF6C99 /* ForumArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumArticle.swift; sourceTree = "<group>"; };
-		4C57A03922A46F4400F4C4D2 /* UIImageView_Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView_Gif.swift; sourceTree = "<group>"; };
-		4C57A03D22A4DD7200F4C4D2 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		4C57A04122A832CC00F4C4D2 /* RestfulService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestfulService.swift; sourceTree = "<group>"; };
 		4C62C3C81EA76DA00033CF37 /* PersonalQualityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalQualityViewController.swift; sourceTree = "<group>"; };
 		4C62C3C91EA76DA00033CF37 /* PersonalQualityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalQualityViewController.xib; sourceTree = "<group>"; };
-		4C62C4151EA7A0A20033CF37 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		4C65667822FEF13B00AAC0AE /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		4C6DD2C21E87FBD70006E378 /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		4C6DD2C31E87FBD70006E378 /* RankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingViewController.xib; sourceTree = "<group>"; };
 		4C6DD2C61E87FD100006E378 /* RankingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingDetailViewController.swift; sourceTree = "<group>"; };
@@ -382,16 +374,12 @@
 		4C11802E1E6AAB8C00155C4D /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				4C6566BC22FF6C6400AAC0AE /* RestfulService */,
 				4C21DBC61EA11A280042DFA6 /* PIRippleService */,
 				4C21DB421EA0AD110042DFA6 /* RAMAnimateService */,
 				4C7810871E7FDA630021ED86 /* UIExtensions */,
-				4C11807D1E6D14E300155C4D /* LoginViewService */,
-				4C1180721E6C7A0900155C4D /* HomeViewService */,
-				4C1180341E6AB95D00155C4D /* GetUrl.swift */,
-				4C1180791E6CFFE000155C4D /* ApiList.swift */,
 				4C780FE81E790C930021ED86 /* Const.swift */,
 				4C7810851E7E7E470021ED86 /* BTServiceInfo.swift */,
-				4C57A04122A832CC00F4C4D2 /* RestfulService.swift */,
 				4C6DD2FD1E8A71890006E378 /* ChartFormatter.swift */,
 				4C28823C22E564B7004DFF16 /* Setting.swift */,
 				4C28823E22EC352D004DFF16 /* Theme.swift */,
@@ -416,22 +404,6 @@
 				4C25F9C122F81CD900844F8E /* CustomCollectionView.xib */,
 			);
 			name = Share;
-			sourceTree = "<group>";
-		};
-		4C1180721E6C7A0900155C4D /* HomeViewService */ = {
-			isa = PBXGroup;
-			children = (
-				4C1180751E6C7A7400155C4D /* HomeViewService.swift */,
-			);
-			name = HomeViewService;
-			sourceTree = "<group>";
-		};
-		4C11807D1E6D14E300155C4D /* LoginViewService */ = {
-			isa = PBXGroup;
-			children = (
-				4C1180821E6D15B100155C4D /* LoginViewService.swift */,
-			);
-			name = LoginViewService;
 			sourceTree = "<group>";
 		};
 		4C1180871E6D40F100155C4D /* Support_File */ = {
@@ -511,6 +483,16 @@
 				4C25F9DD22F9E93B00844F8E /* SearchTableViewController.xib */,
 			);
 			name = SearchViewController;
+			sourceTree = "<group>";
+		};
+		4C6566BC22FF6C6400AAC0AE /* RestfulService */ = {
+			isa = PBXGroup;
+			children = (
+				4C1180341E6AB95D00155C4D /* GetUrl.swift */,
+				4C1180791E6CFFE000155C4D /* ApiList.swift */,
+				4C57A04122A832CC00F4C4D2 /* RestfulService.swift */,
+			);
+			name = RestfulService;
 			sourceTree = "<group>";
 		};
 		4C780FD91E77BA630021ED86 /* Resource */ = {
@@ -612,11 +594,9 @@
 		4C7810871E7FDA630021ED86 /* UIExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				4C62C4151EA7A0A20033CF37 /* UIFontExtension.swift */,
 				4C78108B1E7FDDC90021ED86 /* UINavigationService.swift */,
-				4C57A03922A46F4400F4C4D2 /* UIImageView_Gif.swift */,
-				4C57A03D22A4DD7200F4C4D2 /* UIViewExtension.swift */,
 				4C84C02622B2537200CDF76D /* UIApplicationExtension.swift */,
+				4C65667822FEF13B00AAC0AE /* UIExtensions.swift */,
 			);
 			name = UIExtensions;
 			sourceTree = "<group>";
@@ -656,6 +636,7 @@
 				4C117FF71E6964C500155C4D /* Frameworks */,
 				4C117FF81E6964C500155C4D /* Resources */,
 				A8D8051851C698F9BC23EF8E /* [CP] Embed Pods Frameworks */,
+				1826AA3AA6FF929C2C0DF72A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -830,6 +811,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1826AA3AA6FF929C2C0DF72A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoosenUP/Pods-LoosenUP-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoosenUP/Pods-LoosenUP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8B611B3F8E3BC4A22DA54BA8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -860,6 +859,8 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
@@ -873,6 +874,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
@@ -927,8 +930,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C57A03A22A46F4400F4C4D2 /* UIImageView_Gif.swift in Sources */,
-				4C57A03E22A4DD7200F4C4D2 /* UIViewExtension.swift in Sources */,
 				4C780FEC1E7AD5E10021ED86 /* RankingCollectionCell.swift in Sources */,
 				4C25F9DB22F9E79500844F8E /* SearchViewController.swift in Sources */,
 				4C25F9ED22FB18D300844F8E /* MySearchController.swift in Sources */,
@@ -944,7 +945,6 @@
 				4C25F9C022F81CB100844F8E /* CustomCollectionView.swift in Sources */,
 				4C6DD2C41E87FBD70006E378 /* RankingViewController.swift in Sources */,
 				4C6DD2C81E87FD100006E378 /* RankingDetailViewController.swift in Sources */,
-				4C62C4161EA7A0A20033CF37 /* UIFontExtension.swift in Sources */,
 				4CF78A711E6D7BE10063254E /* ForumViewController.swift in Sources */,
 				4C7810811E7E55530021ED86 /* DetectViewController.swift in Sources */,
 				4CE981021E82817E00549400 /* ForumTableCell.swift in Sources */,
@@ -957,7 +957,6 @@
 				4C62C3CA1EA76DA00033CF37 /* PersonalQualityViewController.swift in Sources */,
 				4CF78A751E6D7BEE0063254E /* ManageViewController.swift in Sources */,
 				4C6DD2DF1E880A160006E378 /* Situation_AnalysisViewController.swift in Sources */,
-				4C1180761E6C7A7400155C4D /* HomeViewService.swift in Sources */,
 				4C780FF51E7C0CCE0021ED86 /* EffectCollectionView.swift in Sources */,
 				4C6DD2E31E880A300006E378 /* Fatigue_PeriodViewController.swift in Sources */,
 				4C25F9DE22F9E93B00844F8E /* SearchTableViewController.swift in Sources */,
@@ -965,8 +964,8 @@
 				4CF78A651E6D62F80063254E /* HomeTabBarController.swift in Sources */,
 				4C6DD2FE1E8A71890006E378 /* ChartFormatter.swift in Sources */,
 				4C1180781E6C7BBD00155C4D /* News.swift in Sources */,
+				4C65667922FEF13B00AAC0AE /* UIExtensions.swift in Sources */,
 				4C57A04222A832CC00F4C4D2 /* RestfulService.swift in Sources */,
-				4C1180831E6D15B100155C4D /* LoginViewService.swift in Sources */,
 				4C25F9E222FAB8BA00844F8E /* SearchContainerViewController.swift in Sources */,
 				4C21DBC81EA11A3E0042DFA6 /* PIRipple.swift in Sources */,
 				4C6DD2F81E88F3B40006E378 /* HistoryTableCell.swift in Sources */,
