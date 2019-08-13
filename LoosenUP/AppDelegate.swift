@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Override point for customization after application launch.
         
         //---------------Third party login-----------------
-        //facebook login code.
+            //facebook login code.
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        //google login
+            //google login
         GIDSignIn.sharedInstance().clientID = "419010378750-jimfs0ppcnei4kv84vitqf33chn05s77.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently()
@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         subviewcontroller2.title = NSLocalizedString("ForumVC.NavBarTitle", comment: "")
         let subviewcontroller3 = ManageViewController.shared
         subviewcontroller3.title = NSLocalizedString("ManageVC.NavBarTitle", comment: "")
-        let subviewcontroller4 = SearchViewController.shared
+        let subviewcontroller4 = DynamicMessageViewController.shared
         subviewcontroller4.title = NSLocalizedString("SearchVC.NavBarTitle", comment: "")
         let subviewcontroller5 = PersonalQualityViewController.shared
         subviewcontroller5.title = NSLocalizedString("ShelfVC.NavBarTitle", comment: "")
