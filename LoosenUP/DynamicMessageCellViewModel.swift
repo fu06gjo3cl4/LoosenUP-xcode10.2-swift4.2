@@ -41,17 +41,48 @@ class DynamicMessageCellViewModel : DynamicMessageCellViewModelPresenter {
         label.text = userId
     }
     func updateAvatarImage(imageView:UIImageView){
-        imageView.downloadedForCircleMasked(from: avatar_imageUrl)
+        if avatar_imageUrl == ""{
+            imageView.image = nil
+            imageView.isHidden = true
+        }else{
+            imageView.isHidden = false
+            
+            let image_Url = NSURL(string: avatar_imageUrl)
+            if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
+                imageView.image = image.circleMasked
+                imageView.alpha = 1
+            } else { //沒抓過 ->下載圖片
+                imageView.alpha = 0
+                // 下載圖片
+                image_Url?.fetchImage { image in
+                    // Check the cell hasn't recycled while loading.
+                    imageView.image = image.circleMasked
+                    UIView.animate(withDuration: 0.3) {
+                        imageView.alpha = 1
+                    }
+                }
+            }
+        }
     }
     func updateCollactionView(collectionView:GalleryCollectionView){
-        collectionView.image_Urls = image_Urls
-        collectionView.delegate = collectionView
-        collectionView.dataSource = collectionView
-        let rankCell = UINib(nibName: "RankingCollectionCell", bundle: nil)
-        collectionView.register(rankCell, forCellWithReuseIdentifier: "RankingCollectionCell")
-        let galleryCell = UINib(nibName: "GalleryCollectionCell", bundle: nil)
-        collectionView.register(galleryCell, forCellWithReuseIdentifier: "GalleryCollectionCell")
-        collectionView.setHeight()
+        
+        if image_Urls.count <= 1 && image_Urls[0] == ""{
+            collectionView.isHidden = true
+        }else{
+            collectionView.isHidden = false
+            collectionView.image_Urls = image_Urls
+            collectionView.delegate = collectionView
+            collectionView.dataSource = collectionView
+            let galleryCell = UINib(nibName: "GalleryCollectionCell", bundle: nil)
+            collectionView.register(galleryCell, forCellWithReuseIdentifier: "GalleryCollectionCell")
+            collectionView.setHeight()
+            // 建立 UICollectionViewFlowLayout
+            let layout = UICollectionViewFlowLayout()
+            layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5);
+            layout.minimumLineSpacing = 5
+            layout.minimumInteritemSpacing = 0
+            collectionView.collectionViewLayout = layout
+        }
     }
     
 }

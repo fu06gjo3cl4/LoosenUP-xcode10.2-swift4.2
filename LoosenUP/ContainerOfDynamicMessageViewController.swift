@@ -23,25 +23,36 @@ class ContainerOfDynamicMessageViewController: UIViewController {
     
 //    var dataModelList = 10  //[DataModel]()
     var dynamicMessageList = [DynamicMessage]()
+    var refreshControl:UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl = UIRefreshControl()
+        tableView.addSubview(refreshControl)
+        
+        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
         
         RestfulService.request_get(url: GetUrl.Url,callback: getPostList)
         
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func loadData(){
+        
+        // 這邊我們用一個延遲讀取的方法，來模擬網路延遲效果（延遲3秒）
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            // 停止 refreshControl 動畫
+            self.refreshControl.endRefreshing()
+            self.tableView.reloadData()
+//            // 新建5筆假資料
+//            for _ in 1...5 {
+//                self.data.append(self.data.count + 1)
+//                self.myTableView.insertRows(at: [[0,self.data.count - 1]], with: UITableViewRowAnimation.fade)
+//            }
+//            // 滾動到最下方最新的 Data
+//            self.myTableView.scrollToRow(at: [0,self.data.count - 1], at: UITableViewScrollPosition.bottom, animated: true)
+        }
     }
-    */
-
 }
 
 extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableViewDataSource{
@@ -54,7 +65,6 @@ extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableV
         let model = dynamicMessageList[indexPath.row]
         var viewModel = DynamicMessageCellViewModel(dynamicMessage: model)
         cell.updateWithPresenter(presenter: viewModel)
-        
         
         return cell
     }
@@ -77,6 +87,7 @@ extension ContainerOfDynamicMessageViewController{
             dynamicMessage.userId = json[i]["userId"].stringValue
             dynamicMessage.title = json[i]["title"].stringValue
             dynamicMessage.body = json[i]["body"].stringValue
+            dynamicMessage.avatar = json[i]["avatar_imageUrl"].stringValue
             dynamicMessage.image_Urls = json[i]["image_Urls"].arrayValue.map{$0.stringValue}
             dynamicMessageList.append(dynamicMessage)
             if i == json.count-1{

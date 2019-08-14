@@ -103,6 +103,7 @@
 		4CCCD3B52302F65600022A9E /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B42302F65600022A9E /* GalleryCollectionView.swift */; };
 		4CCCD3B8230305D600022A9E /* GalleryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B6230305D600022A9E /* GalleryCollectionCell.swift */; };
 		4CCCD3B9230305D600022A9E /* GalleryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B7230305D600022A9E /* GalleryCollectionCell.xib */; };
+		4CCCD3BB2303205D00022A9E /* CustomImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3BA2303205D00022A9E /* CustomImageCache.swift */; };
 		4CD5564722F20A5500EFF4E2 /* CustomUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD5564622F20A5500EFF4E2 /* CustomUIScrollView.swift */; };
 		4CD5564922F20A6300EFF4E2 /* CustomUIScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD5564822F20A6300EFF4E2 /* CustomUIScrollView.xib */; };
 		4CE981021E82817E00549400 /* ForumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE981001E82817E00549400 /* ForumTableCell.swift */; };
@@ -256,6 +257,7 @@
 		4CCCD3B42302F65600022A9E /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
 		4CCCD3B6230305D600022A9E /* GalleryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionCell.swift; sourceTree = "<group>"; };
 		4CCCD3B7230305D600022A9E /* GalleryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCollectionCell.xib; sourceTree = "<group>"; };
+		4CCCD3BA2303205D00022A9E /* CustomImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageCache.swift; sourceTree = "<group>"; };
 		4CD5564622F20A5500EFF4E2 /* CustomUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIScrollView.swift; sourceTree = "<group>"; };
 		4CD5564822F20A6300EFF4E2 /* CustomUIScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomUIScrollView.xib; sourceTree = "<group>"; };
 		4CE981001E82817E00549400 /* ForumTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTableCell.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				4C6DD2FD1E8A71890006E378 /* ChartFormatter.swift */,
 				4C28823C22E564B7004DFF16 /* Setting.swift */,
 				4C28823E22EC352D004DFF16 /* Theme.swift */,
+				4CCCD3BA2303205D00022A9E /* CustomImageCache.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -514,9 +517,9 @@
 				4C6566CA2301B4C500AAC0AE /* ContainerOfDynamicMessageViewController.xib */,
 				4C6566BF2301AFA600AAC0AE /* DynamicMessageTableCell.swift */,
 				4C6566C02301AFA600AAC0AE /* DynamicMessageTableCell.xib */,
-				4CCCD3B42302F65600022A9E /* GalleryCollectionView.swift */,
 				4CCCD3B6230305D600022A9E /* GalleryCollectionCell.swift */,
 				4CCCD3B7230305D600022A9E /* GalleryCollectionCell.xib */,
+				4CCCD3B42302F65600022A9E /* GalleryCollectionView.swift */,
 			);
 			name = DynamicMessageViewController;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				4C78107B1E7E54D50021ED86 /* SelectSituationViewController.swift in Sources */,
 				4C62C3CA1EA76DA00033CF37 /* PersonalQualityViewController.swift in Sources */,
 				4CF78A751E6D7BEE0063254E /* ManageViewController.swift in Sources */,
+				4CCCD3BB2303205D00022A9E /* CustomImageCache.swift in Sources */,
 				4C6DD2DF1E880A160006E378 /* Situation_AnalysisViewController.swift in Sources */,
 				4CCCD3B32301C06A00022A9E /* DynamicMessage.swift in Sources */,
 				4C780FF51E7C0CCE0021ED86 /* EffectCollectionView.swift in Sources */,

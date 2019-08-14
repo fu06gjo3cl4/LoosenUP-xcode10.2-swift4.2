@@ -12,6 +12,8 @@ class GalleryCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var image_Url: NSURL!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

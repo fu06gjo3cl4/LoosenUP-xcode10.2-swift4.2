@@ -13,7 +13,7 @@ class GalleryCollectionView: UICollectionView {
     
     var image_Urls: [String] = [String]()
     var cellCount: Int = 16
-    var images = [UIImage]()
+    var images = [UIImage?]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,60 +24,20 @@ class GalleryCollectionView: UICollectionView {
     
     func setHeight(){
         
-        switch image_Urls.count {
-        case 0:
-            for constraint in self.constraints {
-                if constraint.identifier == "GalleryCollectionView.Height" {
-                    constraint.constant = 0
-                }
-            }
-        case 1:
-            if image_Urls[0] != ""{
-                for constraint in self.constraints {
-                    if constraint.identifier == "GalleryCollectionView.Height" {
-                        constraint.constant = 200
-                    }
-                }
-            }else{
-                for constraint in self.constraints {
-                    if constraint.identifier == "GalleryCollectionView.Height" {
-                        constraint.constant = 0
-                    }
-                }
-            }
-        case 2:
-            for constraint in self.constraints {
-                if constraint.identifier == "GalleryCollectionView.Height" {
-                    constraint.constant = 400
-                }
-            }
-        case 0:
-            for constraint in self.constraints {
-                if constraint.identifier == "GalleryCollectionView.Height" {
-                    constraint.constant = 600
-                }
-            }
-        default:
-            for constraint in self.constraints {
-                if constraint.identifier == "GalleryCollectionView.Height" {
-                    constraint.constant = 1000
-                }
+        let height: CGFloat!
+        let width = Const.Screen_Width/5
+        if image_Urls.count % 5 != 0{
+            height = CGFloat(((image_Urls.count/5)+1))*width
+        }else{
+            height = CGFloat((image_Urls.count/5))*width
+        }
+        
+        for constraint in self.constraints {
+            if constraint.identifier == "GalleryCollectionView.Height" {
+                constraint.constant = height
             }
         }
         
-        
-//        for constraint in self.constraints {
-//            if constraint.identifier == "GalleryCollectionView.Height" {
-//                constraint.constant = 1000
-//            }
-//        }
-        
-//        self.customView.collectionView.reloadData()
-//        for constraint in self.customView.collectionView.constraints {
-//            if constraint.identifier == "heightOfCollectionView" {
-//                constraint.constant = self.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
-//            }
-//        }
     }
     
 }
@@ -93,24 +53,35 @@ extension GalleryCollectionView: UICollectionViewDelegate,UICollectionViewDataSo
         
         
         let galleryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryCollectionCell", for: indexPath) as! GalleryCollectionCell
+        galleryCell.addborder(view: galleryCell, color: Setting.shared.mainColor().cgColor, height: 1)
         
-//        if(!images.isEmpty){
-//            galleryCell.imageView.image = images[indexPath.row]
-//        }else{
-//            galleryCell.imageView.downloaded(from: image_Urls[indexPath.row])
-////            self.images.append()
-//
-//            images[0].images
-//        }
+        print(indexPath.row)
+        let image_Url = NSURL(string: image_Urls[indexPath.row])
         
-        galleryCell.imageView.downloaded(from: image_Urls[indexPath.row])
-        self.images.append(galleryCell.imageView.image!)
+        galleryCell.image_Url = image_Url // For recycled cells' late image loads.
+        if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
+            galleryCell.imageView.image = image
+            galleryCell.imageView.alpha = 1
+        } else { //沒抓過 ->下載圖片
+            galleryCell.imageView.alpha = 0
+            // 下載圖片
+            image_Url?.fetchImage { image in
+                // Check the cell hasn't recycled while loading.
+                if galleryCell.image_Url == image_Url {
+                    galleryCell.imageView.image = image
+                    UIView.animate(withDuration: 0.3) {
+                        galleryCell.imageView.alpha = 1
+                    }
+                }
+            }
+        }
         
         return galleryCell
     }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: (Const.Screen_Width), height: 200)
+        let size = CGSize(width: (self.frame.width-20)/5, height: (self.frame.width-15)/5)
+//        let size = CGSize(width: ceil(Const.Screen_Width/5), height: ceil(Const.Screen_Width/5))
 //        let size = CGSize(width: (Const.Screen_Width)/CGFloat(image_Urls.count), height: (Const.Screen_Height)/CGFloat(image_Urls.count))
         return size
     }
@@ -125,4 +96,6 @@ extension GalleryCollectionView: UICollectionViewDelegate,UICollectionViewDataSo
             topController.navigationController?.pushViewController(viewcontroller, animated: true)
         }
     }
+    
+    
 }
