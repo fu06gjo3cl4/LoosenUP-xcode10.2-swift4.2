@@ -9,15 +9,17 @@
 import Foundation
 import UIKit
 
-class DynamicMessageCellViewModel : DynamicMessageCellViewModelPresenter {
+class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresenter {
     var id:String = "20"
     var title:String = "default"
-    var body:String = "default"
+    @objc dynamic var body:String = "default"
     var userId:String = "default"
     var avatar_imageUrl:String = "default"
     var image_Urls:[String] = [String]()
+    var isLikeOrNot:Bool = false
     
-    var numberOfImage:Int = 1
+    var isNeedToReload:Bool = false  // numberOfImage:Int = 1   //?
+    var cellIndex:IndexPath = IndexPath(row: 0, section: 0)
     
     init(dynamicMessage :DynamicMessage){
         id = dynamicMessage.id
@@ -39,6 +41,17 @@ class DynamicMessageCellViewModel : DynamicMessageCellViewModelPresenter {
     }
     func updateUserIdLabel(label:UILabel){
         label.text = userId
+    }
+    func updateLikeBtn(btn:UIButton){
+        btn.isSelected = isLikeOrNot
+        btn.tintColor = Setting.shared.mainColor()
+        btn.imageView?.contentMode = .scaleAspectFit
+        if btn.isSelected {
+            btn.setImage(UIImage(named: "icon1")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }else{
+            btn.setImage(UIImage(named: "icon1"), for: .normal)
+        }
+        
     }
     func updateAvatarImage(imageView:UIImageView){
         if avatar_imageUrl == ""{
@@ -63,6 +76,7 @@ class DynamicMessageCellViewModel : DynamicMessageCellViewModelPresenter {
                 }
             }
         }
+        
     }
     func updateCollactionView(collectionView:GalleryCollectionView){
         
@@ -85,19 +99,32 @@ class DynamicMessageCellViewModel : DynamicMessageCellViewModelPresenter {
         }
     }
     
+    func bindingValueWithVM(tableCell: DynamicMessageTableCell){
+        
+        tableCell.observers.append(
+            self.observe(\.body,options: [.new], changeHandler: {(self, change) in
+                print(change)
+                tableCell.lb_body.text = change.newValue
+            })
+        )
+    }
+    
 }
 
-protocol DynamicMessageCellViewModelPresenter {
+protocol DynamicMessageCellViewModelPresenter: AnyObject {
     var id:String{get}
     var title:String{get}
-    var body:String{get}
+    var body:String{get set}
     var userId:String{get}
     var avatar_imageUrl:String{get}
+    var isLikeOrNot:Bool{get set}
     
     func updateIdLabel(label:UILabel)
     func updateTitleLabel(label:UILabel)
     func updateBodyLabel(label:UILabel)
     func updateUserIdLabel(label:UILabel)
+    func updateLikeBtn(btn:UIButton)
     func updateAvatarImage(imageView:UIImageView)
     func updateCollactionView(collectionView:GalleryCollectionView)
+    func bindingValueWithVM(tableCell: DynamicMessageTableCell)
 }

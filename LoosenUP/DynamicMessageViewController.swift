@@ -64,26 +64,7 @@ extension DynamicMessageViewController: SwipeMenuViewDataSource {
         
         executeCount += 1
         
-        let vc = ContainerOfDynamicMessageViewController() 
-//        let customView = CustomUIScrollView(frame: vc.view.bounds)
-//        customView.scrollview.delegate = self
-//        vc.customView = customView
-        
-//        for constraint in vc.customView.collectionView.constraints {
-//            if constraint.identifier == "heightOfCollectionView" {
-//                constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
-//            }
-//        }
-//        for constraint in vc.customView.scrollview.constraints{
-//            if constraint.identifier == "contentViewHeight"{
-//                constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
-//            }
-//        }
-//        vc.customView.layoutIfNeeded()
-        
-//        vc.view.addSubview(vc.customView!)
-        
-//        vc.customView.addObserver(self, forKeyPath: "isGoTopBtnActive", options: .new, context: nil)
+        let vc = ContainerOfDynamicMessageViewController()
         
         if executeCount < array.count+1{
             return UIViewController()
@@ -92,7 +73,6 @@ extension DynamicMessageViewController: SwipeMenuViewDataSource {
             print(viewControllers.count)
             return vc
         }
-        //        return vc
     }
 }
 
@@ -114,31 +94,8 @@ extension DynamicMessageViewController: SwipeMenuViewDelegate {
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // Codes
         //is init or not? init , don't do anything
-        let vc = self.viewControllers[toIndex]
+//        let vc = self.viewControllers[toIndex]
         
-//        if !vc.customView.isInitDataOrNot{
-//            if(vc.customView.collectionCellsCount+20 < vc.customView.totalCellCount){
-//                vc.customView.collectionCellsCount += 20
-//                vc.customView.collectionView.reloadData()
-//                for constraint in vc.customView.collectionView.constraints {
-//                    if constraint.identifier == "heightOfCollectionView" {
-//                        constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
-//                    }
-//                }
-//                vc.customView.layoutIfNeeded()
-//                vc.customView.isInitDataOrNot = true
-//            }else if vc.customView.collectionCellsCount != vc.customView.totalCellCount{
-//                vc.customView.collectionCellsCount = vc.customView.totalCellCount
-//                vc.customView.collectionView.reloadData()
-//                for constraint in vc.customView.collectionView.constraints {
-//                    if constraint.identifier == "heightOfCollectionView" {
-//                        constraint.constant = vc.customView.collectionView.collectionViewLayout.collectionViewContentSize.height
-//                    }
-//                }
-//                vc.customView.layoutIfNeeded()
-//                vc.customView.isInitDataOrNot = true
-//            }else{}
-//        }
         
     }
 }
@@ -148,7 +105,6 @@ extension DynamicMessageViewController{
         
         if keyPath! == "themeType"{
             self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
-            //            self.viewControllers[swipeMenuView.currentIndex].customView.collectionView.reloadData()
         }
         
     }

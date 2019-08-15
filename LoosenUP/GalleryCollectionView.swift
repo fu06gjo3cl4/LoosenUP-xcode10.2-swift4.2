@@ -81,8 +81,6 @@ extension GalleryCollectionView: UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = CGSize(width: (self.frame.width-20)/5, height: (self.frame.width-15)/5)
-//        let size = CGSize(width: ceil(Const.Screen_Width/5), height: ceil(Const.Screen_Width/5))
-//        let size = CGSize(width: (Const.Screen_Width)/CGFloat(image_Urls.count), height: (Const.Screen_Height)/CGFloat(image_Urls.count))
         return size
     }
     
@@ -91,8 +89,9 @@ extension GalleryCollectionView: UICollectionViewDelegate,UICollectionViewDataSo
         
         if let topController = UIApplication.topViewController(){
             print(topController)
-            let viewcontroller = RankingDetailViewController()
-            viewcontroller.ranking = indexPath.row
+            let viewcontroller = UIViewController()
+            viewcontroller.title = "new page"
+            viewcontroller.view.backgroundColor = UIColor.white
             topController.navigationController?.pushViewController(viewcontroller, animated: true)
         }
     }

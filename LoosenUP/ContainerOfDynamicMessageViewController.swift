@@ -24,6 +24,8 @@ class ContainerOfDynamicMessageViewController: UIViewController {
 //    var dataModelList = 10  //[DataModel]()
     var dynamicMessageList = [DynamicMessage]()
     var refreshControl:UIRefreshControl!
+    var viewModels = [DynamicMessageCellViewModel]()
+    var observers = [NSKeyValueObservation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +41,14 @@ class ContainerOfDynamicMessageViewController: UIViewController {
     
     @objc func loadData(){
         
-        // 這邊我們用一個延遲讀取的方法，來模擬網路延遲效果（延遲3秒）
+        // 延遲讀取模擬網路延遲效果
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            // 停止 refreshControl 動畫
             self.refreshControl.endRefreshing()
             self.tableView.reloadData()
-//            // 新建5筆假資料
-//            for _ in 1...5 {
-//                self.data.append(self.data.count + 1)
-//                self.myTableView.insertRows(at: [[0,self.data.count - 1]], with: UITableViewRowAnimation.fade)
-//            }
-//            // 滾動到最下方最新的 Data
-//            self.myTableView.scrollToRow(at: [0,self.data.count - 1], at: UITableViewScrollPosition.bottom, animated: true)
+
         }
     }
+    
 }
 
 extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableViewDataSource{
@@ -62,15 +58,20 @@ extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "DynamicMessageTableCell", for: indexPath) as! DynamicMessageTableCell
-        let model = dynamicMessageList[indexPath.row]
-        var viewModel = DynamicMessageCellViewModel(dynamicMessage: model)
-        cell.updateWithPresenter(presenter: viewModel)
+        
+        cell.presenter = viewModels[indexPath.row]
+        cell.updateWithPresenter()
         
         return cell
     }
     
-    
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tableCell of indexpath: \(indexPath.row)")
+        print("viewModel of indexpath: \(indexPath.row)")
+        // if cell's height is no change. can only change viewModel's data to update(already binding value).
+        self.viewModels[indexPath.row].body = RandomData.randomString(length: 200)// "mynewtext for body" 
+        self.tableView.reloadRows(at: [indexPath], with: .none)
+    }
     
 }
 
@@ -90,26 +91,13 @@ extension ContainerOfDynamicMessageViewController{
             dynamicMessage.avatar = json[i]["avatar_imageUrl"].stringValue
             dynamicMessage.image_Urls = json[i]["image_Urls"].arrayValue.map{$0.stringValue}
             dynamicMessageList.append(dynamicMessage)
+            viewModels.append(DynamicMessageCellViewModel(dynamicMessage: dynamicMessage))
+            
             if i == json.count-1{
                 tableView.reloadData()
-                print("over")//reloadData()
+                print("over")
             }
         }
-        
-        
-        
-        //        var NewsList : [News] = [News]()
-        
-        //        for i in 0...json.count{
-        //
-        ////            var news = News()
-        ////            news.title = json["NewsTitle"].stringValue
-        ////            news.datetime = json["NewsTime"].stringValue
-        ////            news.content = json["NewsContent"].stringValue
-        ////
-        ////            NewsList.append(news)
-        //
-        //        }
         
     }
     
