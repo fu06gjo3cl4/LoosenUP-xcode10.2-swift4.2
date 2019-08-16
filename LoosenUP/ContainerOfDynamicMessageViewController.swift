@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
 
 class ContainerOfDynamicMessageViewController: UIViewController {
@@ -21,22 +22,29 @@ class ContainerOfDynamicMessageViewController: UIViewController {
         }
     }
     
-//    var dataModelList = 10  //[DataModel]()
     var dynamicMessageList = [DynamicMessage]()
     var refreshControl:UIRefreshControl!
     var viewModels = [DynamicMessageCellViewModel]()
+    var numberOfRows = 0
     var observers = [NSKeyValueObservation]()
+    var userId = 1
+    var preCount = 0
+    let q = DispatchQueue.global()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
         tableView.addSubview(refreshControl)
         
-        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
-        
-        RestfulService.request_get(url: GetUrl.Url,callback: getPostList)
-        
+    }
+    
+    func requestData() {
+        let parameters: Parameters = [
+            "userId": userId
+        ]
+        RestfulService.request_get(url: GetUrl.Url,parameters: parameters,callback: getPostList)
     }
     
     @objc func loadData(){
@@ -53,7 +61,7 @@ class ContainerOfDynamicMessageViewController: UIViewController {
 
 extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dynamicMessageList.count
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,11 +79,39 @@ extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableV
         print("tableCell of indexpath: \(indexPath.row)")
         print("viewModel of indexpath: \(indexPath.row)")
         print(viewModels[indexPath.row].body)
-        // if cell's height is no change. can only change viewModel's data to update(already binding value).
-//        self.viewModels[indexPath.row].body = RandomData.randomString(length: 200)// "mynewtext for body" 
-//        self.dynamicTableView.reloadRows(at: [indexPath], with: .none)
     }
     
+}
+
+extension ContainerOfDynamicMessageViewController: UIScrollViewDelegate{
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print("scrollView.contentOffset.y : \(scrollView.contentOffset.y)")
+        print((scrollView.contentOffset.y+scrollView.bounds.size.height)>(scrollView.contentSize.height-300))
+        
+        if((scrollView.contentOffset.y+scrollView.bounds.size.height)>(scrollView.contentSize.height-1200)){
+            
+            let preNumber = self.tableView.numberOfRows(inSection: 0)
+            if preNumber<viewModels.count{
+                self.tableView.beginUpdates()
+                
+                if preNumber+20 <= viewModels.count{
+                    numberOfRows = preNumber+20
+                    for i in preNumber..<preNumber+20{
+                        self.tableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .none)
+                    }
+                }else{
+                    numberOfRows = viewModels.count
+                    for i in preNumber..<viewModels.count{
+                        self.tableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .none)
+                    }
+                }
+                
+                self.tableView.endUpdates()
+            }else{
+                print("it's end of data")
+            }
+        }
+    }
 }
 
 
@@ -97,11 +133,28 @@ extension ContainerOfDynamicMessageViewController{
             viewModels.append(DynamicMessageCellViewModel(dynamicMessage: dynamicMessage))
             
             if i == json.count-1{
-                tableView.reloadData()
-                print("over")
+                
+                if tableView.numberOfRows(inSection: 0) == 0{
+                    numberOfRows = viewModels.count
+                    tableView.reloadData()
+                }else{
+                }
+                
+                // preload data for use.
+                q.sync {
+                    userId += 1
+                    if(preCount==viewModels.count){
+                        
+                    }else{
+                        preCount = viewModels.count
+                        let parameters: Parameters = [
+                            "userId": userId
+                        ]
+                        RestfulService.request_get(url: GetUrl.Url,parameters: parameters,callback: getPostList)
+                    }
+                }
+                
             }
         }
-        
     }
-    
 }

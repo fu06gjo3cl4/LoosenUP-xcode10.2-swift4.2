@@ -38,13 +38,11 @@ class DynamicMessageTableCell: UITableViewCell {
             btn_Like.isSelected = false
             presenter?.isLikeOrNot = btn_Like.isSelected
             presenter?.likeCount -= 1
-            
         } else {
             // set selected
             btn_Like.isSelected = true
             presenter?.isLikeOrNot = btn_Like.isSelected
             presenter?.likeCount += 1
-            
         }
         reloadCell()
     }

@@ -81,20 +81,20 @@ class MainViewController: UIViewController {
     @IBOutlet weak var subview_popularity_ranking: UIView!
     @IBOutlet weak var btn_Tired: UIButton!{
         didSet{
-            btn_Tired.addborder(view: btn_Tired, color: UIColor.black.cgColor, height: 1.0)
-            btn_Tired.addShadow(view: btn_Tired, color: UIColor.black.cgColor, width: 1.0, height: 1.0, radius: 5.0, opacity: 0.5)
+            btn_Tired.addborder(color: UIColor.black.cgColor, height: 1.0)
+            btn_Tired.addShadow(color: UIColor.black.cgColor, width: 1.0, height: 1.0, radius: 5.0, opacity: 0.5)
             
-            btn_Tired.setBackgroundColor(view: btn_Tired, color: Setting.shared.mainColor().cgColor)
-            btn_Tired.SetCornerRadius(view: btn_Tired, cornerRadius: 5.0)
+            btn_Tired.setBackgroundColor(color: Setting.shared.mainColor().cgColor)
+            btn_Tired.SetCornerRadius(cornerRadius: 5.0)
         }
     }
     @IBOutlet weak var btn_Relax: UIButton!{
         didSet{
-            btn_Relax.addborder(view: btn_Relax, color: UIColor.black.cgColor, height: 1.0)
-            btn_Relax.addShadow(view: btn_Relax, color: UIColor.black.cgColor, width: 1.0, height: 1.0, radius: 5.0, opacity: 0.5)
+            btn_Relax.addborder(color: UIColor.black.cgColor, height: 1.0)
+            btn_Relax.addShadow(color: UIColor.black.cgColor, width: 1.0, height: 1.0, radius: 5.0, opacity: 0.5)
             
-            btn_Relax.setBackgroundColor(view: btn_Relax, color: Setting.shared.mainColor().cgColor)
-            btn_Relax.SetCornerRadius(view: btn_Relax, cornerRadius: 5.0)
+            btn_Relax.setBackgroundColor(color: Setting.shared.mainColor().cgColor)
+            btn_Relax.SetCornerRadius(cornerRadius: 5.0)
         }
     }
     //介面事件連結
@@ -186,10 +186,10 @@ class MainViewController: UIViewController {
         times_viewDidLayoutSubviews = times_viewDidLayoutSubviews+1
         if(times_viewDidLayoutSubviews == 2){
             // 加入上邊界與下邊界   (加在viewdidload無法正確呈現)
-            effect_container.addtopborder(view: effect_container, color: UIColor.black.cgColor, height: 3.0)
-            effect_container.addbottomborder(view: effect_container, color: UIColor.black.cgColor, height: 3.0)
-            popularity_Container.addtopborder(view: popularity_Container, color: UIColor.black.cgColor, height: 3.0)
-            popularity_Container.addbottomborder(view: popularity_Container, color: UIColor.black.cgColor, height: 3.0)
+            effect_container.addtopborder(color: UIColor.black.cgColor, height: 3.0)
+            effect_container.addbottomborder(color: UIColor.black.cgColor, height: 3.0)
+            popularity_Container.addtopborder(color: UIColor.black.cgColor, height: 3.0)
+            popularity_Container.addbottomborder(color: UIColor.black.cgColor, height: 3.0)
             
         }
         
@@ -213,8 +213,8 @@ class MainViewController: UIViewController {
 //        self.navigationController?.navigationBar.tintColor = Setting.shared.mainColor()
         if keyPath! == "themeType"{
             self.navigationController?.navigationBar.barTintColor = Setting.shared.mainColor()
-            btn_Tired.setBackgroundColor(view: btn_Tired, color: Setting.shared.mainColor().cgColor)
-            btn_Relax.setBackgroundColor(view: btn_Relax, color: Setting.shared.mainColor().cgColor)
+            btn_Tired.setBackgroundColor(color: Setting.shared.mainColor().cgColor)
+            btn_Relax.setBackgroundColor(color: Setting.shared.mainColor().cgColor)
         }
         
     }

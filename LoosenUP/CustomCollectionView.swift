@@ -61,7 +61,7 @@ extension CustomCollectionView: UICollectionViewDelegate,UICollectionViewDataSou
         print("select item at indexPath: \(indexPath.row)" )
         
         let cell = collectionView.cellForItem(at: indexPath) as! RankingCollectionCell
-        cell.addborder(view: cell, color: UIColor.orange.cgColor, height: 1)
+        cell.addborder(color: UIColor.orange.cgColor, height: 1)
         
     }
     

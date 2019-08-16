@@ -57,9 +57,9 @@ extension Personal_RelaxListViewController: UICollectionViewDelegate,UICollectio
         let cell = collectionView.cellForItem(at: indexPath) as! RankingCollectionCell
         
         if cell.isSelected == true{
-            cell.addborder(view: cell, color: Setting.shared.mainColor().cgColor, height: 1)
+            cell.addborder(color: Setting.shared.mainColor().cgColor, height: 1)
         }else{
-            cell.addborder(view: cell, color: UIColor.orange.cgColor, height: 1)
+            cell.addborder(color: UIColor.orange.cgColor, height: 1)
         }
         
     }

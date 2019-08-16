@@ -118,13 +118,13 @@ extension CustomUIScrollView: UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("select item at indexPath: \(indexPath.row)" )
         let cell = collectionView.cellForItem(at: indexPath) as! RankingCollectionCell
-        cell.addborder(view: cell, color: UIColor.orange.cgColor, height: 1)
+        cell.addborder(color: UIColor.orange.cgColor, height: 1)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! RankingCollectionCell
-        cell.addborder(view: cell, color: Setting.shared.mainColor().cgColor, height: 1)
+        cell.addborder(color: Setting.shared.mainColor().cgColor, height: 1)
     }
     
     

@@ -18,9 +18,9 @@ class ForumTableCell: UITableViewCell {
     
     @IBOutlet weak var whiteRoundedView: UIView!{
         didSet{
-            whiteRoundedView.addborder(view: whiteRoundedView, color: Const.white.cgColor, height: 1)
-            whiteRoundedView.SetCornerRadius(view: whiteRoundedView, cornerRadius: 2.0)
-            whiteRoundedView.addShadow(view: whiteRoundedView, color: Const.black.cgColor, width: -1, height: 1, radius: 2.0, opacity: 0.2)
+            whiteRoundedView.addborder(color: Const.white.cgColor, height: 1)
+            whiteRoundedView.SetCornerRadius(cornerRadius: 2.0)
+            whiteRoundedView.addShadow(color: Const.black.cgColor, width: -1, height: 1, radius: 2.0, opacity: 0.2)
         }
     }
 
@@ -69,9 +69,13 @@ class ForumTableCell: UITableViewCell {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        self.tintColor = Setting.shared.mainColor()
-        image_right.image = image_right.image?.withRenderingMode(.alwaysTemplate)
-        btn.imageView?.image = btn.imageView?.image?.withRenderingMode(.alwaysTemplate)
+        if keyPath! == "themeType"{
+            self.tintColor = Setting.shared.mainColor()
+            image_right.image = image_right.image?.withRenderingMode(.alwaysTemplate)
+            btn.imageView?.image = btn.imageView?.image?.withRenderingMode(.alwaysTemplate)
+        }
+    }
+    deinit {
+        Setting.shared.removeObserver(self, forKeyPath: "themeType")
     }
 }

@@ -29,6 +29,7 @@ class ForumViewController: UIViewController {
             self.tableview.allowsSelectionDuringEditing = true
         }
     }
+    private var tapPoint: CGPoint = CGPoint(x: 0, y: 0)
     
     var selectedIndexs = [IndexPath]()
     var isSelectedAll = false
@@ -126,10 +127,6 @@ class ForumViewController: UIViewController {
 
 extension ForumViewController : UITableViewDelegate,UITableViewDataSource{
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return numberOfRows
     }
@@ -199,8 +196,24 @@ extension ForumViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
     }
+    
 }
 
-
+extension ForumViewController: UIScrollViewDelegate{
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print("scrollView.contentOffset.y : \(scrollView.contentOffset.y)")
+        print((scrollView.contentOffset.y+scrollView.bounds.size.height)>(scrollView.contentSize.height-300))
+        
+        if((scrollView.contentOffset.y+scrollView.bounds.size.height)>(scrollView.contentSize.height-300)){
+            numberOfRows += 5
+            self.tableview.beginUpdates()
+            let preNumber = self.tableview.numberOfRows(inSection: 0)
+            for i in preNumber..<numberOfRows{
+                self.tableview.insertRows(at: [IndexPath(row: i, section: 0)], with: .none)
+            }
+            self.tableview.endUpdates()
+        }
+    }
+}
 
 

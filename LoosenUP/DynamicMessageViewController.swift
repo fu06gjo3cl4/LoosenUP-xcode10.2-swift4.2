@@ -44,7 +44,6 @@ class DynamicMessageViewController: UIViewController {
         let options: SwipeMenuViewOptions = .init()
         swipeMenuView.reloadData(options: options)
         
-        
     }
     
 }
@@ -81,21 +80,24 @@ extension DynamicMessageViewController: SwipeMenuViewDelegate {
     // MARK - SwipeMenuViewDelegate
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewWillSetupAt currentIndex: Int) {
         // Codes
+        print("viewwillsetup at currentindex: \(currentIndex)")
     }
     
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewDidSetupAt currentIndex: Int) {
         // Codes
+        print("viewdidsetup at currentindex: \(currentIndex)")
+        let vc = self.viewControllers[currentIndex] as! ContainerOfDynamicMessageViewController
+        vc.requestData()
     }
     
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // Codes
+        let vc = self.viewControllers[toIndex] as! ContainerOfDynamicMessageViewController
+        vc.requestData()
     }
     
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // Codes
-        //is init or not? init , don't do anything
-//        let vc = self.viewControllers[toIndex]
-        
         
     }
 }

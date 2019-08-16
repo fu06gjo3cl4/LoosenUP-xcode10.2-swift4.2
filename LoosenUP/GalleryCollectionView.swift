@@ -53,7 +53,7 @@ extension GalleryCollectionView: UICollectionViewDelegate,UICollectionViewDataSo
         
         
         let galleryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryCollectionCell", for: indexPath) as! GalleryCollectionCell
-        galleryCell.addborder(view: galleryCell, color: Setting.shared.mainColor().cgColor, height: 1)
+        galleryCell.addborder(color: Setting.shared.mainColor().cgColor, height: 1)
         
         print(indexPath.row)
         let image_Url = NSURL(string: image_Urls[indexPath.row])
@@ -80,7 +80,7 @@ extension GalleryCollectionView: UICollectionViewDelegate,UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: (self.frame.width-20)/5, height: (self.frame.width-15)/5)
+        let size = CGSize(width: (self.frame.width-30)/5, height: (self.frame.width-30)/5)
         return size
     }
     

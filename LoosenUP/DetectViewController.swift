@@ -29,25 +29,25 @@ class DetectViewController: UIViewController , CBCentralManagerDelegate ,CBPerip
     
     @IBOutlet weak var view_detect_time: UIView!{
         didSet{
-            view_detect_time.SetCornerRadius(view: view_detect_time, cornerRadius: 5.0)
+            view_detect_time.SetCornerRadius(cornerRadius: 5.0)
         }
     }
     @IBOutlet weak var view_tired_degree: UIView!{
         didSet{
-            view_tired_degree.SetCornerRadius(view: view_tired_degree, cornerRadius: 5.0)
+            view_tired_degree.SetCornerRadius(cornerRadius: 5.0)
         }
     }
     
     @IBOutlet weak var btn_start_detect: UIButton!{
         didSet{
-            btn_start_detect.setBackgroundColor(view: btn_start_detect, color: Setting.shared.mainColor().cgColor)
-            btn_start_detect.SetCornerRadius(view: btn_start_detect, cornerRadius: 5.0)
+            btn_start_detect.setBackgroundColor(color: Setting.shared.mainColor().cgColor)
+            btn_start_detect.SetCornerRadius(cornerRadius: 5.0)
         }
     }
     @IBOutlet weak var btn_finish_detect: UIButton!{
         didSet{
-            btn_finish_detect.setBackgroundColor(view: btn_finish_detect, color: Setting.shared.mainColor().cgColor)
-            btn_finish_detect.SetCornerRadius(view: btn_finish_detect, cornerRadius: 5.0)
+            btn_finish_detect.setBackgroundColor(color: Setting.shared.mainColor().cgColor)
+            btn_finish_detect.SetCornerRadius(cornerRadius: 5.0)
         }
     }
     
@@ -189,8 +189,8 @@ class DetectViewController: UIViewController , CBCentralManagerDelegate ,CBPerip
         super.viewDidLayoutSubviews()
         times_viewDidLayoutSubviews = times_viewDidLayoutSubviews+1
         if(times_viewDidLayoutSubviews == 2){
-            self.view_lineChart.addtopborder(view: self.view_lineChart, color: UIColor.black.cgColor, height: 3.0)
-            self.view_lineChart.addbottomborder(view: self.view_lineChart, color: UIColor.black.cgColor, height: 3.0)
+            self.view_lineChart.addtopborder(color: UIColor.black.cgColor, height: 3.0)
+            self.view_lineChart.addbottomborder(color: UIColor.black.cgColor, height: 3.0)
         }
     }
     
@@ -422,10 +422,8 @@ class DetectViewController: UIViewController , CBCentralManagerDelegate ,CBPerip
 extension DetectViewController{
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        btn_start_detect.setBackgroundColor(view: btn_start_detect, color: Setting.shared.mainColor().cgColor)
-        btn_finish_detect.setBackgroundColor(view: btn_finish_detect, color: Setting.shared.mainColor().cgColor)
-//        lb_TiredValue.textColor = Setting.shared.mainColor()
-        
+        btn_start_detect.setBackgroundColor(color: Setting.shared.mainColor().cgColor)
+        btn_finish_detect.setBackgroundColor(color: Setting.shared.mainColor().cgColor)
         
     }
 }

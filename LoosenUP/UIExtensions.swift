@@ -9,85 +9,42 @@
 import Foundation
 import UIKit
 
-extension UIImageView {
-//    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-//        contentMode = mode
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            guard
-//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-//                let data = data, error == nil,
-//                let image = UIImage(data: data)
-//
-//                else { return }
-//            DispatchQueue.main.async() {
-//                self.image = image//.circleMasked
-//            }
-//            }.resume()
-//    }
-//
-//    func downloadedForCircleMasked(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-//        contentMode = mode
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            guard
-//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-//                let data = data, error == nil,
-//                let image = UIImage(data: data)
-//
-//                else { return }
-//            DispatchQueue.main.async() {
-//                self.image = image.circleMasked
-//            }
-//            }.resume()
-//    }
-//
-//    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-//        guard let url = URL(string: link) else { return }
-//        downloaded(from: url, contentMode: mode)
-//    }
-//    func downloadedForCircleMasked(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-//        guard let url = URL(string: link) else { return }
-//        downloadedForCircleMasked(from: url, contentMode: mode)
-//    }
-}
-
 extension UIView {
     
-    public func addtopborder(view:UIView,color:CGColor,height:CGFloat){
+    public func addtopborder(color:CGColor,height:CGFloat){
         let topborder = CALayer()
         topborder.backgroundColor = color
-        topborder.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height)
-        view.layer.addSublayer(topborder)
+        topborder.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: height)
+        self.layer.addSublayer(topborder)
     }
     
-    public func addbottomborder(view:UIView,color:CGColor,height:CGFloat){
+    public func addbottomborder(color:CGColor,height:CGFloat){
         let bottomborder = CALayer()
         bottomborder.backgroundColor = color
-        bottomborder.frame = CGRect(x: 0, y: view.frame.height-height, width: view.frame.width, height: height)
-        view.layer.addSublayer(bottomborder)
+        bottomborder.frame = CGRect(x: 0, y: self.frame.height-height, width: self.frame.width, height: height)
+        self.layer.addSublayer(bottomborder)
+    }
+        
+    public func addborder(color:CGColor,height:CGFloat,opacity:Float = 1){
+        self.layer.borderColor = color
+        self.layer.borderWidth = height
+        self.layer.opacity = Float(opacity)
     }
     
-    public func addborder(view:UIView,color:CGColor,height:CGFloat,opacity:Float = 1){
-        view.layer.borderColor = color
-        view.layer.borderWidth = height
-        view.layer.opacity = Float(opacity)
+    public func addShadow(color:CGColor,width:CGFloat,height:CGFloat,radius:CGFloat,opacity:CGFloat = 1){
+        self.layer.shadowColor = color
+        self.layer.shadowOffset = CGSize(width: width, height: height)
+        self.layer.shadowRadius = radius
+        self.layer.shadowOpacity = Float(opacity)
+        self.layer.masksToBounds = false
     }
     
-    public func addShadow(view:UIView,color:CGColor,width:CGFloat,height:CGFloat,radius:CGFloat,opacity:CGFloat = 1){
-        view.layer.shadowColor = color
-        view.layer.shadowOffset = CGSize(width: width, height: height)
-        view.layer.shadowRadius = radius
-        view.layer.shadowOpacity = Float(opacity)
-        view.layer.masksToBounds = false
+    public func SetCornerRadius(cornerRadius:CGFloat){
+        self.layer.cornerRadius = cornerRadius
     }
     
-    public func SetCornerRadius(view:UIView,cornerRadius:CGFloat){
-        view.layer.cornerRadius = cornerRadius
-    }
-    
-    public func setBackgroundColor(view:UIView,color:CGColor){
-        view.layer.backgroundColor = color
+    public func setBackgroundColor(color:CGColor){
+        self.layer.backgroundColor = color
     }
     
     public func expendHeight(height: CGFloat){
@@ -380,30 +337,45 @@ extension UIImage {
     }
 }
 
-
-extension UIImage{
-//    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-////        contentMode = mode
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            guard
-//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-//                let data = data, error == nil,
-//                let image = UIImage(data: data)
-//
-//                else { return }
-//            DispatchQueue.main.async() {
-//                self.image = image
-//            }
-//            }.resume()
-//    }
-////
-//    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-//        guard let url = URL(string: link) else { return }
-//        downloaded(from: url, contentMode: mode)
-//    }
-//    func downloadedForCircleMasked(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-//        guard let url = URL(string: link) else { return }
-//        downloadedForCircleMasked(from: url, contentMode: mode)
-//    }
+extension UIImageView {
+    //    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+    //        contentMode = mode
+    //        URLSession.shared.dataTask(with: url) { data, response, error in
+    //            guard
+    //                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+    //                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+    //                let data = data, error == nil,
+    //                let image = UIImage(data: data)
+    //
+    //                else { return }
+    //            DispatchQueue.main.async() {
+    //                self.image = image//.circleMasked
+    //            }
+    //            }.resume()
+    //    }
+    //
+    //    func downloadedForCircleMasked(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+    //        contentMode = mode
+    //        URLSession.shared.dataTask(with: url) { data, response, error in
+    //            guard
+    //                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+    //                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+    //                let data = data, error == nil,
+    //                let image = UIImage(data: data)
+    //
+    //                else { return }
+    //            DispatchQueue.main.async() {
+    //                self.image = image.circleMasked
+    //            }
+    //            }.resume()
+    //    }
+    //
+    //    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+    //        guard let url = URL(string: link) else { return }
+    //        downloaded(from: url, contentMode: mode)
+    //    }
+    //    func downloadedForCircleMasked(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+    //        guard let url = URL(string: link) else { return }
+    //        downloadedForCircleMasked(from: url, contentMode: mode)
+    //    }
 }

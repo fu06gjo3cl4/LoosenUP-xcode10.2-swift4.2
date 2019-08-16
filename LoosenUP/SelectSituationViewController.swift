@@ -49,11 +49,8 @@ class SelectSituationViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         times_viewDidLayoutSubviews = times_viewDidLayoutSubviews+1
-        workspace_collectionview.addtopborder(view: workspace_collectionview, color: UIColor.gray.cgColor, height: 3.0)
-        workcontent_collectionview.addtopborder(view: workcontent_collectionview, color: UIColor.gray.cgColor, height: 3.0)
-//        if(times_viewDidLayoutSubviews == 2){
-        
-//        }
+        workspace_collectionview.addtopborder(color: UIColor.gray.cgColor, height: 3.0)
+        workcontent_collectionview.addtopborder(color: UIColor.gray.cgColor, height: 3.0)
     }
     
     

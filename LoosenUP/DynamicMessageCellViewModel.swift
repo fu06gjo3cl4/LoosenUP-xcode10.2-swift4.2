@@ -116,6 +116,7 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
                 tableCell.lb_body.text = change.newValue
             })
         )
+        
     }
     
 }

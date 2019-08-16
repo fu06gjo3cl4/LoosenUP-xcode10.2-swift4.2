@@ -19,16 +19,19 @@ class RankingCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.view_container.addborder(view: self.view_container, color: Setting.shared.mainColor().cgColor, height: 1.0)
+        self.view_container.addborder(color: Setting.shared.mainColor().cgColor, height: 1.0)
         self.tintColor = Setting.shared.mainColor()
         Setting.shared.addObserver(self, forKeyPath: "themeType", options: .new, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        self.view_container.addborder(view: self.view_container, color: Setting.shared.mainColor().cgColor, height: 1.0)
         
-        self.tintColor = Setting.shared.mainColor()
-        image_no.image = image_no.image?.withRenderingMode(.alwaysTemplate)
+        if keyPath! == "themeType"{
+            self.view_container.addborder(color: Setting.shared.mainColor().cgColor, height: 1.0)
+            
+            self.tintColor = Setting.shared.mainColor()
+            image_no.image = image_no.image?.withRenderingMode(.alwaysTemplate)
+        }
     }
     
     deinit {
