@@ -17,6 +17,7 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
     var avatar_imageUrl:String = "default"
     var image_Urls:[String] = [String]()
     var isLikeOrNot:Bool = false
+    var likeCount:Int = 0
     
     var isNeedToReload:Bool = false  // numberOfImage:Int = 1   //?
     var cellIndex:IndexPath = IndexPath(row: 0, section: 0)
@@ -46,10 +47,18 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         btn.isSelected = isLikeOrNot
         btn.tintColor = Setting.shared.mainColor()
         btn.imageView?.contentMode = .scaleAspectFit
-        if btn.isSelected {
-            btn.setImage(UIImage(named: "icon1")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.setImage(UIImage(named: "icon1"), for: .normal)
+        btn.setTitleColor(UIColor.lightGray, for: .normal)
+        btn.setImage(UIImage(named: "icon1")?.withRenderingMode(.alwaysTemplate), for: .selected)
+        btn.setTitleColor(Setting.shared.mainColor(), for: .selected)
+        
+    }
+    func updateDetailView(view: UIView){
+        
+        if likeCount>0{
+            view.isHidden = false
         }else{
-            btn.setImage(UIImage(named: "icon1"), for: .normal)
+            view.isHidden = true
         }
         
     }
@@ -118,12 +127,14 @@ protocol DynamicMessageCellViewModelPresenter: AnyObject {
     var userId:String{get}
     var avatar_imageUrl:String{get}
     var isLikeOrNot:Bool{get set}
+    var likeCount:Int{get set}
     
     func updateIdLabel(label:UILabel)
     func updateTitleLabel(label:UILabel)
     func updateBodyLabel(label:UILabel)
     func updateUserIdLabel(label:UILabel)
     func updateLikeBtn(btn:UIButton)
+    func updateDetailView(view: UIView)
     func updateAvatarImage(imageView:UIImageView)
     func updateCollactionView(collectionView:GalleryCollectionView)
     func bindingValueWithVM(tableCell: DynamicMessageTableCell)

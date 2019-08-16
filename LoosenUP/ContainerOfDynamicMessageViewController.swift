@@ -15,7 +15,7 @@ class ContainerOfDynamicMessageViewController: UIViewController {
         didSet{
             tableView.delegate = self
             tableView.dataSource = self
-            
+
             let MessageCell = UINib(nibName: "DynamicMessageTableCell", bundle: nil)
             tableView.register(MessageCell, forCellReuseIdentifier: "DynamicMessageTableCell")
         }
@@ -61,6 +61,8 @@ extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableV
         
         cell.presenter = viewModels[indexPath.row]
         cell.updateWithPresenter()
+        cell.fatherTableView = self.tableView
+        cell.indexPath = indexPath
         
         return cell
     }
@@ -68,9 +70,10 @@ extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tableCell of indexpath: \(indexPath.row)")
         print("viewModel of indexpath: \(indexPath.row)")
+        print(viewModels[indexPath.row].body)
         // if cell's height is no change. can only change viewModel's data to update(already binding value).
-        self.viewModels[indexPath.row].body = RandomData.randomString(length: 200)// "mynewtext for body" 
-        self.tableView.reloadRows(at: [indexPath], with: .none)
+//        self.viewModels[indexPath.row].body = RandomData.randomString(length: 200)// "mynewtext for body" 
+//        self.dynamicTableView.reloadRows(at: [indexPath], with: .none)
     }
     
 }

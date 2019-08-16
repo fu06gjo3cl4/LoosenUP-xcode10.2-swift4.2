@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContainerOfDynamicMessageViewController" customModule="LoosenUP" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="nXB-Dy-jsW" id="P50-0H-p6V"/>
+                <outlet property="tableView" destination="nXB-Dy-jsW" id="KOg-GO-rh1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

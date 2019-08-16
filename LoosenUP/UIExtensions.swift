@@ -90,6 +90,22 @@ extension UIView {
         view.layer.backgroundColor = color
     }
     
+    public func expendHeight(height: CGFloat){
+        self.layer.frame = CGRect(x: layer.frame.minX, y: layer.frame.midY, width: layer.frame.width, height: height)
+    }
+    
+    public func expendWidth(width: CGFloat){
+        self.layer.frame = CGRect(x: layer.frame.minX, y: layer.frame.midY, width: width, height: layer.frame.height)
+    }
+    
+    public func expendHeightConstraint(identifier: String, height: CGFloat){
+        for constraint in self.constraints {
+            if constraint.identifier == identifier {
+                constraint.constant += height
+            }
+        }
+    }
+    
 }
 
 extension UIImageView {
