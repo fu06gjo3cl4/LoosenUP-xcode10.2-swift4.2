@@ -16,9 +16,10 @@ class ContainerOfDynamicMessageViewController: UIViewController {
         didSet{
             tableView.delegate = self
             tableView.dataSource = self
-
             let MessageCell = UINib(nibName: "DynamicMessageTableCell", bundle: nil)
             tableView.register(MessageCell, forCellReuseIdentifier: "DynamicMessageTableCell")
+            
+            tableView.estimatedRowHeight = 0
         }
     }
     
@@ -79,6 +80,11 @@ extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableV
         print("tableCell of indexpath: \(indexPath.row)")
         print("viewModel of indexpath: \(indexPath.row)")
         print(viewModels[indexPath.row].body)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return viewModels[indexPath.row].cellHeight
     }
     
 }

@@ -44,6 +44,7 @@ class DynamicMessageTableCell: UITableViewCell {
             presenter?.isLikeOrNot = btn_Like.isSelected
             presenter?.likeCount += 1
         }
+        presenter?.calculateCellHeight()
         reloadCell()
     }
     
@@ -81,7 +82,6 @@ class DynamicMessageTableCell: UITableViewCell {
         print("lb_bodyDidTap")
         
         self.presenter?.body = RandomData.randomString(length: 200)
-        
         reloadCell()
     }
     

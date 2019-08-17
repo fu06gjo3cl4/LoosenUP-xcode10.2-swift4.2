@@ -21,6 +21,7 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
     
     var isNeedToReload:Bool = false  // numberOfImage:Int = 1   //?
     var cellIndex:IndexPath = IndexPath(row: 0, section: 0)
+    var cellHeight:CGFloat = 0
     
     init(dynamicMessage :DynamicMessage){
         id = dynamicMessage.id
@@ -29,6 +30,34 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         userId = dynamicMessage.userId
         avatar_imageUrl = dynamicMessage.avatar
         image_Urls = dynamicMessage.image_Urls
+        super.init()
+        calculateCellHeight()
+    }
+    
+    func calculateCellHeight(){
+        var height:CGFloat = 60+40
+        if likeCount>0 {
+            height += 40
+            
+        }
+        if !(image_Urls[0]=="") {
+            let multiple:CGFloat = CGFloat((image_Urls.count/5)+1)
+            let baseNum:CGFloat = CGFloat((Const.Screen_Size.width)/5)
+            height += (multiple*baseNum+10)
+        }
+        if !(avatar_imageUrl=="") {
+            height += 150
+        }
+        
+        let string = self.body
+        let labelHeight = string.heightWithConstrainedWidth(width: Const.Screen_Width, font: UIFont.systemFont(ofSize: 17.0))+10
+        print(labelHeight)
+        height += labelHeight
+        
+        let bottomLineHeight: CGFloat = 10
+        height += bottomLineHeight
+        
+        self.cellHeight = height
     }
     
     func updateIdLabel(label:UILabel){
@@ -71,14 +100,14 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             
             let image_Url = NSURL(string: avatar_imageUrl)
             if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
-                imageView.image = image.circleMasked
+                imageView.image = image//.circleMasked
                 imageView.alpha = 1
             } else { //沒抓過 ->下載圖片
                 imageView.alpha = 0
                 // 下載圖片
                 image_Url?.fetchImage { image in
                     // Check the cell hasn't recycled while loading.
-                    imageView.image = image.circleMasked
+                    imageView.image = image//.circleMasked
                     UIView.animate(withDuration: 0.3) {
                         imageView.alpha = 1
                     }
@@ -113,7 +142,7 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         tableCell.observers.append(
             self.observe(\.body,options: [.new], changeHandler: {(self, change) in
                 print(change)
-                tableCell.lb_body.text = change.newValue
+                self.calculateCellHeight()
             })
         )
         
@@ -139,4 +168,5 @@ protocol DynamicMessageCellViewModelPresenter: AnyObject {
     func updateAvatarImage(imageView:UIImageView)
     func updateCollactionView(collectionView:GalleryCollectionView)
     func bindingValueWithVM(tableCell: DynamicMessageTableCell)
+    func calculateCellHeight()
 }
