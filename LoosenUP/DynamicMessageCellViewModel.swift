@@ -22,6 +22,8 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
     var isNeedToReload:Bool = false  // numberOfImage:Int = 1   //?
     var cellIndex:IndexPath = IndexPath(row: 0, section: 0)
     var cellHeight:CGFloat = 0
+    var avatarHeight:CGFloat = 0
+    let group = DispatchGroup()
     
     init(dynamicMessage :DynamicMessage){
         id = dynamicMessage.id
@@ -34,8 +36,18 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         calculateCellHeight()
     }
     
-    func calculateCellHeight(){
+    func calculateCellHeight(callback:@escaping ()->() = { print("default func")}){
+        group.enter()
         var height:CGFloat = 60+40
+        
+        let string = self.body
+        let labelHeight = string.heightWithConstrainedWidth(width: Const.Screen_Width, font: UIFont.systemFont(ofSize: 17.0))
+        print(labelHeight)
+        height += labelHeight
+        
+        let bottomLineHeight: CGFloat = 10
+        height += bottomLineHeight
+
         if likeCount>0 {
             height += 40
             
@@ -46,18 +58,35 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             height += (multiple*baseNum+10)
         }
         if !(avatar_imageUrl=="") {
-            height += 150
+            //計算圖片應該顯示的高度
+            let image_Url = NSURL(string: avatar_imageUrl)
+            if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
+                avatarHeight = image.size.height*(Const.Screen_Width/image.size.width)
+                height += self.avatarHeight
+                self.group.leave()
+            } else { //沒抓過 ->下載圖片
+                image_Url?.fetchImage { image in
+                    self.avatarHeight = image.size.height*(Const.Screen_Width/image.size.width)
+                    height += self.avatarHeight
+                    self.group.leave()
+                }
+            }
+        }else{
+            self.group.leave()
         }
         
-        let string = self.body
-        let labelHeight = string.heightWithConstrainedWidth(width: Const.Screen_Width, font: UIFont.systemFont(ofSize: 17.0))+10
-        print(labelHeight)
-        height += labelHeight
+        group.notify(queue: .main){
+            print(height)
+            self.cellHeight = height
+            callback()
+            
+            // 臨時解
+            let vc = DynamicMessageViewController.shared.viewControllers[DynamicMessageViewController.shared.swipeMenuView.currentIndex] as! ContainerOfDynamicMessageViewController
+            if !vc.isInitData {
+                GCDService.q_cellsPreload.leave()
+            }
+        }
         
-        let bottomLineHeight: CGFloat = 10
-        height += bottomLineHeight
-        
-        self.cellHeight = height
     }
     
     func updateIdLabel(label:UILabel){
@@ -92,6 +121,7 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         
     }
     func updateAvatarImage(imageView:UIImageView){
+        
         if avatar_imageUrl == ""{
             imageView.image = nil
             imageView.isHidden = true
@@ -102,6 +132,12 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
                 imageView.image = image//.circleMasked
                 imageView.alpha = 1
+                
+                for constraint in imageView.constraints {
+                    if constraint.identifier == "avatarHeight" {
+                        constraint.constant = self.avatarHeight
+                    }
+                }
             } else { //沒抓過 ->下載圖片
                 imageView.alpha = 0
                 // 下載圖片
@@ -168,5 +204,5 @@ protocol DynamicMessageCellViewModelPresenter: AnyObject {
     func updateAvatarImage(imageView:UIImageView)
     func updateCollactionView(collectionView:GalleryCollectionView)
     func bindingValueWithVM(tableCell: DynamicMessageTableCell)
-    func calculateCellHeight()
+    func calculateCellHeight(callback:@escaping ()->())
 }

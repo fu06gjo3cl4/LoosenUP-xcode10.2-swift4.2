@@ -44,8 +44,7 @@ class DynamicMessageTableCell: UITableViewCell {
             presenter?.isLikeOrNot = btn_Like.isSelected
             presenter?.likeCount += 1
         }
-        presenter?.calculateCellHeight()
-        reloadCell()
+        presenter?.calculateCellHeight(callback: reloadCell)
     }
     
     var observers = [NSKeyValueObservation]()
@@ -81,8 +80,8 @@ class DynamicMessageTableCell: UITableViewCell {
     @objc func lb_bodyDidTap(){
         print("lb_bodyDidTap")
         
-        self.presenter?.body = RandomData.randomString(length: 200)
-        reloadCell()
+        self.presenter?.body = RandomData.randomString(length: 200)        
+        presenter?.calculateCellHeight(callback: reloadCell)
     }
     
     @objc func imageViewDidTap(){

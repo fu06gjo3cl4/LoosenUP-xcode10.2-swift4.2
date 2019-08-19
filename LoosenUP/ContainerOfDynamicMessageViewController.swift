@@ -26,11 +26,13 @@ class ContainerOfDynamicMessageViewController: UIViewController {
     var dynamicMessageList = [DynamicMessage]()
     var refreshControl:UIRefreshControl!
     var viewModels = [DynamicMessageCellViewModel]()
+    var tableCells = [DynamicMessageTableCell]()
     var numberOfRows = 0
     var observers = [NSKeyValueObservation]()
     var userId = 1
     var preCount = 0
     let q = DispatchQueue.global()
+    var isInitData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +69,7 @@ extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "DynamicMessageTableCell", for: indexPath) as! DynamicMessageTableCell
-        
+
         cell.presenter = viewModels[indexPath.row]
         cell.updateWithPresenter()
         cell.fatherTableView = self.tableView
@@ -136,31 +138,51 @@ extension ContainerOfDynamicMessageViewController{
             dynamicMessage.avatar = json[i]["avatar_imageUrl"].stringValue
             dynamicMessage.image_Urls = json[i]["image_Urls"].arrayValue.map{$0.stringValue}
             dynamicMessageList.append(dynamicMessage)
-            viewModels.append(DynamicMessageCellViewModel(dynamicMessage: dynamicMessage))
             
             if i == json.count-1{
                 
                 if tableView.numberOfRows(inSection: 0) == 0{
-                    numberOfRows = viewModels.count
-                    tableView.reloadData()
-                }else{
-                }
-                
-                // preload data for use.
-                q.sync {
-                    userId += 1
-                    if(preCount==viewModels.count){
+                    numberOfRows = dynamicMessageList.count
+                    
+                    for i in 0..<numberOfRows{
+                        GCDService.q_cellsPreload.enter()
+                        viewModels.append(DynamicMessageCellViewModel(dynamicMessage: dynamicMessageList[i]))
                         
-                    }else{
-                        preCount = viewModels.count
-                        let parameters: Parameters = [
-                            "userId": userId
-                        ]
-                        RestfulService.request_get(url: GetUrl.Url,parameters: parameters,callback: getPostList)
                     }
+                    
+                    GCDService.q_cellsPreload.notify(queue: .main){
+                        self.tableView.reloadData()
+                        self.isInitData = true
+                        
+                        self.preLoadData()
+                    }
+                    
                 }
                 
+                preLoadData()
             }
         }
+    }
+    
+    func preLoadData(){
+        
+        if self.isInitData == true{
+            q.sync {
+                userId += 1
+                if(preCount==dynamicMessageList.count){
+                    
+                }else{
+                    for i in preCount..<dynamicMessageList.count{
+                        viewModels.append(DynamicMessageCellViewModel(dynamicMessage: dynamicMessageList[i]))
+                    }
+                    preCount = dynamicMessageList.count
+                    let parameters: Parameters = [
+                        "userId": userId
+                    ]
+                    RestfulService.request_get(url: GetUrl.Url,parameters: parameters,callback: getPostList)
+                }
+            }
+        }
+        
     }
 }

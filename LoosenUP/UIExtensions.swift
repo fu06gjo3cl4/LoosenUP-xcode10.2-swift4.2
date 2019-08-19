@@ -335,6 +335,10 @@ extension UIImage {
         UIImage(cgImage: cgImage, scale: 1, orientation: imageOrientation).draw(in: breadthRect)
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    //aspectFit mode
+    var imageHeight: CGFloat {
+        return self.size.height*(Const.Screen_Width/self.size.width)
+    }
 }
 
 

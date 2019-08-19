@@ -105,6 +105,7 @@
 		4CCCD3B9230305D600022A9E /* GalleryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B7230305D600022A9E /* GalleryCollectionCell.xib */; };
 		4CCCD3BB2303205D00022A9E /* CustomImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3BA2303205D00022A9E /* CustomImageCache.swift */; };
 		4CCCD4222304A56C00022A9E /* RandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD4212304A56C00022A9E /* RandomData.swift */; };
+		4CCCD4CD2309EC6900022A9E /* GCDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD4CC2309EC6800022A9E /* GCDService.swift */; };
 		4CD5564722F20A5500EFF4E2 /* CustomUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD5564622F20A5500EFF4E2 /* CustomUIScrollView.swift */; };
 		4CD5564922F20A6300EFF4E2 /* CustomUIScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD5564822F20A6300EFF4E2 /* CustomUIScrollView.xib */; };
 		4CE981021E82817E00549400 /* ForumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE981001E82817E00549400 /* ForumTableCell.swift */; };
@@ -260,6 +261,7 @@
 		4CCCD3B7230305D600022A9E /* GalleryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCollectionCell.xib; sourceTree = "<group>"; };
 		4CCCD3BA2303205D00022A9E /* CustomImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageCache.swift; sourceTree = "<group>"; };
 		4CCCD4212304A56C00022A9E /* RandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomData.swift; sourceTree = "<group>"; };
+		4CCCD4CC2309EC6800022A9E /* GCDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDService.swift; sourceTree = "<group>"; };
 		4CD5564622F20A5500EFF4E2 /* CustomUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIScrollView.swift; sourceTree = "<group>"; };
 		4CD5564822F20A6300EFF4E2 /* CustomUIScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomUIScrollView.xib; sourceTree = "<group>"; };
 		4CE981001E82817E00549400 /* ForumTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTableCell.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				4C28823E22EC352D004DFF16 /* Theme.swift */,
 				4CCCD3BA2303205D00022A9E /* CustomImageCache.swift */,
 				4CCCD4212304A56C00022A9E /* RandomData.swift */,
+				4CCCD4CC2309EC6800022A9E /* GCDService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				4CCCD3B8230305D600022A9E /* GalleryCollectionCell.swift in Sources */,
 				4C780FE91E790C930021ED86 /* Const.swift in Sources */,
 				4C84C0DD22C2953600CDF76D /* NewsCellViewModel.swift in Sources */,
+				4CCCD4CD2309EC6900022A9E /* GCDService.swift in Sources */,
 				4CD5564722F20A5500EFF4E2 /* CustomUIScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

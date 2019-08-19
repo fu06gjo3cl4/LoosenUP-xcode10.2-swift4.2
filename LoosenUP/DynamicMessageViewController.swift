@@ -28,7 +28,7 @@ class DynamicMessageViewController: UIViewController {
     private var lastContentOffset: CGFloat = 0
     private var isNavBarHidden = false
     private var tapPoint: CGPoint = CGPoint(x: 0, y: 0)
-    private var viewControllers = [UIViewController]()
+    var viewControllers = [UIViewController]()
     private var executeCount = 0
     
     override func viewDidLoad() {
