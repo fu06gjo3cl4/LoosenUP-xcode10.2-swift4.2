@@ -34,4 +34,4 @@ MVVM：將介面渲染及數據更新委派給ViewModel處理，由ViewModel持�
 
 <img align="left" src="https://github.com/fu06gjo3cl4/screenshots/blob/master/Screenshots/ThirdPartyLogin.gif"  width="388" height="751"/>
 
-<img align="left" src="https://github.com/fu06gjo3cl4/screenshots/blob/master/Screenshots/PrototypeOfDynamicMessage.gif"  width="388" height="751"/>
+<img align="left" src="https://github.com/fu06gjo3cl4/screenshots/blob/master/Screenshots/PrototypeOfDynamicMessage(v2).gif"  width="388" height="751"/>
