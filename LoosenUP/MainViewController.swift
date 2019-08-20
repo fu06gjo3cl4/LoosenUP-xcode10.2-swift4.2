@@ -259,18 +259,6 @@ extension MainViewController{
     func callbacktest(json:JSON){
         print("callbackfunction was executive")
         print(json)
-//        var NewsList : [News] = [News]()
-        
-//        for i in 0...json.count{
-//
-////            var news = News()
-////            news.title = json["NewsTitle"].stringValue
-////            news.datetime = json["NewsTime"].stringValue
-////            news.content = json["NewsContent"].stringValue
-////
-////            NewsList.append(news)
-//
-//        }
         
     }
     

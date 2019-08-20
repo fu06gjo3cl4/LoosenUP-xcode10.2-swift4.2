@@ -23,7 +23,9 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
     var cellIndex:IndexPath = IndexPath(row: 0, section: 0)
     var cellHeight:CGFloat = 0
     var avatarHeight:CGFloat = 0
+    var galleryHeight:CGFloat = 0
     let group = DispatchGroup()
+    let group_Gallery = DispatchGroup()
     
     init(dynamicMessage :DynamicMessage){
         id = dynamicMessage.id
@@ -37,13 +39,13 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
     }
     
     func calculateCellHeight(callback:@escaping ()->() = { print("default func")}){
-        group.enter()
+        
         var height:CGFloat = 60+40
         
         let string = self.body
         let labelHeight = string.heightWithConstrainedWidth(width: Const.Screen_Width, font: UIFont.systemFont(ofSize: 17.0))
         print(labelHeight)
-        height += labelHeight
+        height += labelHeight+10
         
         let bottomLineHeight: CGFloat = 10
         height += bottomLineHeight
@@ -52,18 +54,64 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             height += 40
             
         }
+        
+        
+        group.enter()
         if !(image_Urls[0]=="") {
-            let multiple:CGFloat = CGFloat((image_Urls.count/5)+1)
-            let baseNum:CGFloat = CGFloat((Const.Screen_Size.width)/5)
-            height += (multiple*baseNum+10)
+//            let multiple:CGFloat = CGFloat((image_Urls.count/5)+1)
+//            let baseNum:CGFloat = CGFloat((Const.Screen_Size.width)/5)
+//            height += (multiple*baseNum+10)
+            
+            //單張：獨自計算全部顯示的高度
+            //多張：計算全部顯示所需的高度，且最大高度＝螢幕寬度
+            if image_Urls.count == 1 {
+                let image_Url = NSURL(string: image_Urls[0])
+                if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
+                    galleryHeight = image.size.height*(Const.Screen_Width/image.size.width)
+                    height += galleryHeight
+                    self.group.leave()
+                } else { //沒抓過 ->下載圖片
+                    image_Url?.fetchImage { image in
+                        self.galleryHeight = image.size.height*(Const.Screen_Width/image.size.width)
+                        height += self.galleryHeight
+                        self.group.leave()
+                    }
+                }
+            }else{
+                
+                for i in 0..<image_Urls.count{
+                    group_Gallery.enter()
+                    cacheAndCalculatePicHeight(imageUrl: image_Urls[i])
+                }
+                
+                group_Gallery.notify(queue: .main){
+                    if self.galleryHeight<Const.Screen_Width{
+                        //顯示計算高度
+                        height += self.galleryHeight
+                        self.group.leave()
+                    }else{
+                        //以螢幕寬度作為最大高度
+                        height += Const.Screen_Width
+                        self.group.leave()
+                    }
+                }
+            }
+            
+        }else{
+            group.leave()
         }
+        
+        
+        
+        
+        group.enter()
         if !(avatar_imageUrl=="") {
             //計算圖片應該顯示的高度
             let image_Url = NSURL(string: avatar_imageUrl)
             if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
                 avatarHeight = image.size.height*(Const.Screen_Width/image.size.width)
                 height += self.avatarHeight
-                self.group.leave()
+                group.leave()
             } else { //沒抓過 ->下載圖片
                 image_Url?.fetchImage { image in
                     self.avatarHeight = image.size.height*(Const.Screen_Width/image.size.width)
@@ -72,7 +120,7 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
                 }
             }
         }else{
-            self.group.leave()
+            group.leave()
         }
         
         group.notify(queue: .main){
@@ -87,6 +135,19 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             }
         }
         
+    }
+    
+    func cacheAndCalculatePicHeight(imageUrl: String,callback: ()->()={ print("default")}){
+        let image_Url = NSURL(string: imageUrl)
+        if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
+            galleryHeight += image.size.height*(Const.Screen_Width/image.size.width)
+            group_Gallery.leave()
+        } else { //沒抓過 ->下載圖片
+            image_Url?.fetchImage { image in
+                self.galleryHeight += image.size.height*(Const.Screen_Width/image.size.width)
+                self.group_Gallery.leave()
+            }
+        }
     }
     
     func updateIdLabel(label:UILabel){
@@ -163,12 +224,19 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             collectionView.dataSource = collectionView
             let galleryCell = UINib(nibName: "GalleryCollectionCell", bundle: nil)
             collectionView.register(galleryCell, forCellWithReuseIdentifier: "GalleryCollectionCell")
-            collectionView.setHeight()
+            if galleryHeight<Const.Screen_Width{
+                collectionView.setHeight(height: galleryHeight)
+            }else{
+                collectionView.setHeight(height: Const.Screen_Width)
+            }
+            collectionView.layoutSetting()
             // 建立 UICollectionViewFlowLayout
             let layout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5);
-            layout.minimumLineSpacing = 5
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
+            layout.minimumLineSpacing = 3
             layout.minimumInteritemSpacing = 0
+//            layout.scrollDirection = .horizontal
+            layout.scrollDirection = .vertical
             collectionView.collectionViewLayout = layout
         }
     }
