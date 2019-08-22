@@ -19,12 +19,9 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
     var isLikeOrNot:Bool = false
     var likeCount:Int = 0
     
-    var isNeedToReload:Bool = false  // numberOfImage:Int = 1   //?
-    var cellIndex:IndexPath = IndexPath(row: 0, section: 0)
     var cellHeight:CGFloat = 0
     var avatarHeight:CGFloat = 0
     var galleryHeight:CGFloat = 0
-    var gallerySizes:[CGSize] = [CGSize]()
     var galleryRects:[CGRect] = [CGRect]()
     var layoutType:LayoutType = .horizontal_1
     let group = DispatchGroup()
@@ -52,19 +49,14 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         
         let bottomLineHeight: CGFloat = 10
         height += bottomLineHeight
-
+        
         if likeCount>0 {
             height += 40
             
         }
         
-        
         group.enter()
         if !(image_Urls[0]=="") {
-//            let multiple:CGFloat = CGFloat((image_Urls.count/5)+1)
-//            let baseNum:CGFloat = CGFloat((Const.Screen_Size.width)/5)
-//            height += (multiple*baseNum+10)
-            
             //單張：獨自計算全部顯示的高度
             //多張：計算全部顯示所需的高度，且最大高度＝螢幕寬度
             if image_Urls.count == 1 {
@@ -113,12 +105,12 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             let image_Url = NSURL(string: avatar_imageUrl)
             if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
                 avatarHeight = image.size.height*(Const.Screen_Width/image.size.width)
-//                height += self.avatarHeight
+                //                height += self.avatarHeight
                 group.leave()
             } else { //沒抓過 ->下載圖片
                 image_Url?.fetchImage { image in
                     self.avatarHeight = image.size.height*(Const.Screen_Width/image.size.width)
-//                    height += self.avatarHeight
+                    //                    height += self.avatarHeight
                     self.group.leave()
                 }
             }
@@ -191,7 +183,7 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             imageView.isHidden = true
         }else{
             imageView.isHidden = true
-//            imageView.isHidden = false
+            //            imageView.isHidden = false
             
             let image_Url = NSURL(string: avatar_imageUrl)
             if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
@@ -242,10 +234,10 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         if image_Urls.count>5{
             layoutType = .horizontal_6plus
             let rects = [CGRect(x: 0, y: 0, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/2-2)),
-                        CGRect(x: 0, y: (Const.Screen_Width/2+2), width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/2-2)),
-                        CGRect(x: (Const.Screen_Width/2+2), y: 0, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2)),
-                        CGRect(x: (Const.Screen_Width/2+2), y: (Const.Screen_Width/3+2), width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2)),
-                        CGRect(x: (Const.Screen_Width/2+2), y: (Const.Screen_Width/3+2)*2, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2))]
+                         CGRect(x: 0, y: (Const.Screen_Width/2+2), width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/2-2)),
+                         CGRect(x: (Const.Screen_Width/2+2), y: 0, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2)),
+                         CGRect(x: (Const.Screen_Width/2+2), y: (Const.Screen_Width/3+2), width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2)),
+                         CGRect(x: (Const.Screen_Width/2+2), y: (Const.Screen_Width/3+2)*2, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2))]
             self.galleryRects = rects
         }else if image_Urls.count==5{
             layoutType = .horizontal_5
@@ -496,34 +488,6 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         }
         
     }
-    func updateCollactionView(collectionView:GalleryCollectionView){
-        
-        if image_Urls.count <= 1 && image_Urls[0] == ""{
-            collectionView.isHidden = true
-        }else{
-            collectionView.isHidden = true
-//            collectionView.isHidden = false
-            collectionView.image_Urls = image_Urls
-            collectionView.delegate = collectionView
-            collectionView.dataSource = collectionView
-            let galleryCell = UINib(nibName: "GalleryCollectionCell", bundle: nil)
-            collectionView.register(galleryCell, forCellWithReuseIdentifier: "GalleryCollectionCell")
-            if galleryHeight<Const.Screen_Width{
-                collectionView.setHeight(height: galleryHeight)
-            }else{
-                collectionView.setHeight(height: Const.Screen_Width)
-            }
-            collectionView.layoutSetting()
-            // 建立 UICollectionViewFlowLayout
-            let layout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
-            layout.minimumLineSpacing = 3
-            layout.minimumInteritemSpacing = 0
-//            layout.scrollDirection = .horizontal
-            layout.scrollDirection = .vertical
-            collectionView.collectionViewLayout = layout
-        }
-    }
     
     func bindingValueWithVM(tableCell: DynamicMessageTableCell){
         
@@ -558,7 +522,6 @@ protocol DynamicMessageCellViewModelPresenter: AnyObject {
     func updateDetailView(view: UIView)
     func updateAvatarImage(imageView:UIImageView)
     func updateGalleryView(view: UIView,imageviews_1: UIImageView,imageviews_2: UIImageView,imageviews_3: UIImageView,imageviews_4: UIImageView,imageviews_5: UIImageView)
-    func updateCollactionView(collectionView:GalleryCollectionView)
     func bindingValueWithVM(tableCell: DynamicMessageTableCell)
     func calculateCellHeight(callback:@escaping ()->())
 }

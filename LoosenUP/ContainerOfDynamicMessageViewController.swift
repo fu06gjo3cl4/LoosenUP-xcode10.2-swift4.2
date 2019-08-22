@@ -97,11 +97,9 @@ extension ContainerOfDynamicMessageViewController: UIScrollViewDelegate{
         print((scrollView.contentOffset.y+scrollView.bounds.size.height)>(scrollView.contentSize.height-300))
         
         if((scrollView.contentOffset.y+scrollView.bounds.size.height)>(scrollView.contentSize.height-1200)){
-            
             let preNumber = self.tableView.numberOfRows(inSection: 0)
             if preNumber<viewModels.count{
                 self.tableView.beginUpdates()
-                
                 if preNumber+20 <= viewModels.count{
                     numberOfRows = preNumber+20
                     for i in preNumber..<preNumber+20{
@@ -113,7 +111,6 @@ extension ContainerOfDynamicMessageViewController: UIScrollViewDelegate{
                         self.tableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .none)
                     }
                 }
-                
                 self.tableView.endUpdates()
             }else{
                 print("it's end of data")
@@ -121,7 +118,6 @@ extension ContainerOfDynamicMessageViewController: UIScrollViewDelegate{
         }
     }
 }
-
 
 extension ContainerOfDynamicMessageViewController{
     
@@ -140,32 +136,25 @@ extension ContainerOfDynamicMessageViewController{
             dynamicMessageList.append(dynamicMessage)
             
             if i == json.count-1{
-                
                 if tableView.numberOfRows(inSection: 0) == 0{
                     numberOfRows = dynamicMessageList.count
-                    
                     for i in 0..<numberOfRows{
                         GCDService.q_cellsPreload.enter()
                         viewModels.append(DynamicMessageCellViewModel(dynamicMessage: dynamicMessageList[i]))
-                        
                     }
                     
                     GCDService.q_cellsPreload.notify(queue: .main){
                         self.tableView.reloadData()
                         self.isInitData = true
-                        
                         self.preLoadData()
                     }
-                    
                 }
-                
                 preLoadData()
             }
         }
     }
     
     func preLoadData(){
-        
         if self.isInitData == true{
             q.sync {
                 userId += 1
@@ -183,6 +172,5 @@ extension ContainerOfDynamicMessageViewController{
                 }
             }
         }
-        
     }
 }

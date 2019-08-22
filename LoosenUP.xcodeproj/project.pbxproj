@@ -98,9 +98,6 @@
 		4C92BB9622F2CEFE007CA8B0 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C92BB9422F2CEFE007CA8B0 /* ContentViewController.xib */; };
 		4CCCD3B12301C02300022A9E /* DynamicMessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B02301C02300022A9E /* DynamicMessageCellViewModel.swift */; };
 		4CCCD3B32301C06A00022A9E /* DynamicMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B22301C06A00022A9E /* DynamicMessage.swift */; };
-		4CCCD3B52302F65600022A9E /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B42302F65600022A9E /* GalleryCollectionView.swift */; };
-		4CCCD3B8230305D600022A9E /* GalleryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B6230305D600022A9E /* GalleryCollectionCell.swift */; };
-		4CCCD3B9230305D600022A9E /* GalleryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CCCD3B7230305D600022A9E /* GalleryCollectionCell.xib */; };
 		4CCCD3BB2303205D00022A9E /* CustomImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD3BA2303205D00022A9E /* CustomImageCache.swift */; };
 		4CCCD4222304A56C00022A9E /* RandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD4212304A56C00022A9E /* RandomData.swift */; };
 		4CCCD4CD2309EC6900022A9E /* GCDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCD4CC2309EC6800022A9E /* GCDService.swift */; };
@@ -252,9 +249,6 @@
 		4C92BB9422F2CEFE007CA8B0 /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 		4CCCD3B02301C02300022A9E /* DynamicMessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicMessageCellViewModel.swift; sourceTree = "<group>"; };
 		4CCCD3B22301C06A00022A9E /* DynamicMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicMessage.swift; sourceTree = "<group>"; };
-		4CCCD3B42302F65600022A9E /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
-		4CCCD3B6230305D600022A9E /* GalleryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionCell.swift; sourceTree = "<group>"; };
-		4CCCD3B7230305D600022A9E /* GalleryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCollectionCell.xib; sourceTree = "<group>"; };
 		4CCCD3BA2303205D00022A9E /* CustomImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageCache.swift; sourceTree = "<group>"; };
 		4CCCD4212304A56C00022A9E /* RandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomData.swift; sourceTree = "<group>"; };
 		4CCCD4CC2309EC6800022A9E /* GCDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDService.swift; sourceTree = "<group>"; };
@@ -517,9 +511,6 @@
 				4C6566CA2301B4C500AAC0AE /* ContainerOfDynamicMessageViewController.xib */,
 				4C6566BF2301AFA600AAC0AE /* DynamicMessageTableCell.swift */,
 				4C6566C02301AFA600AAC0AE /* DynamicMessageTableCell.xib */,
-				4CCCD3B6230305D600022A9E /* GalleryCollectionCell.swift */,
-				4CCCD3B7230305D600022A9E /* GalleryCollectionCell.xib */,
-				4CCCD3B42302F65600022A9E /* GalleryCollectionView.swift */,
 			);
 			name = DynamicMessageViewController;
 			sourceTree = "<group>";
@@ -805,7 +796,6 @@
 				4C6DD2C91E87FD100006E378 /* RankingDetailViewController.xib in Resources */,
 				4C25F9DF22F9E93B00844F8E /* SearchTableViewController.xib in Resources */,
 				4C84C0CD22C28BD300CDF76D /* 7.png in Resources */,
-				4CCCD3B9230305D600022A9E /* GalleryCollectionCell.xib in Resources */,
 				4C6DD2D71E8809020006E378 /* Personal_RelaxListViewController.xib in Resources */,
 				4C6DD2E01E880A160006E378 /* Situation_AnalysisViewController.xib in Resources */,
 				4C25F96322F5FB2B00844F8E /* InfoPlist.strings in Resources */,
@@ -992,7 +982,6 @@
 				4CE981021E82817E00549400 /* ForumTableCell.swift in Sources */,
 				4C92BB9522F2CEFE007CA8B0 /* ContentViewController.swift in Sources */,
 				4CE981051E839BE200549400 /* PopularityCollectionView.swift in Sources */,
-				4CCCD3B52302F65600022A9E /* GalleryCollectionView.swift in Sources */,
 				4C25F9E522FB00C700844F8E /* SlideAnimatedTransitioning.swift in Sources */,
 				4C6DD2D61E8809020006E378 /* Personal_RelaxListViewController.swift in Sources */,
 				4C117FFE1E6964C500155C4D /* AppDelegate.swift in Sources */,
@@ -1024,7 +1013,6 @@
 				4C21DB441EA0AD2A0042DFA6 /* RAMAnimateService.swift in Sources */,
 				4CF78A6D1E6D7BD50063254E /* MainViewController.swift in Sources */,
 				4C1180351E6AB95D00155C4D /* GetUrl.swift in Sources */,
-				4CCCD3B8230305D600022A9E /* GalleryCollectionCell.swift in Sources */,
 				4C780FE91E790C930021ED86 /* Const.swift in Sources */,
 				4CCCD4CD2309EC6900022A9E /* GCDService.swift in Sources */,
 				4CD5564722F20A5500EFF4E2 /* CustomUIScrollView.swift in Sources */,
