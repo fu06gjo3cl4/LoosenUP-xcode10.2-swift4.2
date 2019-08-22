@@ -15,6 +15,8 @@ class GalleryCollectionCell: UICollectionViewCell {
     var image_Url: NSURL!
     var observer: NSKeyValueObservation?
     
+    var size:CGSize!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

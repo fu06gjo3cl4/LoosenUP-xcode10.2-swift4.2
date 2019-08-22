@@ -15,7 +15,7 @@ class GalleryCollectionView: UICollectionView {
     var cellCount: Int = 16
     var images = [UIImage?]()
     
-    var layoutType:LayoutType = .horizontal_1
+//    var layoutType:LayoutType = .horizontal_1
     var galleryHeight:CGFloat = 0
     var collectionViewHeight:CGFloat = 0
     
@@ -48,19 +48,19 @@ class GalleryCollectionView: UICollectionView {
         if galleryHeight>Const.Screen_Width{
             //呈現版型
             
-            if images.count>5{
-                layoutType = .horizontal_6plus
-            }else if images.count==5{
-                layoutType = .horizontal_5
-            }else if images.count==4{
-                layoutType = .horizontal_4
-            }else if images.count==3{
-                layoutType = .horizontal_3
-            }else if images.count==2{
-                layoutType = .horizontal_2
-            }else if images.count==1{
-                layoutType = .horizontal_1
-            }
+//            if images.count>5{
+//                layoutType = .horizontal_6plus
+//            }else if images.count==5{
+//                layoutType = .horizontal_5
+//            }else if images.count==4{
+//                layoutType = .horizontal_4
+//            }else if images.count==3{
+//                layoutType = .horizontal_3
+//            }else if images.count==2{
+//                layoutType = .horizontal_2
+//            }else if images.count==1{
+//                layoutType = .horizontal_1
+//            }
             
 //            layoutType =
             
@@ -110,96 +110,96 @@ extension GalleryCollectionView: UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        switch layoutType {
-        case .horizontal_1:
-            return CGSize(width: (Const.Screen_Width-2), height: Const.Screen_Width/2-2)
-        case .horizontal_2:
-            switch indexPath.row {
-            case 0:
-                return CGSize(width: (Const.Screen_Width-2), height: Const.Screen_Width/2-2)
-            case 1:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
-            default:
-                return CGSize(width: 0, height: 0)
-            }
-        case .horizontal_3:
-            switch indexPath.row {
-            case 0:
-                //image.size.height*(Const.Screen_Width/image.size.width)
-                return CGSize(width: (Const.Screen_Width), height: Const.Screen_Width*2/3)
-            case 1:
-                return CGSize(width: (Const.Screen_Width/2), height: Const.Screen_Width/3)
-            case 2:
-                return CGSize(width: (Const.Screen_Width/2), height: Const.Screen_Width/3)
-            default:
-                return CGSize(width: 0, height: 0)
-            }
-        case .horizontal_4:
-            switch indexPath.row {
-            case 0:
-                return CGSize(width: (Const.Screen_Width-2), height: Const.Screen_Width*2/3)
-            case 1:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            case 2:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            case 3:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            default:
-                return CGSize(width: 0, height: 0)
-            }
-        case .horizontal_5:
-            switch indexPath.row {
-            case 0:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
-            case 1:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
-            case 2:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            case 3:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            case 4:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            default:
-                return CGSize(width: 0, height: 0)
-            }
-        case .horizontal_6plus:
-            switch indexPath.row {
-            case 0:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
-            case 1:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
-            case 2:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            case 3:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            case 4:
-                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-            default:
-                return CGSize(width: 0, height: 0)
-            }
-        default:
-            return CGSize(width: 0, height: 0)
-        }
-        
-        switch indexPath.row {
-        case 0:
-            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
-        case 1:
-            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
-        case 2:
-            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-        case 3:
-            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-        case 4:
-            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
-        default:
-            return CGSize(width: 0, height: 0)
-        }
+//        switch layoutType {
+//        case .horizontal_1:
+//            return CGSize(width: (Const.Screen_Width-2), height: Const.Screen_Width/2-2)
+//        case .horizontal_2:
+//            switch indexPath.row {
+//            case 0:
+//                return CGSize(width: (Const.Screen_Width-2), height: Const.Screen_Width/2-2)
+//            case 1:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
+//            default:
+//                return CGSize(width: 0, height: 0)
+//            }
+//        case .horizontal_3:
+//            switch indexPath.row {
+//            case 0:
+//                //image.size.height*(Const.Screen_Width/image.size.width)
+//                return CGSize(width: (Const.Screen_Width), height: Const.Screen_Width*2/3)
+//            case 1:
+//                return CGSize(width: (Const.Screen_Width/2), height: Const.Screen_Width/3)
+//            case 2:
+//                return CGSize(width: (Const.Screen_Width/2), height: Const.Screen_Width/3)
+//            default:
+//                return CGSize(width: 0, height: 0)
+//            }
+//        case .horizontal_4:
+//            switch indexPath.row {
+//            case 0:
+//                return CGSize(width: (Const.Screen_Width-2), height: Const.Screen_Width*2/3)
+//            case 1:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            case 2:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            case 3:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            default:
+//                return CGSize(width: 0, height: 0)
+//            }
+//        case .horizontal_5:
+//            switch indexPath.row {
+//            case 0:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
+//            case 1:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
+//            case 2:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            case 3:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            case 4:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            default:
+//                return CGSize(width: 0, height: 0)
+//            }
+//        case .horizontal_6plus:
+//            switch indexPath.row {
+//            case 0:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
+//            case 1:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
+//            case 2:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            case 3:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            case 4:
+//                return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//            default:
+//                return CGSize(width: 0, height: 0)
+//            }
+//        default:
+//            return CGSize(width: 0, height: 0)
+//        }
+//
+//        switch indexPath.row {
+//        case 0:
+//            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
+//        case 1:
+//            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/2-2)
+//        case 2:
+//            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//        case 3:
+//            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//        case 4:
+//            return CGSize(width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)
+//        default:
+//            return CGSize(width: 0, height: 0)
+//        }
         
         
         
 //        let size = CGSize(width: Const.Screen_Width, height: (images[indexPath.row]?.size.height)!*(Const.Screen_Width/images[indexPath.row]!.size.width))
-//        return size
+        return CGSize(width: 0, height: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -218,26 +218,26 @@ extension GalleryCollectionView: UICollectionViewDelegate,UICollectionViewDataSo
 }
 
 
-enum LayoutType{
-    case horizontal_1
-    case horizontal_2
-    case horizontal_3
-    case horizontal_4
-    case horizontal_5
-    case horizontal_6plus
-    // height < screen width
-    case horizontal_stack_1
-    case horizontal_stack_2
-    case horizontal_stack_3
-    case horizontal_stack_4plus
-    
-    case vertical_1
-    case vertical_2
-    case vertical_3
-    case vertical_4
-    case vertical_5
-    case vertical_6plus
-}
+//enum LayoutType{
+//    case horizontal_1
+//    case horizontal_2
+//    case horizontal_3
+//    case horizontal_4
+//    case horizontal_5
+//    case horizontal_6plus
+//    // height < screen width
+//    case horizontal_stack_1
+//    case horizontal_stack_2
+//    case horizontal_stack_3
+//    case horizontal_stack_4plus
+//
+//    case vertical_1
+//    case vertical_2
+//    case vertical_3
+//    case vertical_4
+//    case vertical_5
+//    case vertical_6plus
+//}
 
 
 

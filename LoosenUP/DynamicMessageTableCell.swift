@@ -32,6 +32,15 @@ class DynamicMessageTableCell: UITableViewCell {
     
     @IBOutlet weak var galleryCollectionView: GalleryCollectionView!
     
+    @IBOutlet weak var galleryView: UIView!
+    
+    @IBOutlet weak var imageView_1: UIImageView!
+    @IBOutlet weak var imageView_2: UIImageView!
+    @IBOutlet weak var imageView_3: UIImageView!
+    @IBOutlet weak var imageView_4: UIImageView!
+    @IBOutlet weak var imageView_5: UIImageView!
+    
+    
     @IBAction func likeBtnTouchUp(_ sender: Any) {
         if btn_Like.isSelected {
             // set deselected
@@ -50,6 +59,8 @@ class DynamicMessageTableCell: UITableViewCell {
     var observers = [NSKeyValueObservation]()
     var fatherTableView: UITableView?
     var indexPath: IndexPath?
+    var imageViewArr = [UIImageView]()
+    var imageviews = [UIImageView(),UIImageView(),UIImageView(),UIImageView(),UIImageView()]
     
     weak var presenter: DynamicMessageCellViewModelPresenter?
     
@@ -65,6 +76,7 @@ class DynamicMessageTableCell: UITableViewCell {
         presenter!.updateDetailView(view: detailView)
         presenter!.updateLikeBtn(btn: btn_Like)
         presenter!.updateAvatarImage(imageView: avatar_imageUrl)
+        presenter!.updateGalleryView(view: galleryView,imageviews_1: imageView_1,imageviews_2: imageView_2,imageviews_3: imageView_3,imageviews_4: imageView_4,imageviews_5: imageView_5)
         presenter!.updateCollactionView(collectionView: galleryCollectionView)
         presenter!.bindingValueWithVM(tableCell: self)
     }

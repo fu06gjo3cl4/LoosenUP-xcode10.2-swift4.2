@@ -24,6 +24,9 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
     var cellHeight:CGFloat = 0
     var avatarHeight:CGFloat = 0
     var galleryHeight:CGFloat = 0
+    var gallerySizes:[CGSize] = [CGSize]()
+    var galleryRects:[CGRect] = [CGRect]()
+    var layoutType:LayoutType = .horizontal_1
     let group = DispatchGroup()
     let group_Gallery = DispatchGroup()
     
@@ -110,12 +113,12 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             let image_Url = NSURL(string: avatar_imageUrl)
             if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
                 avatarHeight = image.size.height*(Const.Screen_Width/image.size.width)
-                height += self.avatarHeight
+//                height += self.avatarHeight
                 group.leave()
             } else { //沒抓過 ->下載圖片
                 image_Url?.fetchImage { image in
                     self.avatarHeight = image.size.height*(Const.Screen_Width/image.size.width)
-                    height += self.avatarHeight
+//                    height += self.avatarHeight
                     self.group.leave()
                 }
             }
@@ -187,7 +190,8 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
             imageView.image = nil
             imageView.isHidden = true
         }else{
-            imageView.isHidden = false
+            imageView.isHidden = true
+//            imageView.isHidden = false
             
             let image_Url = NSURL(string: avatar_imageUrl)
             if let image = image_Url?.cachedImage { //抓過了 -> 直接顯示
@@ -213,12 +217,292 @@ class DynamicMessageCellViewModel: NSObject, DynamicMessageCellViewModelPresente
         }
         
     }
+    
+    func updateGalleryView(view: UIView,imageviews_1: UIImageView,imageviews_2: UIImageView,imageviews_3: UIImageView,imageviews_4: UIImageView,imageviews_5: UIImageView){
+        
+        if image_Urls[0] == "" {
+            view.isHidden = true
+        }else{
+            view.isHidden = false
+        }
+        
+        let height:CGFloat!
+        if galleryHeight<Const.Screen_Width{
+            height = galleryHeight
+        }else{
+            height = Const.Screen_Width
+        }
+        for constraint in view.constraints {
+            if constraint.identifier == "HeightOfGalleryView" {
+                constraint.constant = height//galleryHeight
+            }
+        }
+        
+        //先單純根據圖片數量決定size
+        if image_Urls.count>5{
+            layoutType = .horizontal_6plus
+            let rects = [CGRect(x: 0, y: 0, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/2-2)),
+                        CGRect(x: 0, y: (Const.Screen_Width/2+2), width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/2-2)),
+                        CGRect(x: (Const.Screen_Width/2+2), y: 0, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2)),
+                        CGRect(x: (Const.Screen_Width/2+2), y: (Const.Screen_Width/3+2), width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2)),
+                        CGRect(x: (Const.Screen_Width/2+2), y: (Const.Screen_Width/3+2)*2, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2))]
+            self.galleryRects = rects
+        }else if image_Urls.count==5{
+            layoutType = .horizontal_5
+            let rects = [CGRect(x: 0, y: 0, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/2-2)),
+                         CGRect(x: 0, y: (Const.Screen_Width/2+2), width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/2-2)),
+                         CGRect(x: (Const.Screen_Width/2+2), y: 0, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2)),
+                         CGRect(x: (Const.Screen_Width/2+2), y: (Const.Screen_Width/3+2), width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2)),
+                         CGRect(x: (Const.Screen_Width/2+2), y: (Const.Screen_Width/3+2)*2, width: (Const.Screen_Width/2-2), height: (Const.Screen_Width/3-2))]
+            self.galleryRects = rects
+        }else if image_Urls.count==4{
+            layoutType = .horizontal_4
+            let rects = [CGRect(x: 0, y: 0, width: (Const.Screen_Width), height: Const.Screen_Width*2/3),
+                         CGRect(x: 0, y: Const.Screen_Width*2/3+2, width: (Const.Screen_Width/3-2), height: Const.Screen_Width/3),
+                         CGRect(x: (Const.Screen_Width/3+2), y: Const.Screen_Width*2/3+4, width: (Const.Screen_Width/3-2), height: Const.Screen_Width/3),
+                         CGRect(x: (Const.Screen_Width/3+2)*2, y: Const.Screen_Width*2/3+4, width: (Const.Screen_Width/3-2), height: Const.Screen_Width/3)]
+            self.galleryRects = rects
+        }else if image_Urls.count==3{
+            layoutType = .horizontal_3
+            let rects = [CGRect(x: 0, y: 0, width: Const.Screen_Width, height: Const.Screen_Width*2/3-2),
+                         CGRect(x: 0, y: Const.Screen_Width*2/3+2, width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2),
+                         CGRect(x: Const.Screen_Width/2+2, y: Const.Screen_Width*2/3+2, width: (Const.Screen_Width/2-2), height: Const.Screen_Width/3-2)]
+            self.galleryRects = rects
+        }else if image_Urls.count==2{
+            layoutType = .horizontal_2
+            let rects = [CGRect(x: 0, y: 0, width: (Const.Screen_Width), height: Const.Screen_Width/2-2),
+                         CGRect(x: 0, y: Const.Screen_Width/2+2, width: (Const.Screen_Width), height: Const.Screen_Width/2-2)]
+            self.galleryRects = rects
+        }else if image_Urls.count==1{
+            layoutType = .horizontal_1
+            self.galleryRects = [CGRect(x: 0, y: 0, width: Const.Screen_Width, height: Const.Screen_Width/2-2)]
+        }
+        
+        switch layoutType {
+        case .horizontal_6plus:
+            imageviews_1.frame = galleryRects[0]
+            imageviews_1.contentMode = .scaleAspectFill
+            imageviews_1.clipsToBounds = true
+            imageviews_1.isHidden = false
+            if let image = NSURL(string: image_Urls[0])?.cachedImage {
+                imageviews_1.image = image
+                imageviews_1.alpha = 1
+            }
+            
+            imageviews_2.frame = galleryRects[1]
+            imageviews_2.contentMode = .scaleAspectFill
+            imageviews_2.clipsToBounds = true
+            imageviews_2.isHidden = false
+            if let image = NSURL(string: image_Urls[1])?.cachedImage {
+                imageviews_2.image = image
+                imageviews_2.alpha = 1
+            }
+            
+            imageviews_3.frame = galleryRects[2]
+            imageviews_3.contentMode = .scaleAspectFill
+            imageviews_3.clipsToBounds = true
+            imageviews_3.isHidden = false
+            if let image = NSURL(string: image_Urls[2])?.cachedImage {
+                imageviews_3.image = image
+                imageviews_3.alpha = 1
+            }
+            
+            imageviews_4.frame = galleryRects[3]
+            imageviews_4.contentMode = .scaleAspectFill
+            imageviews_4.clipsToBounds = true
+            imageviews_4.isHidden = false
+            if let image = NSURL(string: image_Urls[3])?.cachedImage {
+                imageviews_4.image = image
+                imageviews_4.alpha = 1
+            }
+            
+            imageviews_5.frame = galleryRects[4]
+            imageviews_5.contentMode = .scaleAspectFill
+            imageviews_5.clipsToBounds = true
+            imageviews_5.isHidden = false
+            if let image = NSURL(string: image_Urls[4])?.cachedImage {
+                imageviews_5.image = image
+                imageviews_5.alpha = 1
+            }
+        case .horizontal_5:
+            imageviews_1.frame = galleryRects[0]
+            imageviews_1.contentMode = .scaleAspectFill
+            imageviews_1.clipsToBounds = true
+            imageviews_1.isHidden = false
+            if let image = NSURL(string: image_Urls[0])?.cachedImage {
+                imageviews_1.image = image
+                imageviews_1.alpha = 1
+            }
+            
+            imageviews_2.frame = galleryRects[1]
+            imageviews_2.contentMode = .scaleAspectFill
+            imageviews_2.clipsToBounds = true
+            imageviews_2.isHidden = false
+            if let image = NSURL(string: image_Urls[1])?.cachedImage {
+                imageviews_2.image = image
+                imageviews_2.alpha = 1
+            }
+            
+            imageviews_3.frame = galleryRects[2]
+            imageviews_3.contentMode = .scaleAspectFill
+            imageviews_3.clipsToBounds = true
+            imageviews_3.isHidden = false
+            if let image = NSURL(string: image_Urls[2])?.cachedImage {
+                imageviews_3.image = image
+                imageviews_3.alpha = 1
+            }
+            
+            imageviews_4.frame = galleryRects[3]
+            imageviews_4.contentMode = .scaleAspectFill
+            imageviews_4.clipsToBounds = true
+            imageviews_4.isHidden = false
+            if let image = NSURL(string: image_Urls[3])?.cachedImage {
+                imageviews_4.image = image
+                imageviews_4.alpha = 1
+            }
+            
+            imageviews_5.frame = galleryRects[4]
+            imageviews_5.contentMode = .scaleAspectFill
+            imageviews_5.clipsToBounds = true
+            imageviews_5.isHidden = false
+            if let image = NSURL(string: image_Urls[4])?.cachedImage {
+                imageviews_5.image = image
+                imageviews_5.alpha = 1
+            }
+        case .horizontal_4:
+            imageviews_1.frame = galleryRects[0]
+            imageviews_1.contentMode = .scaleAspectFill
+            imageviews_1.clipsToBounds = true
+            imageviews_1.isHidden = false
+            if let image = NSURL(string: image_Urls[0])?.cachedImage {
+                imageviews_1.image = image
+                imageviews_1.alpha = 1
+            }
+            
+            imageviews_2.frame = galleryRects[1]
+            imageviews_2.contentMode = .scaleAspectFill
+            imageviews_2.clipsToBounds = true
+            imageviews_2.isHidden = false
+            if let image = NSURL(string: image_Urls[1])?.cachedImage {
+                imageviews_2.image = image
+                imageviews_2.alpha = 1
+            }
+            
+            imageviews_3.frame = galleryRects[2]
+            imageviews_3.contentMode = .scaleAspectFill
+            imageviews_3.clipsToBounds = true
+            imageviews_3.isHidden = false
+            if let image = NSURL(string: image_Urls[2])?.cachedImage {
+                imageviews_3.image = image
+                imageviews_3.alpha = 1
+            }
+            
+            imageviews_4.frame = galleryRects[3]
+            imageviews_4.contentMode = .scaleAspectFill
+            imageviews_4.clipsToBounds = true
+            imageviews_4.isHidden = false
+            if let image = NSURL(string: image_Urls[3])?.cachedImage {
+                imageviews_4.image = image
+                imageviews_4.alpha = 1
+            }
+            
+            imageviews_5.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_5.isHidden = true
+        case .horizontal_3:
+            imageviews_1.frame = galleryRects[0]
+            imageviews_1.contentMode = .scaleAspectFill
+            imageviews_1.clipsToBounds = true
+            imageviews_1.isHidden = false
+            if let image = NSURL(string: image_Urls[0])?.cachedImage {
+                imageviews_1.image = image
+                imageviews_1.alpha = 1
+            }
+            
+            imageviews_2.frame = galleryRects[1]
+            imageviews_2.contentMode = .scaleAspectFill
+            imageviews_2.clipsToBounds = true
+            imageviews_2.isHidden = false
+            if let image = NSURL(string: image_Urls[1])?.cachedImage {
+                imageviews_2.image = image
+                imageviews_2.alpha = 1
+            }
+            
+            imageviews_3.frame = galleryRects[2]
+            imageviews_3.contentMode = .scaleAspectFill
+            imageviews_3.clipsToBounds = true
+            imageviews_3.isHidden = false
+            if let image = NSURL(string: image_Urls[2])?.cachedImage {
+                imageviews_3.image = image
+                imageviews_3.alpha = 1
+            }
+            
+            imageviews_4.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_4.isHidden = true
+            
+            imageviews_5.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_5.isHidden = true
+        case .horizontal_2:
+            imageviews_1.frame = galleryRects[0]
+            imageviews_1.contentMode = .scaleAspectFill
+            imageviews_1.clipsToBounds = true
+            imageviews_1.isHidden = false
+            if let image = NSURL(string: image_Urls[0])?.cachedImage {
+                imageviews_1.image = image
+                imageviews_1.alpha = 1
+            }
+            
+            imageviews_2.frame = galleryRects[1]
+            imageviews_2.contentMode = .scaleAspectFill
+            imageviews_2.clipsToBounds = true
+            imageviews_2.isHidden = false
+            if let image = NSURL(string: image_Urls[1])?.cachedImage {
+                imageviews_2.image = image
+                imageviews_2.alpha = 1
+            }
+            
+            imageviews_3.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_3.isHidden = true
+            
+            imageviews_4.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_4.isHidden = true
+            
+            imageviews_5.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_5.isHidden = true
+        case .horizontal_1:
+            imageviews_1.frame = galleryRects[0]
+            print(galleryRects[0].size.height)
+            print(galleryRects[0].size.width)
+            imageviews_1.contentMode = .scaleAspectFill
+            imageviews_1.clipsToBounds = true
+            imageviews_1.isHidden = false
+            if let image = NSURL(string: image_Urls[0])?.cachedImage {
+                imageviews_1.image = image
+                imageviews_1.alpha = 1
+            }
+            
+            imageviews_2.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_2.isHidden = true
+            
+            imageviews_3.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_3.isHidden = true
+            
+            imageviews_4.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_4.isHidden = true
+            
+            imageviews_5.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            imageviews_5.isHidden = true
+        default:
+            print("switch deault")
+        }
+        
+    }
     func updateCollactionView(collectionView:GalleryCollectionView){
         
         if image_Urls.count <= 1 && image_Urls[0] == ""{
             collectionView.isHidden = true
         }else{
-            collectionView.isHidden = false
+            collectionView.isHidden = true
+//            collectionView.isHidden = false
             collectionView.image_Urls = image_Urls
             collectionView.delegate = collectionView
             collectionView.dataSource = collectionView
@@ -260,8 +544,11 @@ protocol DynamicMessageCellViewModelPresenter: AnyObject {
     var body:String{get set}
     var userId:String{get}
     var avatar_imageUrl:String{get}
+    var image_Urls:[String]{get}
     var isLikeOrNot:Bool{get set}
     var likeCount:Int{get set}
+    var galleryRects:[CGRect]{get}
+    var layoutType:LayoutType{get}
     
     func updateIdLabel(label:UILabel)
     func updateTitleLabel(label:UILabel)
@@ -270,7 +557,29 @@ protocol DynamicMessageCellViewModelPresenter: AnyObject {
     func updateLikeBtn(btn:UIButton)
     func updateDetailView(view: UIView)
     func updateAvatarImage(imageView:UIImageView)
+    func updateGalleryView(view: UIView,imageviews_1: UIImageView,imageviews_2: UIImageView,imageviews_3: UIImageView,imageviews_4: UIImageView,imageviews_5: UIImageView)
     func updateCollactionView(collectionView:GalleryCollectionView)
     func bindingValueWithVM(tableCell: DynamicMessageTableCell)
     func calculateCellHeight(callback:@escaping ()->())
+}
+
+enum LayoutType{
+    case horizontal_1
+    case horizontal_2
+    case horizontal_3
+    case horizontal_4
+    case horizontal_5
+    case horizontal_6plus
+    // height < screen width
+    case horizontal_stack_1
+    case horizontal_stack_2
+    case horizontal_stack_3
+    case horizontal_stack_4plus
+    
+    case vertical_1
+    case vertical_2
+    case vertical_3
+    case vertical_4
+    case vertical_5
+    case vertical_6plus
 }

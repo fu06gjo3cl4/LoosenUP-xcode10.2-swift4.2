@@ -56,7 +56,7 @@ class ContainerOfDynamicMessageViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             self.refreshControl.endRefreshing()
             self.tableView.reloadData()
-
+            
         }
     }
     
@@ -69,7 +69,7 @@ extension ContainerOfDynamicMessageViewController: UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "DynamicMessageTableCell", for: indexPath) as! DynamicMessageTableCell
-
+        
         cell.presenter = viewModels[indexPath.row]
         cell.updateWithPresenter()
         cell.fatherTableView = self.tableView
